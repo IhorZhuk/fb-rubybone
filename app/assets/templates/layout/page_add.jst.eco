@@ -1,0 +1,9 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="js-page-add-left-col col-xs-4"></div><!-- //col -->
+
+    <div class="js-page-add-right-col col-xs-8"></div>
+
+  </div><!-- //row -->
+</div><!-- //contianer -->

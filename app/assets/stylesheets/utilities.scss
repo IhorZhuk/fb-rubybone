@@ -1,0 +1,16 @@
+//colors
+$color-main: #2d3033;
+$color-main-light: #aebdc1;
+$color-bg:#f6f8f8;
+$color-font: #393d40;
+$color-font-light: lighten($color-font, 20%);
+$color-border: #e2e8e9;
+$color-navbar-bg: $color-main;
+$color-navbar-link: $color-main-light;
+
+//mixins
+@mixin transition($prop:all, $time:.3s, $easing:ease-in-out) {
+  -webkit-transition: $prop $time $easing;
+  -o-transition: $prop $time $easing;
+  transition: $prop $time $easing;
+}

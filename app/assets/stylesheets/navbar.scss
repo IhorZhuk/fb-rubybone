@@ -1,0 +1,59 @@
+.navbar {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: $color-navbar-bg;
+  overflow-y: auto;
+
+  a {
+    display: block;
+    padding: 5px 10px;
+    color: $color-navbar-link;
+
+    &:hover {
+      background-color:darken($color-navbar-bg, 10%);
+      text-decoration: none;
+    }
+  }
+
+  span {
+    display: none;
+    margin-left: 10px;
+    font-size: 12px;
+  }
+
+}
+
+.navbar.is-active {
+  box-shadow: 5px 0px 24px 0px rgba(0,0,0,0.42);
+  
+  span {
+    display: inline;
+  }
+}
+
+.navbar-bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+}
+
+
+@media (max-height: 250px) {
+
+
+
+  .navbar-bottom {
+    position: static;
+  }
+
+}
+
+
+
+
+

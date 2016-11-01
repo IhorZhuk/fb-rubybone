@@ -1,0 +1,32 @@
+<div class="ui-card">
+  <h3 class="ui-card-title">Add transaction</h3>
+  <hr>
+  <form>
+    <div class="ui-form-group">
+      <ul class="ui-radio-group list-inline">
+        <li>
+          <input id="type-expenditures"type="radio" name="type" value="expenditures" checked>
+          <label for="type-expenditures">Expenditures</label>
+        </li>
+        <li>
+          <input id="type-income" type="radio" name="type" value="income">
+          <label for="type-income">Income</label>
+        </li>
+      </ul>
+    </div>
+    <div class="ui-form-group">
+      <input type="text" class="ui-form-control" name="title" placeholder="Title">
+    </div>
+    <div class="ui-form-group">
+      <input type="number" class="ui-form-control" name="amount" placeholder="Amount">
+    </div>
+    <div class="ui-form-group">
+      <input type="date" class="ui-form-control" name="date" placeholder="Date">
+    </div>
+    <div class="ui-form-group">
+      <textarea name="note" class="ui-form-control" placeholder="Additional notes"></textarea>
+    </div>
+    <button type="submit" class="ui-btn-main">Submit</button>
+  </form>
+</div><!-- //card -->
+    

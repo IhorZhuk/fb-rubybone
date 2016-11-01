@@ -1,0 +1,49 @@
+.ui-card {
+  background: #fff;
+  border: $color-border 1px solid;
+  padding: 15px;
+  margin: 15px 0;
+}
+
+.ui-card-title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: bold;
+  color: $color-font-light;
+  text-transform: uppercase;
+}
+
+.ui-form-group {
+  margin: 15px 0;
+}
+
+.ui-form-control {
+  display: block;
+  width: 100%;
+  border: 1px solid $color-border;
+  resize: none;
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.ui-radio-group {
+  label {
+    vertical-align: text-bottom;
+  }
+
+  li {
+    margin-right: 10px;
+  }
+}
+
+.ui-btn-main {
+  font-size: 12px;
+  border: none;
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 2px;
+  color: $color-main-light;
+  background-color: $color-main;
+}
+
