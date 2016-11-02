@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Transaction.create!(title: 'Transaction default first', amount: 120.00)
 Transaction.create!(title: 'Transaction default second', amount: -50.50)
+Transaction.create!(title: 'latest one', amount: 120.00)
+Transaction.create!(title: 'latest two', amount: -50.50)

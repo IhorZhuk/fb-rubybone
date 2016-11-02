@@ -1,0 +1,19 @@
+<div class="ui-card">
+  <h3 class="ui-card-title">Transactions added today</h3>
+  <hr>
+  <table class="js-transactions-table ui-table">
+    <thead>
+      <tr>
+        <th class="date">Date</th>
+        <th class="title">Title</th>
+        <th class="amount">Amount</th>
+        <th class="options">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="4">No transactions</td>
+      </tr>
+    </tbody>
+  </table><!-- //ui-table -->
+</div>

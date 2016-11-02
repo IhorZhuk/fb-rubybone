@@ -13,6 +13,7 @@
   text-transform: uppercase;
 }
 
+//=form
 .ui-form-group {
   margin: 15px 0;
 }
@@ -37,6 +38,8 @@
   }
 }
 
+
+//=buttons
 .ui-btn-main {
   font-size: 12px;
   border: none;
@@ -47,3 +50,38 @@
   background-color: $color-main;
 }
 
+.ui-btn-icon {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  color: $color-main;
+
+  i {
+    vertical-align: middle;
+  }
+}
+
+//=table
+
+.ui-table {
+  width: 100%;
+
+  th {
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  .date {
+    width: 10%;
+  }
+
+  .amount {
+    width: 15%;
+    text-align: right;
+  }
+
+  .options {
+    width: 10%;
+    text-align: right;
+  }
+}

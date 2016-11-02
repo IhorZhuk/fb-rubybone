@@ -1,12 +1,17 @@
 class FamilyBudget.Models.Transaction extends Backbone.Model
   
-  deafults: 
+  defaults: 
     title: ''
     amount: 0
     currency: 'EUR'
-    note: ''
+    note: '',
+    kind: ''
 
   initialize: ->
-    if @get('date') == ''
-      @set({ 'date': new Date().toLocaleDateString() }) 
+    @setAttrs()
 
+  setAttrs: ->
+    if @get('date') == ''
+      now = new Date()
+      formatDate = now.getFullYear() + '-' + now.getMonth() + '-' + now.getDay()
+      @set({ 'date': formatDate })

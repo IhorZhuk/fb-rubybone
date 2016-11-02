@@ -1,15 +1,15 @@
 <div class="ui-card">
   <h3 class="ui-card-title">Add transaction</h3>
   <hr>
-  <form>
+  <form class="js-add-transaction-form">
     <div class="ui-form-group">
       <ul class="ui-radio-group list-inline">
         <li>
-          <input id="type-expenditures"type="radio" name="type" value="expenditures" checked>
+          <input id="type-expenditures" type="radio" name="kind" value="debit" checked>
           <label for="type-expenditures">Expenditures</label>
         </li>
         <li>
-          <input id="type-income" type="radio" name="type" value="income">
+          <input id="type-income" type="radio" name="kind" value="credit">
           <label for="type-income">Income</label>
         </li>
       </ul>

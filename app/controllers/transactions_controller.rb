@@ -3,7 +3,15 @@ class TransactionsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Transaction.all
+  filter = nil
+    if filter_params[:date]
+start_date = filter_params[:date].to_date.beginning_of_day
+end_date = filter_params[:date].to_date.end_of_day
+filter = {:created_at => start_date..end_date}
+puts filter
+
+    end
+      respond_with Transaction.where(filter)
   end
 
   def show
@@ -22,9 +30,16 @@ class TransactionsController < ApplicationController
     respond_with Transaction.destroy(params[:id])
   end
 
-  def Transaction_params
-    allow = [:title, :amount, :date, :currency, :note]
-    params.require(:Transaction).permit(allow)
+private
+
+  def transaction_params
+    allow = [:title, :amount, :date, :note, :kind, :curency]
+    params.permit(allow)
+  end
+
+  def filter_params
+    allow = [:date]
+    params.permit(allow)
   end
 
 end
