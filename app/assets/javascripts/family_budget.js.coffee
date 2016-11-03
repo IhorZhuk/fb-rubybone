@@ -5,7 +5,7 @@ window.FamilyBudget =
   Routers: {}
   initialize: -> 
     new FamilyBudget.Views.NavbarIndex()
-    new FamilyBudget.Routers.Layout
+    new FamilyBudget.Routers.Layout()
     Backbone.history.start()
 
     #make sure anchor links trigger routers

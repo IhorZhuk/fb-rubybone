@@ -1,37 +1,64 @@
 .navbar {
   position: fixed;
   z-index: 100;
+  padding: 20px 0;
   top: 0;
   left: 0;
   bottom: 0;
   background-color: $color-navbar-bg;
-  overflow-y: auto;
 
   a {
+    position: relative;
     display: block;
-    padding: 5px 10px;
+    width: 250px;
+    padding: 15px;
     color: $color-navbar-link;
+    border-left: 3px solid transparent;
+    
+    &:after {
+      position: absolute;
+      display: none;
+      content:'';
+      top: 0;
+      left: 100%;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 26px 0 26px 15px;
+      border-color: transparent transparent transparent darken($color-navbar-bg, 5%);
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
 
     &:hover {
-      background-color:darken($color-navbar-bg, 10%);
+      background-color:darken($color-navbar-bg, 5%);
       text-decoration: none;
+    }
+
+    &.is-active {
+      background-color:darken($color-navbar-bg, 5%);
+      color: $color-accent;
+      border-left-color: $color-accent;
+      text-decoration: none;
+
+      &:after {
+        display: block;
+      }
     }
   }
 
-  span {
-    display: none;
-    margin-left: 10px;
-    font-size: 12px;
+  .fa {
+    font-size: 18px;
+    vertical-align: middle;
   }
 
-}
-
-.navbar.is-active {
-  box-shadow: 5px 0px 24px 0px rgba(0,0,0,0.42);
-  
   span {
-    display: inline;
+    margin-left: 20px;
+    font-size: 15px;
   }
+
 }
 
 .navbar-bottom {
@@ -43,9 +70,7 @@
 }
 
 
-@media (max-height: 250px) {
-
-
+@media (max-height: 420px) {
 
   .navbar-bottom {
     position: static;

@@ -4,16 +4,18 @@ class FamilyBudget.Views.NavbarIndex extends Backbone.View
 
   el: '#navbar'
 
-  events:
-    'click .js-navbar-toggle': 'toggle'
-
   initialize: ->
     @render()
+    _.bindAll this, 'setActiveLink'
+    Backbone.history.on 'route', @setActiveLink
 
   render: ->
     @$el.html( @template() )
     @
-
-  toggle: (e) ->
-    e.preventDefault()
-    @$el.toggleClass 'is-active'
+  
+  setActiveLink: (route, param )->
+    @$el.find('a').removeClass 'is-active'
+    if param == 'home'
+      @$el.find('a[href="#/"]').addClass 'is-active'
+    else
+      @$el.find('a[href="#' + param + '"]').addClass 'is-active'
