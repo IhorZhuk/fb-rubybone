@@ -1,15 +1,20 @@
 //colors
 $color-main: #2d3033;
 $color-accent: #52FFB8;
+$color-middle: #1D4E89;
 $color-main-light: #aebdc1;
 $color-bg:#f6f8f8;
 $color-font: #393d40;
 $color-font-light: lighten($color-font, 20%);
 $color-border: #e2e8e9;
 
+$color-positive: #498C8A;
+$color-negative: #AB3428;
 
 $color-navbar-bg: #fff;
 $color-navbar-link: $color-main;
+
+$color-note-bg: #EFF0D1;
 
 //mixins
 @mixin transition($prop:all, $time:.3s, $easing:ease-in-out) {

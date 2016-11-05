@@ -1,0 +1,51 @@
+//=buttons
+%btn {
+  display: inline-block;
+  padding: 5px 15px;
+  border-right: 2px;
+}
+
+.btn-main {
+  @extend %btn;
+  border: none;
+  color: #fff;
+  background-color: $color-main;
+}
+
+.btn-ghost {
+  @include transition;
+  @extend %btn;
+  background-color: transparent;
+  border: 1px solid $color-main;
+  color: $color-main;
+  
+  &:hover {
+    color: $color-accent;
+    background-color: $color-main;
+    border-color: $color-main;
+  }
+
+  &:focus {
+    border-color: $color-main;
+    outline: none;
+  }
+}
+
+.btn-icon {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  color: $color-main;
+
+  i {
+    vertical-align: middle;
+  }
+}
+
+.btn-link {
+  color: $color-middle;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 10px;
+  text-transform: uppercase;
+}

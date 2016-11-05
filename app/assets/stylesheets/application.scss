@@ -14,10 +14,15 @@
  *= require_self
  */
 
- @import "utilities";
+@import "utilities";
 
- @import "base";
- @import "ui";
- @import 'help-classes';
- //components
- @import "navbar";
+@import "base";
+@import "ui";
+@import 'help-classes';
+
+//reusable ui elements
+@import "table";
+@import "buttons";
+@import "form";
+//componets
+@import "navbar";

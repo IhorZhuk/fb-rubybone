@@ -1,7 +1,7 @@
 <div class="ui-card">
   <h3 class="ui-card-title">Transactions added today</h3>
   <hr>
-  <table class="js-transactions-table ui-table">
+  <table class="js-transactions-table table">
     <thead>
       <tr>
         <th class="date">Date</th>
@@ -11,9 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td colspan="4">No transactions</td>
-      </tr>
+      
     </tbody>
   </table><!-- //ui-table -->
 </div>

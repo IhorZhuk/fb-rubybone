@@ -1,0 +1,28 @@
+.form-group {
+  margin: 15px 0;
+}
+
+.form-control {
+  @include transition;
+  display: block;
+  width: 100%;
+  border: 1px solid $color-border;
+  resize: none;
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 2px;
+
+  &.is-invalid {
+    border-color: $color-negative;
+  }
+}
+
+.radio-group {
+  label {
+    vertical-align: text-bottom;
+  }
+
+  li {
+    margin-right: 10px;
+  }
+}

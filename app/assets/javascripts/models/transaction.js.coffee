@@ -2,14 +2,12 @@ class FamilyBudget.Models.Transaction extends Backbone.Model
   
   defaults: 
     title: ''
-    amount: 0
     currency: 'EUR'
     note: ''
     kind: ''
 
   initialize: ->
     @setDefaults()
-    console.log @toJSON()
 
   setDefaults: ->
 
@@ -18,6 +16,15 @@ class FamilyBudget.Models.Transaction extends Backbone.Model
       formatDate = now.getFullYear() + '-' + now.getMonth() + '-' + now.getDay()
       @set({ 'date': formatDate })
 
-    # if @get('amount') == '' then @set({amount: 0})
+  validate: (attrs) ->
+    if not attrs.amount and not attrs.title
+      Backbone.trigger 'amount:title:invalid'
+      return 'Invalid'
 
-    # if @get('currency') == null then @set({currency: 'EUR'})
+    if not attrs.title
+      Backbone.trigger 'title:invalid'
+      return 'Invalid'
+
+    if not attrs.amount
+      Backbone.trigger 'amount:invalid'
+      return 'Invalid'

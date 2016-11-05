@@ -33,7 +33,7 @@ puts filter
 private
 
   def transaction_params
-    allow = [:title, :amount, :date, :note, :kind, :curency]
+    allow = [:title, :amount, :date, :note, :kind, :currency]
     params.permit(allow)
   end
 

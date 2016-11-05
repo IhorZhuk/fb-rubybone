@@ -1,7 +1,11 @@
 .color-positive {
-  color: green;
+  color: $color-positive
 }
 
 .color-negative {
-  color: red;
+  color: $color-negative;
+}
+
+.full-width {
+  width: 100%;
 }

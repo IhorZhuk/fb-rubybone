@@ -5,4 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Transaction.create!(title: 'Dummy transaction title', amount: 120.00, kind: 'credit', currency: 'EUR')
+Transaction.create!(date: '2016-11-05', title: 'Dummy transaction title', amount: 10.5, kind: 'debit', currency: 'EUR', note: 'Dummy transaction note lorem ipsum dolor sit ammet')
+Transaction.create!(date: '2016-11-05', title: 'Dummy transaction title', amount: 1200, kind: 'credit', currency: 'EUR', note: 'Dummy transaction note lorem ipsum dolor sit ammet')
+Transaction.create!(date: '2016-11-05', title: 'Dummy transaction title', amount: 70.5, kind: 'debit', currency: 'EUR', note: 'Dummy transaction note lorem ipsum dolor sit ammet')

@@ -6,8 +6,13 @@ class FamilyBudget.Views.TransactionsAdd extends Backbone.View
 
   events: 
     'submit .js-add-transaction-form': 'addForm'
+    'focusout input': 'resetInputs'
+
   initialize: ->
     @render()
+    @listenTo Backbone, 'amount:title:invalid', @showErrors
+    @listenTo Backbone, 'amount:invalid', @showErrorAmount
+    @listenTo Backbone, 'title:invalid', @showErrorTitle
 
   render: ->
     @$el.html( @template() )
@@ -32,11 +37,30 @@ class FamilyBudget.Views.TransactionsAdd extends Backbone.View
       
   addForm: (e) ->
     e.preventDefault()
+    that = @
     @buildTransaction()
-    @collection.create(@transaction,
-      success: (res) ->
-        Backbone.trigger "transactionAdded"
-        console.log res
-    )
+    if @transaction.isValid()
+      @collection.create(@transaction,
+        success: (res) ->
+          Backbone.trigger "transactionAdded"
+          that.resetInputs()
+      )
+
+  resetInputs: ->
+    if @ui.title.val() != ''
+      @ui.title.removeClass('is-invalid').attr('placeholder', 'Title')
+
+    if @ui.amount.val() != ''
+      @ui.amount.removeClass('is-invalid').attr('placeholder', 'Amount')
     
+  showErrorTitle: ->
+    @ui.title.addClass('is-invalid').attr('placeholder', 'Title can\'t be blank')
+
+  showErrorAmount: ->
+    @ui.amount.addClass('is-invalid').attr('placeholder', 'Amount can\'t be blank')
+
+  showErrors: ->
+    @showErrorTitle()
+    @showErrorAmount()
+
     
