@@ -15,11 +15,6 @@ class FamilyBudget.Views.TransactionsAdd extends Backbone.View
     @listenTo Backbone, 'amount:invalid', @showErrorAmount
     @listenTo Backbone, 'title:invalid', @showErrorTitle
 
-    lazyLayout = _.debounce (->
-      console.log 'test'
-    ), 300
-    $(window).resize(lazyLayout);
-
   render: ->
     @$el.html( @template() )
     @setUI()
@@ -60,7 +55,6 @@ class FamilyBudget.Views.TransactionsAdd extends Backbone.View
   ), 250
 
   resetInputs: ->
-    console.log "erere"
     if @ui.title.val() != ''
       @ui.title.removeClass 'is-invalid' 
       @ui.titleError.removeClass 'is-active' 
