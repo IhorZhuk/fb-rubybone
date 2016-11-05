@@ -8,10 +8,12 @@ class FamilyBudget.Views.TransactionsTable extends Backbone.View
     'click th' : 'sort'
   }
 
+  @order: 'desc'
+
   initialize: ->
     _.bindAll this, 'render'
     @collection.fetch({success: @render})
-    @listenTo Backbone, 'transactionAdded', @render
+    @listenTo Backbone, 'transactionAdded', @renderRows
     
 
   render: ->
@@ -23,6 +25,7 @@ class FamilyBudget.Views.TransactionsTable extends Backbone.View
   renderRows: ->
     that = @
     @ui.tbody.html('')
+    if @order == 'asc' then @collection.models.reverse()
     @collection.each (model) ->
       row = new FamilyBudget.Views.TransactionsTableRow({ model: model})
       that.ui.tbody.prepend( row.render().el )
@@ -39,17 +42,16 @@ class FamilyBudget.Views.TransactionsTable extends Backbone.View
     if target.hasClass 'sort-asc'
       @ui.th.removeClass 'sort-asc sort-desc'
       target.addClass 'sort-desc'
-      order = 'desc'
+      @order = 'desc'
     else if target.hasClass 'sort-desc'
       @ui.th.removeClass 'sort-asc sort-desc'
       target.addClass 'sort-asc'
-      order = 'asc'
+      @order = 'asc'
     else 
       @ui.th.removeClass 'sort-asc sort-desc'
       target.addClass 'sort-asc'
-      order = 'asc'
+      @order = 'asc'
     
     @collection.sortKey = target.data 'model-attr'
     @collection.sort()
-    if order == 'asc' then @collection.models.reverse()
     @renderRows()

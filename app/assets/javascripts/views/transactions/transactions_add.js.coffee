@@ -5,7 +5,7 @@ class FamilyBudget.Views.TransactionsAdd extends Backbone.View
   el: '.js-page-add-left-col'
 
   events: 
-    'submit .js-add-transaction-form': 'addForm'
+    'submit .js-add-transaction-form': 'submit'
     'focusout input': 'resetInputs'
 
   initialize: ->
@@ -35,7 +35,7 @@ class FamilyBudget.Views.TransactionsAdd extends Backbone.View
       note: @ui.note.val()
     )
       
-  addForm: (e) ->
+  submit: (e) ->
     e.preventDefault()
     that = @
     @buildTransaction()
