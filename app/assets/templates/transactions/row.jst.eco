@@ -17,7 +17,7 @@
           <li class="js-delete-transaction">
             <span class="btn-icon"><i class="fa fa-trash-o"></i></span>
           </li>
-          <li class="js-edit-transcation">
+          <li class="js-edit-transaction">
             <span class="btn-icon"><i class="fa fa-pencil"></i></span>
           </li>
         </ul>

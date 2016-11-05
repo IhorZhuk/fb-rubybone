@@ -2,8 +2,22 @@
   width: 100%;
 
   th {
+    cursor: pointer;
     text-transform: uppercase;
     text-align: left;
+
+    .fa {
+      margin-left: 2px;
+      display: none;
+    }
+
+    &.sort-asc .fa.up {
+      display: inline;
+    }
+
+    &.sort-desc .fa.down {
+      display: inline;
+    }
   }
 
   .date {
@@ -48,6 +62,7 @@
   
   div {
     padding: 5px;
+    border-radius: 3px;
     padding-left: 10px;
     background-color: $color-note-bg;
   }

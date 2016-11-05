@@ -29,3 +29,6 @@ class FamilyBudget.Views.TransactionsTableRow extends Backbone.View
     row = @$el
     @model.destroy success: () ->
       row.remove()
+
+  edit: ->
+    alert 'I do nothing'

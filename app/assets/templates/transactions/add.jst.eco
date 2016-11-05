@@ -1,5 +1,5 @@
-<div class="ui-card">
-  <h3 class="ui-card-title">Add transaction</h3>
+<div class="card">
+  <h3 class="card-title">Add transaction</h3>
   <hr>
   <form class="js-add-transaction-form">
     <div class="form-group">
