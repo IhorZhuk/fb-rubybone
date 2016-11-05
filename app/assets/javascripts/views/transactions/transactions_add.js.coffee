@@ -6,7 +6,8 @@ class FamilyBudget.Views.TransactionsAdd extends Backbone.View
 
   events: 
     'submit .js-add-transaction-form': 'submit'
-    'focusout input': 'resetInputs'
+    'keyup input[name="title"]': 'resetInputsDebounce'
+    'keyup input[name="amount"]': 'resetInputsDebounce'
 
   initialize: ->
     @render()
@@ -21,10 +22,13 @@ class FamilyBudget.Views.TransactionsAdd extends Backbone.View
 
   setUI: ->
     @ui = 
-      title: @$el.find('input[name="title"]')
-      amount: @$el.find('input[name="amount"]')
-      date: @$el.find('input[name="date"]')
-      note: @$el.find('textarea[name="note"]')
+      title: @$el.find 'input[name="title"]'
+      titleError: @$el.find 'input[name="title"] + .form-error'
+      amount: @$el.find 'input[name="amount"]'
+      amountError: @$el.find 'input[name="amount"] + .form-error'
+      date: @$el.find 'input[name="date"]'
+      note: @$el.find 'textarea[name="note"]'
+      errors: @$el.find '.form-error'
       
   buildTransaction: ->
     @transaction = new FamilyBudget.Models.Transaction(
@@ -46,18 +50,26 @@ class FamilyBudget.Views.TransactionsAdd extends Backbone.View
           that.resetInputs()
       )
 
+  resetInputsDebounce: _.debounce (->
+    @resetInputs()
+  ), 250
+
   resetInputs: ->
     if @ui.title.val() != ''
-      @ui.title.removeClass('is-invalid').attr('placeholder', 'Title')
+      @ui.title.removeClass 'is-invalid' 
+      @ui.titleError.removeClass 'is-active' 
 
     if @ui.amount.val() != ''
-      @ui.amount.removeClass('is-invalid').attr('placeholder', 'Amount')
+      @ui.amount.removeClass 'is-invalid' 
+      @ui.amountError.removeClass 'is-active' 
     
   showErrorTitle: ->
-    @ui.title.addClass('is-invalid').attr('placeholder', 'Title can\'t be blank')
+    @ui.title.addClass 'is-invalid'
+    @ui.titleError.addClass('is-active').text 'Title can\'t be blank'
 
   showErrorAmount: ->
-    @ui.amount.addClass('is-invalid').attr('placeholder', 'Amount can\'t be blank')
+    @ui.amount.addClass 'is-invalid'
+    @ui.amountError.addClass('is-active').text 'Amount can\'t be blank, has negative value or be equal zero'
 
   showErrors: ->
     @showErrorTitle()

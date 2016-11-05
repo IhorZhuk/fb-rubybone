@@ -25,6 +25,6 @@ class FamilyBudget.Models.Transaction extends Backbone.Model
       Backbone.trigger 'title:invalid'
       return 'Invalid'
 
-    if not attrs.amount
+    if not attrs.amount or attrs.amount <= 0
       Backbone.trigger 'amount:invalid'
       return 'Invalid'

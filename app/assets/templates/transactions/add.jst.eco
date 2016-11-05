@@ -16,9 +16,11 @@
     </div>
     <div class="form-group">
       <input type="text" class="form-control" name="title" placeholder="Title">
+      <div class="form-error"></div>
     </div>
     <div class="form-group">
       <input type="number" class="form-control" name="amount" placeholder="Amount">
+      <div class="form-error"></div>
     </div>
     <div class="form-group">
       <input type="date" class="form-control" name="date" placeholder="Date">
