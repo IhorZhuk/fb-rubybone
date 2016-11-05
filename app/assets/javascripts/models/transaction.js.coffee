@@ -4,14 +4,20 @@ class FamilyBudget.Models.Transaction extends Backbone.Model
     title: ''
     amount: 0
     currency: 'EUR'
-    note: '',
+    note: ''
     kind: ''
 
   initialize: ->
-    @setAttrs()
+    @setDefaults()
+    console.log @toJSON()
 
-  setAttrs: ->
+  setDefaults: ->
+
     if @get('date') == ''
       now = new Date()
       formatDate = now.getFullYear() + '-' + now.getMonth() + '-' + now.getDay()
       @set({ 'date': formatDate })
+
+    # if @get('amount') == '' then @set({amount: 0})
+
+    # if @get('currency') == null then @set({currency: 'EUR'})

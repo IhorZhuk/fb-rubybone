@@ -40,14 +40,36 @@
 
 
 //=buttons
-.ui-btn-main {
-  font-size: 12px;
-  border: none;
+%btn {
   display: inline-block;
   padding: 5px 15px;
-  border-radius: 2px;
-  color: $color-main-light;
+  border-right: 2px;
+}
+
+.ui-btn-main {
+  @extend %btn;
+  border: none;
+  color: #fff;
   background-color: $color-main;
+}
+
+.ui-btn-ghost {
+  @include transition;
+  @extend %btn;
+  background-color: transparent;
+  border: 1px solid $color-main;
+  color: $color-main;
+  
+  &:hover {
+    color: $color-accent;
+    background-color: $color-main;
+    border-color: $color-main;
+  }
+
+  &:focus {
+    border-color: $color-main;
+    outline: none;
+  }
 }
 
 .ui-btn-icon {
