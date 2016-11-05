@@ -3,6 +3,7 @@ window.FamilyBudget =
   Collections: {}
   Views: {}
   Routers: {}
+  utilities: {}
   initialize: -> 
     new FamilyBudget.Views.NavbarIndex()
     new FamilyBudget.Routers.Layout()
