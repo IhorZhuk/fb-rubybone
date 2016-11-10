@@ -2,7 +2,10 @@ body {
   background-color: $color-bg;
   color: $color-font;
   line-height: 1.5;
-  padding: 0 10px 0 260px;
   font-size: 13px;
   font-family: 'Ubuntu', sans-serif;
+}
+
+.content-wrapper {
+  padding-left: 250px;
 }

@@ -31,4 +31,5 @@ class FamilyBudget.Views.TransactionsTableRow extends Backbone.View
       row.remove()
 
   edit: ->
-    alert 'I do nothing'
+    modal = new FamilyBudget.Views.ModalForm()
+    Backbone.trigger 'modal:open'

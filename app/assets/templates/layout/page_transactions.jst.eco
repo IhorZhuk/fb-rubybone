@@ -1,0 +1,17 @@
+<div class="header">
+  <h1 class="header-title">All transactions added:</h1>
+</div>
+
+<div class="row row-no-gutters">
+
+  <div class="col-xs-12">
+    <div class="card">
+      <h3 class="card-title">Transactions</h3>
+      <hr>
+      <div class="js-page-transactions">
+        
+      </div>
+    </div><!-- //card -->
+  </div><!-- //col -->
+
+</div><!-- //row -->

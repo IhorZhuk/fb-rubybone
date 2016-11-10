@@ -9,3 +9,12 @@
 .full-width {
   width: 100%;
 }
+
+.row.row-no-gutters {
+  margin-left: 0;
+  margin-right: 0;
+
+  > div[class^="col-"] {
+    padding: 0;
+  }
+}

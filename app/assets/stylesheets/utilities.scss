@@ -1,6 +1,6 @@
 //colors
-$color-main: #2d3033;
-$color-accent: #52FFB8;
+$color-main: #333244;
+$color-accent: #33d9d8;
 $color-middle: #1D4E89;
 $color-main-light: #aebdc1;
 $color-bg:#f6f8f8;
@@ -12,8 +12,8 @@ $color-positive: #498C8A;
 $color-negative: #AB3428;
 $color-nagative-bg: lighten($color-negative, 50%);
 
-$color-navbar-bg: #fff;
-$color-navbar-link: $color-main;
+$color-navbar-bg: $color-main;
+$color-navbar-link: lighten($color-main, 40%);
 
 $color-note-bg: #EFF0D1;
 
@@ -22,4 +22,11 @@ $color-note-bg: #EFF0D1;
   -webkit-transition: $prop $time $easing;
   -o-transition: $prop $time $easing;
   transition: $prop $time $easing;
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -ms-transform: $transform;
+  -o-transform: $transform;
+  transform: $transform;
 }

@@ -1,9 +1,27 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="header">
+  <h1 class="header-title">Add new tranaction</h1>
+</div>
 
-    <div class="js-page-add-left-col col-xs-4"></div><!-- //col -->
+<div class="row row-no-gutters">
 
-    <div class="js-page-add-right-col col-xs-8"></div>
+  <div class="col-xs-4">
+    <div class="card">
+      <h3 class="card-title">Add transaction</h3>
+      <hr>
+      <div class="js-page-add-left-col">
 
-  </div><!-- //row -->
-</div><!-- //contianer -->
+      </div>
+    </div><!-- //card -->
+  </div><!-- //col -->
+
+  <div class="col-xs-8">
+    <div class="card">
+      <h3 class="card-title">Transactions added today</h3>
+      <hr>
+      <div class="js-page-add-right-col">
+
+      </div>
+    </div><!-- //card -->
+  </div><!-- //col -->
+
+</div><!-- //row -->

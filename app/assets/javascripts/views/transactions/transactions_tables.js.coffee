@@ -1,20 +1,14 @@
-class FamilyBudget.Views.TransactionsTable extends Backbone.View
+# here are a few tables Base, Today, All
+
+class FamilyBudget.Views.TransactionsTableBase extends Backbone.View
 
   template: JST['transactions/table']
-
-  el: '.js-page-add-right-col'
 
   events: {
     'click th' : 'sort'
   }
 
   @order: 'desc'
-
-  initialize: ->
-    _.bindAll this, 'render'
-    @collection.fetch({success: @render})
-    @listenTo Backbone, 'transactionAdded', @renderRows
-    
 
   render: ->
     @$el.html( @template() )
@@ -55,3 +49,25 @@ class FamilyBudget.Views.TransactionsTable extends Backbone.View
     @collection.sortKey = target.data 'model-attr'
     @collection.sort()
     @renderRows()
+
+# =============================================
+
+class FamilyBudget.Views.TransactionsTableToday extends FamilyBudget.Views.TransactionsTableBase
+
+  el: '.js-page-add-right-col'
+
+  initialize: ->
+    _.bindAll this, 'render'
+    now = new Date()
+    @collection.fetch({success: @render, data: { date: now }})
+    @listenTo Backbone, 'transactionAdded', @renderRows
+
+# ===================================================
+
+class FamilyBudget.Views.TransactionsTableAll extends FamilyBudget.Views.TransactionsTableBase
+
+  el: '.js-page-transactions'
+
+  initialize: ->
+    _.bindAll this, 'render'
+    @collection.fetch({success: @render})
