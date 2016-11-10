@@ -10,8 +10,9 @@ class FamilyBudget.Routers.Layout extends Backbone.Router
 
   add: ->
     transactions = new FamilyBudget.Collections.Transactions()
+    addForm = new FamilyBudget.Views.TransactionsAdd({ collection: transactions})
     new FamilyBudget.Views.LayoutPageAdd()
-    new FamilyBudget.Views.TransactionsAdd({ collection: transactions})
+    $('.js-page-add-left-col').html addForm.el
     new FamilyBudget.Views.TransactionsTableToday({ collection: transactions})
 
   transactions: ->

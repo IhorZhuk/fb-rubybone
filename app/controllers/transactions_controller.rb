@@ -29,7 +29,8 @@ class TransactionsController < ApplicationController
   end
 
   def update
-    respond_with Transaction.update(transaction_params)
+    transaction = Transaction.find(params[:id])
+    respond_with transaction.update(transaction_params)
   end
 
   def destroy

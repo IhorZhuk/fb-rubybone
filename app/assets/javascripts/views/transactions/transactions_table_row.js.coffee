@@ -31,5 +31,7 @@ class FamilyBudget.Views.TransactionsTableRow extends Backbone.View
       row.remove()
 
   edit: ->
-    modal = new FamilyBudget.Views.ModalForm()
+    modal = new FamilyBudget.Views.ModalForm({ title: 'Edit Transaction'})
+    form = new FamilyBudget.Views.TransactionsEdit({ model: @model})
     Backbone.trigger 'modal:open'
+    $('.js-modal-content').html form.el

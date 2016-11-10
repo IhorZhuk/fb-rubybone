@@ -71,3 +71,4 @@ class FamilyBudget.Views.TransactionsTableAll extends FamilyBudget.Views.Transac
   initialize: ->
     _.bindAll this, 'render'
     @collection.fetch({success: @render})
+    @listenTo Backbone, 'transactionAdded', @renderRows
