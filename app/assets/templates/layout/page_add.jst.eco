@@ -19,7 +19,7 @@
       <h3 class="card-title">Transactions added today</h3>
       <hr>
       <div class="js-page-add-right-col">
-
+        There aren't any transactions added today
       </div>
     </div><!-- //card -->
   </div><!-- //col -->

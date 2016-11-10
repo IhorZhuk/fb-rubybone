@@ -2,7 +2,6 @@
 
 <td colspan="4" class="table-row-wrapper">
   <table class="full-width">
-
     <tr>
       <td class="date"><%= @date %></td>
       <td class="title">
@@ -23,7 +22,6 @@
         </ul>
       </td>
     </tr>
-
     <% if @hasNote : %>
       <tr class="table-row-note">
         <td class="date">&nbsp;</td>
@@ -33,7 +31,6 @@
         <td class="options">&nbsp;</td>
       </tr>
     <% end %>
-
   </table>
 </td>
 

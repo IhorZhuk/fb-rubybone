@@ -11,10 +11,13 @@ class FamilyBudget.Views.TransactionsTableBase extends Backbone.View
   @order: 'desc'
 
   render: ->
-    @$el.html( @template() )
-    @setUI()
-    @renderRows()
-    
+    if @collection.length == 0
+      @$el.html 'There aren\'t any transactions according to your search criteria'
+    else
+      @$el.html( @template() )
+      @setUI()
+      @renderRows()
+    @
 
   renderRows: ->
     that = @
@@ -60,7 +63,7 @@ class FamilyBudget.Views.TransactionsTableToday extends FamilyBudget.Views.Trans
     _.bindAll this, 'render'
     now = new Date()
     @collection.fetch({success: @render, data: { date: now }})
-    @listenTo Backbone, 'transactionAdded', @renderRows
+    @listenTo Backbone, 'transactionAdded', @render
 
 # ===================================================
 
@@ -71,4 +74,4 @@ class FamilyBudget.Views.TransactionsTableAll extends FamilyBudget.Views.Transac
   initialize: ->
     _.bindAll this, 'render'
     @collection.fetch({success: @render})
-    @listenTo Backbone, 'transactionAdded', @renderRows
+    @listenTo Backbone, 'transactionAdded', @render

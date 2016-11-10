@@ -9,7 +9,7 @@
       <h3 class="card-title">Transactions</h3>
       <hr>
       <div class="js-page-transactions">
-        
+        There aren't any transactions added today
       </div>
     </div><!-- //card -->
   </div><!-- //col -->

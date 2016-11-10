@@ -19,5 +19,5 @@ class FamilyBudget.Views.TransactionsDeleteConfirm extends Backbone.View
   destroy: ->
     that = @
     @model.destroy success: () ->
-      that.row.remove()
+      Backbone.trigger 'transactionAdded'
       Backbone.trigger 'modal:close'
