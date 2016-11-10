@@ -27,8 +27,11 @@ class FamilyBudget.Views.TransactionsTableRow extends Backbone.View
 
   destroy: ->
     row = @$el
-    @model.destroy success: () ->
-      row.remove()
+    modal = new FamilyBudget.Views.ModalForm({ title: 'Delete Confimration'})
+    form = new FamilyBudget.Views.TransactionsDeleteConfirm({ model: @model, row: row})
+    Backbone.trigger 'modal:open'
+    $('.js-modal-content').html form.el
+    
 
   edit: ->
     modal = new FamilyBudget.Views.ModalForm({ title: 'Edit Transaction'})

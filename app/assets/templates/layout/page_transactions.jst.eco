@@ -5,7 +5,7 @@
 <div class="row row-no-gutters">
 
   <div class="col-xs-12">
-    <div class="card">
+    <div class="card has-no-left-border">
       <h3 class="card-title">Transactions</h3>
       <hr>
       <div class="js-page-transactions">
