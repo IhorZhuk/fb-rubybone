@@ -1,32 +1,18 @@
 # here are a few tables Base, Today, All
 
-class FamilyBudget.Views.TransactionsTableBase extends Backbone.View
+class FamilyBudget.Views.TransactionsTableBase extends Backbone.Marionette.CompositeView
 
   template: JST['transactions/table']
+
+  itemView: FamilyBudget.Views.TransactionsTableRow
+
+  itemViewContainer: 'tbody'
 
   events: {
     'click th' : 'sort'
   }
 
-  @order: 'desc'
-
-  render: ->
-    if @collection.length == 0
-      @$el.html 'There aren\'t any transactions according to your search criteria'
-    else
-      @$el.html( @template() )
-      @setUI()
-      @renderRows()
-    @
-
-  renderRows: ->
-    that = @
-    @ui.tbody.html('')
-    if @order == 'asc' then @collection.models.reverse()
-    @collection.each (model) ->
-      row = new FamilyBudget.Views.TransactionsTableRow({ model: model})
-      that.ui.tbody.prepend( row.render().el )
-    @
+  order: 'desc'
 
   setUI: ->
     @ui = 
@@ -59,7 +45,7 @@ class FamilyBudget.Views.TransactionsTableToday extends FamilyBudget.Views.Trans
 
   el: '.js-page-add-right-col'
 
-  initialize: ->
+  initialcdize: ->
     _.bindAll this, 'render'
     now = new Date()
     @collection.fetch({success: @render, data: { date: now }})
@@ -72,6 +58,9 @@ class FamilyBudget.Views.TransactionsTableAll extends FamilyBudget.Views.Transac
   el: '.js-page-transactions'
 
   initialize: ->
-    _.bindAll this, 'render'
-    @collection.fetch({success: @render})
-    @listenTo Backbone, 'transactionAdded', @render
+    console.log @collection
+    @collection.fetch()
+    @render()
+    # _.bindAll this, 'render'
+    # @collection.fetch({success: @render})
+    # @listenTo Backbone, 'transactionAdded', @render

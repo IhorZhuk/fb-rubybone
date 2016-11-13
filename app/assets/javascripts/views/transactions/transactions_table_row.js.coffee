@@ -1,4 +1,4 @@
-class FamilyBudget.Views.TransactionsTableRow extends Backbone.View
+class FamilyBudget.Views.TransactionsTableRow extends Backbone.Marionette.ItemView
 
   template: JST['transactions/row']
 
@@ -9,18 +9,17 @@ class FamilyBudget.Views.TransactionsTableRow extends Backbone.View
     'click .js-edit-transaction': 'edit'
     'click .js-show-note': 'toggleNote'
 
+  ui:
+    note: '.table-row-note'
+    noteTrigger: '.js-show-note'
+
   initialize: ->
     @render()
 
   render: ->
     @$el.html( @template(@model.toJSON()) )
-    @setUI()
     @
-
-  setUI: ->
-    @ui = 
-      note: @$el.find('.table-row-note')
-      noteTrigger: @$el.find('.js-show-note')
+      
 
   toggleNote: ->
     @ui.note.toggle()
