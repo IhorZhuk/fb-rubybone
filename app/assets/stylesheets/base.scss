@@ -3,6 +3,15 @@ body {
   color: $color-font;
 }
 
+table {
+  width: 100%;
+
+  td, th {
+    //vertical-align: top;
+  }
+}
+
 .base-content {
   padding-left: 250px;
+  padding-top: 62px;
 }

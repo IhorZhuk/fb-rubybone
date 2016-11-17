@@ -1,0 +1,36 @@
+<% if @note != '' and @note != null then @hasNote = true %>
+
+<td colspan="5" class="no-padding">
+  <table>
+    <tr>
+      <td class="date"><%= @date %></td>
+      <td class="title">
+        <%= @title %>
+        <% if @hasNote : %>
+          <div class="js-show-note btn-link">Show note</div>
+        <% end %>
+      </td>
+      <td class="category"><%= @category %></td>
+      <td class="amount <%= if @kind == 'credit' then 'color-positive' else 'color-negative' %>"><%= @amount %> <%= @currency %></td>
+      <td class="ops">
+        <ul class="list-inline btn-list">
+          <li class="js-delete">
+            <span class="btn-icon is-danger"><i class="fa fa-trash-o"></i></span>
+          </li>
+          <li class="js-edit">
+            <span class="btn-icon is-alert"><i class="fa fa-pencil"></i></span>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <% if @hasNote : %>
+      <tr class="table-row-note is-hidden">
+        <td class="date">&nbsp;</td>
+        <td colspan="3">
+          <div><%= @note %></div>
+        </td>
+        <td class="ops">&nbsp;</td>
+      </tr>
+    <% end %>
+  </table>
+</td>

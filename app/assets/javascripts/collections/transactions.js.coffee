@@ -1,4 +1,4 @@
-class FamilyBudget.Collections.Transactions extends Backbone.Collection
+FamilyBudget.Collections.Transactions = Backbone.Collection.extend
 
   url: 'api/transactions'
 

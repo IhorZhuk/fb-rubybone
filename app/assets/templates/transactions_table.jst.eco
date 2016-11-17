@@ -1,0 +1,10 @@
+<thead>
+  <th class="date">Date</th>
+  <th class="title">Title</th>
+  <th class="category">Category</th>
+  <th class="amount">Amount</th>
+  <th class="ops"></th>
+</thead>
+<tbody>
+  <td colspan="5">Loading transactions...</td>
+</tbody>

@@ -1,12 +1,31 @@
 $align-list: left, center, right;
 @each $type in $align-list {
   .text-#{$type} {
-    text-align: $type;
+    text-align: $type !important;
   }
+}
+
+.color-positive {
+  color: $color-green;
+}
+
+.color-negative {
+  color: $color-red;
 }
 
 .list-unstyled {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.list-inline {
+  @extend .list-unstyled;
+  li {
+    display: inline-block;
+  }
+}
+
+.no-padding {
+  padding: 0 !important;
 }

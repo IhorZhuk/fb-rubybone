@@ -10,7 +10,7 @@
 
 .navbar-header {
   text-transform: uppercase;
-  font-size: 19px;
+  font-size: 20px;
   padding: 15px 5px;
   font-weight: bold;
   border-bottom: 2px solid $color-border;
@@ -48,7 +48,7 @@
     }
 
     &.is-active {
-      background: $color-blue;
+      background: $color-orange;
       color: #fff;
     }
   }

@@ -1,0 +1,55 @@
+.table-main {
+
+  thead {
+    border-bottom: 1px solid $color-border;
+  }
+
+  tbody tr:hover {
+    background-color: darken(#fff, 1%);
+  }
+
+  th, td {
+    padding: 5px 10px;
+    text-align: left;
+    font-size: 12px;
+  }
+
+  th {
+    text-transform: uppercase;
+  }
+
+  .date {
+    width: 15%;
+  }
+
+  .title {
+    width: 35%;
+  }
+
+  .category {
+    width: 20%;
+  }
+
+  .amount {
+    width: 20%;
+    text-align: right;
+  }
+
+  .ops {
+    width: 10%;
+    text-align: center;
+  }
+}
+
+.table-row-note {
+  div {
+    background-color: rgba($color-orange,.2);
+    font-style: italic;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  &.is-hidden {
+    display: none;
+  }
+}

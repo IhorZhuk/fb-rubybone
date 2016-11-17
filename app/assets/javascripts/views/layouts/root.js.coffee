@@ -5,8 +5,11 @@ FamilyBudget.Views.Layout.Root = Marionette.View.extend
   template: JST['layouts/root']
 
   regions:
-    'navbar': '#js-region-navbar'
-    'page': '#js-region-page'
+    navbar: 
+      el: '#js-region-navbar'
+      replaceElement: true
+    page: '#js-region-page'
+
 
   initialize: (opts) ->
     @router = opts.router

@@ -1,0 +1,37 @@
+.btn-link {
+  @include transition;
+  cursor: pointer;
+  font-size: 10px;
+  color: $color-blue;
+  text-decoration: underline;
+  text-transform: uppercase;
+
+  &:hover {
+    color: darken($color-blue, 10%);
+  }
+}
+
+.btn-icon {
+  @include transition;
+  cursor: pointer;
+  display: table;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  border: 1px solid $color-border;
+
+  i {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  &.is-danger:hover {
+    background-color: $color-red;
+    color: #fff;
+  }
+
+  &.is-alert:hover {
+    background-color: $color-orange;
+    color: #fff;
+  }
+}

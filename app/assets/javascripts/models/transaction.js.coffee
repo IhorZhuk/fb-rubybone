@@ -1,4 +1,4 @@
-class FamilyBudget.Models.Transaction extends Backbone.Model
+FamilyBudget.Models.Transaction =  Backbone.Model.extend
   
   defaults: 
     title: ''
