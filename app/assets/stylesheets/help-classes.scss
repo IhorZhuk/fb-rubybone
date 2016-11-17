@@ -1,0 +1,12 @@
+$align-list: left, center, right;
+@each $type in $align-list {
+  .text-#{$type} {
+    text-align: $type;
+  }
+}
+
+.list-unstyled {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
