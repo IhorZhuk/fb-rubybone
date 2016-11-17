@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require underscore
 //= require backbone
-//= require backbone.marionette
+//= require_tree ./libs
 //= require family_budget
 //= require_tree ../templates
 //= require_tree ./models

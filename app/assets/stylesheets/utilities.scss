@@ -1,21 +1,4 @@
-//colors
-$color-main: #333244;
-$color-accent: #33d9d8;
-$color-middle: #1D4E89;
-$color-main-light: #aebdc1;
-$color-bg:#f6f8f8;
-$color-font: #393d40;
-$color-font-light: lighten($color-font, 20%);
-$color-border: #e2e8e9;
 
-$color-positive: #498C8A;
-$color-negative: #AB3428;
-$color-nagative-bg: lighten($color-negative, 50%);
-
-$color-navbar-bg: $color-main;
-$color-navbar-link: lighten($color-main, 40%);
-
-$color-note-bg: #EFF0D1;
 
 //mixins
 @mixin transition($prop:all, $time:.3s, $easing:ease-in-out) {
