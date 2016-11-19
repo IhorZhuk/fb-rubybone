@@ -1,0 +1,45 @@
+label {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.form-wrapper {
+  padding: 15px;
+  margin-bottom: 30px;
+}
+
+.form-control {
+  box-shadow: none;
+  border-color: $color-border;
+  border-radius: 0;
+
+  &.is-invalid {
+    border-color: $color-red;
+  }
+}
+
+.form-radio-list {
+  display: inline-block;
+  margin-left: 15px;
+
+  li {
+    margin-right: 15px;
+    vertical-align: middle;
+
+    label {
+      display: inline;
+      font-size: 13px;
+      text-transform: initial;
+      font-weight: normal;
+      vertical-align: text-bottom;
+    }
+  }
+}
+
+.form-error-alert {
+  display: none;
+  background-color: rgba($color-red, .3);
+  color: $color-red;
+  padding: 15px;
+  margin: 10px 0;
+}

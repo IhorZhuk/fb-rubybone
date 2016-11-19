@@ -35,3 +35,34 @@
     color: #fff;
   }
 }
+
+.btn-main {
+  @include transition;
+  display: inline-block;
+  border: 0;
+  padding: 7px 20px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  
+  &.is-green {
+    background-color: $color-green;
+    &:hover {
+      background-color: darken($color-green, 10%);
+    }
+  }
+
+  &.is-blue {
+    background-color: $color-blue;
+    &:hover {
+      background-color: darken($color-blue, 10%);
+    }
+  }
+
+  &.is-orange {
+    background-color: $color-orange;
+    &:hover {
+      background-color: darken($color-orange, 10%);
+    }
+  }
+}

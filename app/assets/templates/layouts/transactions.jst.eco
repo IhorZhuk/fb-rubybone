@@ -1,4 +1,4 @@
 <div class="header">
   <h1>Transactions</h1>
 </div>
-<div id="js-region-page-content"></div>
+<div id="js-region-page-content" class="border-bottom"></div>

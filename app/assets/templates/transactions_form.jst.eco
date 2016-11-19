@@ -1,0 +1,46 @@
+<div class="form-wrapper">
+
+  <form>
+
+    <div class="form-group">
+      <label>Type:</label>
+      <ul class="list-inline form-radio-list">
+        <li>
+          <input id="radio-1" name="kind" type="radio" value="credit">
+          <label for="radio-1">Credit</label>
+        </li>
+        <li>
+          <input id="radio-2" name="kind" type="radio" value="debit" checked>
+          <label for="radio-2">Debit</label>
+        </li>
+      </ul>
+      
+    </div>
+
+    <div class="form-group">
+      <label>Date:</label>
+      <input name="date" type="date" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Title:</label>
+      <input name="title" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Amount:</label>
+      <input name="amount" type="number" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Note:</label>
+      <textarea name="note" class="form-control" rows="5"></textarea>
+    </div>
+
+    <button type="submit" class="btn-main is-blue">Submit</button>
+
+    <div class="js-error form-error-alert">lorem</div>
+
+  </form>
+
+</div><!-- //form-wrapper -->

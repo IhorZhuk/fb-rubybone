@@ -5,6 +5,13 @@ $align-list: left, center, right;
   }
 }
 
+$border-list: top, left, bottom, right;
+@each $type in $border-list {
+  .border-#{$type} {
+    border-#{$type}: 1px solid $color-border;
+  }
+}
+
 .color-positive {
   color: $color-green;
 }
@@ -28,4 +35,12 @@ $align-list: left, center, right;
 
 .no-padding {
   padding: 0 !important;
+}
+
+.row.row-no-gutters {
+  margin: 0;
+
+  > div[class^="col-"] {
+    padding: 0;
+  }
 }

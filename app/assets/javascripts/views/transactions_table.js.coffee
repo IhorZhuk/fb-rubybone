@@ -12,7 +12,7 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
       replaceElement: true
 
   onBeforeRender: ->
-    @collection = new FamilyBudget.Collections.Transactions()
+    @collection = FamilyBudget.app.transactions
 
   onRender: ->
     that = @

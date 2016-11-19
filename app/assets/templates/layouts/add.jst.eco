@@ -1,0 +1,19 @@
+<div class="header">
+  <h1>Add new transaction</h1>
+</div>
+
+<div class="row row-no-gutters border-bottom">
+  <div class="col-xs-4 border-right">
+    <div class="header-small">
+      <h2>Fill in form:</h2>
+    </div>
+    <div id="js-region-form"></div>
+  </div>
+
+  <div class="col-xs-8">
+    <div class="header-small">
+      <h2>Transactions added today:</h2>
+    </div>
+    <div id="js-region-table"></div>
+  </div>
+</div>

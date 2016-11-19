@@ -1,5 +1,7 @@
 FamilyBudget.Models.Transaction =  Backbone.Model.extend
   
+  url: 'api/transactions'
+
   defaults: 
     title: ''
     currency: 'EUR'
@@ -13,18 +15,18 @@ FamilyBudget.Models.Transaction =  Backbone.Model.extend
 
     if @get('date') == ''
       now = new Date()
-      formatDate = now.getFullYear() + '-' + now.getMonth() + '-' + now.getDay()
+      formatDate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate()
       @set({ 'date': formatDate })
 
   validate: (attrs) ->
     if not attrs.amount and not attrs.title
-      Backbone.trigger 'amount:title:invalid'
-      return 'Invalid'
+      @trigger 'invalid:amount:title'
+      return 'Title and amount can\'t be blank'
 
     if not attrs.title
-      Backbone.trigger 'title:invalid'
-      return 'Invalid'
+      @trigger 'invalid:title'
+      return 'Title can\'t be blank'
 
     if not attrs.amount or attrs.amount <= 0
-      Backbone.trigger 'amount:invalid'
-      return 'Invalid'
+      @trigger 'invalid:amount'
+      return 'Amount can\'t be blank or be equalt to zero'
