@@ -12,7 +12,14 @@ FamilyBudget.Views.TransactionsTableRow = Marionette.View.extend
 
   events:
    'click @ui.btnNote': 'toggleNote'
+   'click @ui.btnDelete': 'openDeleteModal'
 
 
   toggleNote: ->
     @ui.note.toggleClass 'is-hidden'
+
+  openDeleteModal: ->
+    modal = new FamilyBudget.Views.Modal
+      title: 'Delete Confirmation'
+      content: new FamilyBudget.Views.ConfirmDelete
+        model: @model

@@ -29,10 +29,7 @@ FamilyBudget.Views.TransactionsForm = Marionette.View.extend
     @listenTo @model, 'invalid:amount:title', @showErrorBoth
 
   save: ->
-
     @collection.create(@model,
-      success: (res) ->
-        console.log 'added'
       changes: 'ch'
     )
 

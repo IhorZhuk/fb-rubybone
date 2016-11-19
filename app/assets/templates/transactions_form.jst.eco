@@ -39,7 +39,7 @@
 
     <button type="submit" class="btn-main is-blue">Submit</button>
 
-    <div class="js-error form-error-alert">lorem</div>
+    <div class="js-error alert-error display-none">lorem</div>
 
   </form>
 

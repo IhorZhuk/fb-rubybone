@@ -1,6 +1,4 @@
 FamilyBudget.Models.Transaction =  Backbone.Model.extend
-  
-  url: 'api/transactions'
 
   defaults: 
     title: ''

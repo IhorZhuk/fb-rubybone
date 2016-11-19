@@ -1,0 +1,19 @@
+<div class="alert-error">
+  Are you sure you want to delete this transaction?
+  <ul class="list-unstyled">
+    <li><strong><%= @date %></strong></li>
+    <li><strong><%= @title %></strong></li>
+    <li><strong><%= @amount %> <%= @currency%></strong></li>
+  </ul>
+</div>
+
+<div class="alert-error js-error display-none"></div>
+
+<ul class="list-inline modal-buttons">
+  <li>
+    <button class="js-delete btn-main is-red">Delete</button>
+  </li>
+  <li>
+    <button class="js-cancel btn-ghost">Cancel</button>
+  </li>
+</ul>
