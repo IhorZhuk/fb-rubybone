@@ -13,10 +13,10 @@ FamilyBudget.Views.ConfirmDelete = Marionette.View.extend
 
   deleteModel: ->
     that = @
+    collection = @model.collection
     @model.destroy
       success: ->
         that.triggerMethod 'modal:close'
       error: (model, res) ->
-        console.log res
         that.ui.error.text('Error in deleting').fadeIn()
       changes: ''

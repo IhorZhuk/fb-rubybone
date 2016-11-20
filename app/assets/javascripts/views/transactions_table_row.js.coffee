@@ -13,6 +13,11 @@ FamilyBudget.Views.TransactionsTableRow = Marionette.View.extend
   events:
    'click @ui.btnNote': 'toggleNote'
    'click @ui.btnDelete': 'openDeleteModal'
+   'click @ui.btnEdit' : 'openEditModal'
+
+  initialize: ->
+    @listenTo @model, 'remove', @removeView
+    @listenTo @model, 'change', @render
 
 
   toggleNote: ->
@@ -23,3 +28,13 @@ FamilyBudget.Views.TransactionsTableRow = Marionette.View.extend
       title: 'Delete Confirmation'
       content: new FamilyBudget.Views.ConfirmDelete
         model: @model
+
+  openEditModal: ->
+    modal = new FamilyBudget.Views.Modal
+      title: 'Edit transaction'
+      content: new FamilyBudget.Views.TransactionsEdit
+        model: @model
+  
+  removeView: ->
+    @$el.addClass 'table-row-delete'
+    @$el.fadeOut()

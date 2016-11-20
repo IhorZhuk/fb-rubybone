@@ -8,4 +8,4 @@ FamilyBudget.Views.Layout.Add = Marionette.View.extend
 
   onRender: ->
     @showChildView 'table', new FamilyBudget.Views.TransactionsTable()
-    @showChildView 'form', new FamilyBudget.Views.TransactionsForm()
+    @showChildView 'form', new FamilyBudget.Views.TransactionsFormAdd()

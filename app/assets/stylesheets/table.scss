@@ -53,3 +53,9 @@
     display: none;
   }
 }
+
+.table-row-delete {
+  td {
+    background-color: $color-red;
+  }
+}
