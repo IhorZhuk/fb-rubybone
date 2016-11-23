@@ -6,6 +6,9 @@ FamilyBudget.Views.Layout.Add = Marionette.View.extend
     'form': '#js-region-form'
     'table': '#js-region-table'
 
+  childViewEvents:
+    'model:saved': 'render'
+
   onBeforeRender: ->
     @collection = new FamilyBudget.Collections.Transactions()
 

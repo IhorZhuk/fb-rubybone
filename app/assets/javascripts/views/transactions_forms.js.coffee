@@ -66,6 +66,7 @@ FamilyBudget.Views.TransactionsFormAdd = FamilyBudget.Views.TransactionsFormBase
       changes: 'ch'
     )
     @resetInputs()
+    @triggerMethod 'model:saved'
   
   submit: (e) ->
     e.preventDefault()
