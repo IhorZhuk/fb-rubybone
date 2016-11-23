@@ -1,10 +1,34 @@
-<thead>
-  <th class="date">Date</th>
-  <th class="title">Title</th>
-  <th class="category">Category</th>
-  <th class="amount">Amount</th>
-  <th class="ops"></th>
-</thead>
-<tbody>
-  <td colspan="5">Loading transactions...</td>
-</tbody>
+<div class="sorting-bar">
+  <ul class="sorting-bar-list list-inline">
+
+    <li>
+      <label>Sort by:</label>
+      <select name="sortby" class="form-control is-inline">
+        <option value="date" selected>Date</option>
+        <option value="amount">Amount</option>
+        <option value="title">Title</option>
+        <option value="kind">Type</option>
+      </select>
+    </li>
+
+    <li>
+      <div class="btn-link js-reverse-btn">Reverse order</div>
+    </li>
+
+  </ul>
+  
+</div><!-- //sorting-bar -->
+
+<table class="table-main">
+  <thead>
+    <th class="date">Date</th>
+    <th class="title">Title</th>
+    <th class="category">Category</th>
+    <th class="amount">Amount</th>
+    <th class="ops"></th>
+  </thead>
+  <tbody>
+    <td colspan="5">Loading transactions...</td>
+  </tbody>
+</table>
+

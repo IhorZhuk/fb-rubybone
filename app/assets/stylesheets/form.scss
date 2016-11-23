@@ -18,6 +18,11 @@ label {
   &.is-invalid {
     border-color: $color-red;
   }
+
+  &.is-inline {
+    display: inline-block;
+    width: auto;
+  }
 }
 
 .form-group {
