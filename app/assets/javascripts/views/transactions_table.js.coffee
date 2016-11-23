@@ -11,11 +11,9 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
       el: 'tbody'
       replaceElement: true
 
-  onBeforeRender: ->
-    @collection = FamilyBudget.app.transactions
+  initialize: (ops) ->
+    @collection = ops.collection
 
   onRender: ->
-    that = @
-    @collection.fetch
-      success: ->
-        that.showChildView 'body', new FamilyBudget.Views.TransactionsTableBody({collection: that.collection})
+    @showChildView 'body', new FamilyBudget.Views.TransactionsTableBody
+      collection: @collection

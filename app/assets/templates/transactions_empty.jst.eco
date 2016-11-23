@@ -1,0 +1,6 @@
+<div class="empty-inner">
+  <div class="empty-icon">
+    <i class="fa fa-frown-o"></i>
+  </div>
+  <p>There aren't any transactions</p>
+</div>

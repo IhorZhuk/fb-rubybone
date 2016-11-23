@@ -6,6 +6,24 @@ FamilyBudget.Views.Layout.Add = Marionette.View.extend
     'form': '#js-region-form'
     'table': '#js-region-table'
 
+  onBeforeRender: ->
+    @collection = new FamilyBudget.Collections.Transactions()
+
   onRender: ->
-    @showChildView 'table', new FamilyBudget.Views.TransactionsTable()
     @showChildView 'form', new FamilyBudget.Views.TransactionsFormAdd()
+
+    that = @
+    @collection.fetch
+      success: (collection) ->
+        console.log collection
+        if collection.length > 0
+          that.showChildView 'table', new FamilyBudget.Views.TransactionsTable
+            collection: collection
+        else
+          that.showChildView 'table', new FamilyBudget.Views.TransactionsEmpty()
+      data: 
+        date: new Date()
+
+
+
+   
