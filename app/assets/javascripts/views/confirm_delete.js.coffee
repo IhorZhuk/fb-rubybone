@@ -7,11 +7,8 @@ FamilyBudget.Views.ConfirmDelete = Marionette.View.extend
 
   events: 
     'click .js-delete': 'deleteModel'
-    
-  triggers: 
-    'click .js-cancel': 'modal:close'
 
-  deleteModel: ->
+  submitModal: ->
     that = @
     collection = @model.collection
     @model.destroy

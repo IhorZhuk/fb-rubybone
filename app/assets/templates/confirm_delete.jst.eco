@@ -8,12 +8,3 @@
 </div>
 
 <div class="alert-error js-error display-none"></div>
-
-<ul class="list-inline modal-buttons">
-  <li>
-    <button class="js-delete btn-main is-red">Delete</button>
-  </li>
-  <li>
-    <button class="js-cancel btn-ghost">Cancel</button>
-  </li>
-</ul>

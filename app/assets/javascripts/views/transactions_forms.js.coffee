@@ -78,6 +78,8 @@ FamilyBudget.Views.TransactionsFormAdd = FamilyBudget.Views.TransactionsFormBase
 # Edit form
 FamilyBudget.Views.TransactionsEdit = FamilyBudget.Views.TransactionsFormBase.extend
 
+  className: 'form-modal'
+
   onRender: ->
     @fillInputs()
     @startListen()
@@ -111,5 +113,11 @@ FamilyBudget.Views.TransactionsEdit = FamilyBudget.Views.TransactionsFormBase.ex
 
   submit: (e) ->
     e.preventDefault()
+    @submitForm()
+
+  submitForm: ->
     @setNewValues()
     if @model.isValid() then @save() else @showError()
+
+  submitModal: ->
+    @submitForm()

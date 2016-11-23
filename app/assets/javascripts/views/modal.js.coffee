@@ -3,16 +3,18 @@ FamilyBudget.Views.Modal = Marionette.View.extend
   template: JST['modal']
 
   ui:
-    'overlay' : '.js-modal-close'
+    'close' : '.js-modal-close'
+    'submit': '.js-modal-submit'
 
   events:
-    'click @ui.overlay' : 'closeModal'
-
-  regions:
-    'content' : '.js-modal-content'
+    'click @ui.close' : 'closeModal'
+    'click @ui.submit' :'submitModal'
 
   childViewEvents: 
     'modal:close': 'closeModal'
+
+  regions:
+    'content' : '.js-modal-content'
 
   initialize: (ops) ->
     @data =
@@ -22,6 +24,9 @@ FamilyBudget.Views.Modal = Marionette.View.extend
   
   closeModal: ->
     @$el.fadeOut().remove()
+
+  submitModal: ->
+    console.log @data.content.submitModal()
 
   render: ->
     @$el.html @template(@data)

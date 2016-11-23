@@ -41,3 +41,16 @@ label {
     }
   }
 }
+
+.form-modal {
+
+  button[type="submit"] {
+    display: none;
+  }
+
+  .form-wrapper {
+    margin: 0;
+    padding-bottom: 0;
+  }
+
+}
