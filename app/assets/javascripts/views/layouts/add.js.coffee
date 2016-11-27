@@ -24,9 +24,8 @@ FamilyBudget.Views.Layout.Add = Marionette.View.extend
             collection: collection
         else
           that.showChildView 'table', new FamilyBudget.Views.TransactionsEmpty()
+
+      error: (e) ->
+        console.log e
       data: 
-        date: new Date()
-
-
-
-   
+        date_from: new Date()

@@ -20,6 +20,10 @@
   &:hover {
     color: darken($color-blue, 10%);
   }
+
+  &.is-big {
+    font-size: 12px;
+  }
 }
 
 .btn-icon {

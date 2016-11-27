@@ -3,6 +3,7 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
   template: JST['transactions_table']
 
   regions:
+    'dropdown': '#js-region-sort'
     body: 
       el: 'tbody'
       replaceElement: true
@@ -21,6 +22,9 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
   showContent: ->
     @showChildView 'body', new FamilyBudget.Views.TransactionsTableBody
       collection: @collection
+    @showChildView 'dropdown', new FamilyBudget.Views.Dropdown
+      placeholder: 'date'
+      items: ['date', 'amount', 'title', 'kind']
 
   onRender: ->
     @showContent()

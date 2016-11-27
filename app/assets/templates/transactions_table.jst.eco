@@ -3,16 +3,11 @@
 
     <li>
       <label>Sort by:</label>
-      <select name="sortby" class="form-control is-inline">
-        <option value="date" selected>Date</option>
-        <option value="amount">Amount</option>
-        <option value="title">Title</option>
-        <option value="kind">Type</option>
-      </select>
+      <div id="js-region-sort" class="display-inline-block"></div>
     </li>
 
     <li>
-      <div class="btn-link js-reverse-btn">Reverse order</div>
+      <div class="btn-link is-big js-reverse-btn">Reverse order</div>
     </li>
 
   </ul>

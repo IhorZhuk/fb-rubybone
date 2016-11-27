@@ -4,20 +4,20 @@ class TransactionsController < ApplicationController
 
   def index
     filter = nil
-    if filter_params[:date]
-      start_date = filter_params[:date].to_date.beginning_of_day
-      end_date = filter_params[:date].to_date.end_of_day
-      filter = {:created_at => start_date..end_date}
 
-    elsif filter_params[:today]
-      today = DateTime.now
-      start_date = today.to_date.beginning_of_day
-      end_date = today.to_date.end_of_day
-      filter = {:created_at => start_date..end_date}
+    if filter_params[:date_from] && filter_params[:date_to]
+      start_date = filter_params[:date_from].to_date.beginning_of_day
+      end_date = filter_params[:date_to].to_date.end_of_day
+      filter = {:date => start_date..end_date}
+      
+    elsif filter_params[:date_from]
+      date = filter_params[:date_from].to_date
+      filter = {:created_at => date.beginning_of_day..date.end_of_day}
     end
 
     puts filter
     respond_with Transaction.where(filter)
+    # respond_with Transaction.all
   end
 
   def show
@@ -45,7 +45,7 @@ private
   end
 
   def filter_params
-    allow = [:date, :today]
+    allow = [:date_from, :date_to]
     params.permit(allow)
   end
 

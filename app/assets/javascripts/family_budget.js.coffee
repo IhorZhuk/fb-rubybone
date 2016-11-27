@@ -4,6 +4,8 @@ window.FamilyBudget =
   Views: 
     Layout: {}
   Routers: {}
+  Channels: {}
+    
 
 
 

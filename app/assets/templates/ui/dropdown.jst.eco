@@ -1,0 +1,13 @@
+<input type="hidden" name="<%= @inputName %>" value="">
+
+<div class="dropdown text-left js-dropdown">
+  <span class="dropdown-placeholder js-dropdown-placeholder">
+    <span><%= @placeholder %></span>
+    <i class="dropdown-icon fa fa-chevron-down"></i>
+  </span>
+  <ul class="dropdown-list list-unstyled js-dropdown-list">
+    <% for item in @items: %>
+      <li data-value="<%= item %>"><%= item %></li>
+    <% end %>
+  </ul>
+</div>
