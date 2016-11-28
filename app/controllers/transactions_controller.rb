@@ -15,9 +15,7 @@ class TransactionsController < ApplicationController
       filter = {:created_at => date.beginning_of_day..date.end_of_day}
     end
 
-    puts filter
     respond_with Transaction.where(filter)
-    # respond_with Transaction.all
   end
 
   def show
