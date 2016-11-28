@@ -18,23 +18,29 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
 
   initialize: (ops) ->
     @collection = ops.collection
+    @listenTo FamilyBudget.Channels.transactionsTable, 'dropdown:selected', @sortCollection
 
-  showContent: ->
+  showTable: ->
     @showChildView 'body', new FamilyBudget.Views.TransactionsTableBody
       collection: @collection
+
+  showControls: ->
     @showChildView 'dropdown', new FamilyBudget.Views.Dropdown
       placeholder: 'date'
       items: ['date', 'amount', 'title', 'kind']
+      channel: FamilyBudget.Channels.transactionsTable
+      channelEvent: 'dropdown:selected'
+
 
   onRender: ->
-    @showContent()
+    @showTable()
+    @showControls()
 
   reverseCollection: ->
     @collection.models = @collection.models.reverse()
-    @showContent()
+    @showTable()
 
-  sortCollection: ->
-    sortBy = @ui.selectSort.val()
-    @collection.sortKey = sortBy
+  sortCollection: (key) ->
+    @collection.sortKey = key
     @collection.sort()
-    @showContent()
+    @showTable()

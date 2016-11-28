@@ -19,11 +19,10 @@ FamilyBudget.Views.Dropdown = Marionette.View.extend
       inputName: ops.inputName
       placeholder: ops.placeholder
       items: ops.items
-    
-    @action = ops.action
 
-  test: ->
-    console.log 'channel was trigger'
+    @channel = 
+      obj: ops.channel
+      event: ops.channelEvent
 
   toggleDropdown: ->
     @ui.dropdown.toggleClass 'is-active'
@@ -33,9 +32,11 @@ FamilyBudget.Views.Dropdown = Marionette.View.extend
     data = item.data 'value'
     text = item.text()
 
+    @ui.input.val data
     @ui.placeholder.text text
+
     @ui.items.removeClass 'is-active'
     item.addClass 'is-active'
-    @ui.input.val data
 
-    if  @action? then @action()
+    if @channel.obj? and @channel.event
+      @channel.obj.trigger @channel.event, data
