@@ -8,36 +8,14 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
 
   initialize: ->
     @listenTo FamilyBudget.Channels.transactionsLayout, 'dropdown:period', @updateTable
-
-  onBeforeRender: ->
     @collection = new FamilyBudget.Collections.Transactions()
+    @listenTo @collection, 'update', @checkCollectionLength
 
-  getCurrentMonth: ->
-    now = new Date()
-    @date =
-      from: new Date(now.getFullYear(), now.getMonth(), 1)
-      to: new Date(now.getFullYear(), now.getMonth() + 1, 0)
-
-  getCurrentWeek: ->
-    now = new Date()
-    @date = 
-      from: new Date(now.setDate(now.getDate() - now.getDay()))
-      to: new Date(now.setDate(now.getDate() - now.getDay()+6));
-
-  getLastWeek: ->
-    now = new Date()
-    @date = 
-      from: new Date(now.setDate(now.getDate() - now.getDay() - 7))
-      to: new Date(now.setDate(now.getDate() - now.getDay() - 1));
-
-  getLastMonth: ->
-    now = new Date()
-    @date = 
-      from: new Date(now.getFullYear(), now.getMonth() - 1, 1)
-      to: new Date(now.getFullYear(), now.getMonth(), 0)
+  checkCollectionLength: ->
+    console.log @collection.length
 
   onRender: ->
-    @getCurrentMonth()
+    @date = FamilyBudget.Channels.transactionsPeriods.request('thisMonth')
     @renderControls()
     @renderTable()
     
@@ -50,7 +28,6 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
             collection: collection
         else
           that.showChildView 'table', new FamilyBudget.Views.TransactionsEmpty()
-      
       data:
         date_from: that.date.from
         date_to: that.date.to
@@ -68,12 +45,12 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
 
     switch period
       when 'this week'
-        @getCurrentWeek()
+        @date = FamilyBudget.Channels.transactionsPeriods.request('thisWeek')
       when 'this month'
-        @getCurrentMonth()
+        @date = FamilyBudget.Channels.transactionsPeriods.request('thisMonth')
       when 'last month'
-        @getLastMonth()
+        @date = FamilyBudget.Channels.transactionsPeriods.request('lastMonth')
       when 'last week'
-        @getLastWeek()
+        @date = FamilyBudget.Channels.transactionsPeriods.request('lastWeek')
 
     @renderTable()

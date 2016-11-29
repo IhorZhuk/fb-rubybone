@@ -31,7 +31,6 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
       channel: FamilyBudget.Channels.transactionsTable
       channelEvent: 'dropdown:selected'
 
-
   onRender: ->
     @showTable()
     @showControls()
