@@ -103,12 +103,11 @@ FamilyBudget.Views.TransactionsEdit = FamilyBudget.Views.TransactionsFormBase.ex
       kind: @$el.find('input[name="kind"]:checked').val()
 
   save: ->
-    that = @
     @model.save(
       null,
-      success: (e) ->
-        that.triggerMethod 'modal:close'
-      error: ->
+      success: (e) =>
+        @triggerMethod 'modal:close'
+      error: =>
         alert 'Error in updating'
     )
 

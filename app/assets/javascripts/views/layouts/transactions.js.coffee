@@ -7,30 +7,28 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
     'dropdown': '#js-region-dropdown'
 
   initialize: ->
-    @listenTo FamilyBudget.Channels.transactionsLayout, 'dropdown:period', @updateTable
     @collection = new FamilyBudget.Collections.Transactions()
-    @listenTo @collection, 'update', @checkCollectionLength
-
-  checkCollectionLength: ->
-    console.log @collection.length
+    @date = FamilyBudget.Channels.transactionsPeriods.request 'thisMonth'
+    @listenTo FamilyBudget.Channels.transactionsLayout, 'dropdown:period', @updateTable
+    @listenTo @collection, 'update', @renderTable    
 
   onRender: ->
-    @date = FamilyBudget.Channels.transactionsPeriods.request('thisMonth')
     @renderControls()
     @renderTable()
     
   renderTable: ->
-    that = @
     @collection.fetch
-      success: (collection) ->
+      success: (collection) =>
         if collection.length > 0
-          that.showChildView 'content', new FamilyBudget.Views.TransactionsTable
+          @showChildView 'content', new FamilyBudget.Views.TransactionsTable
             collection: collection
         else
-          that.showChildView 'table', new FamilyBudget.Views.TransactionsEmpty()
+          @showChildView 'content', new FamilyBudget.Views.TransactionsEmpty()
       data:
-        date_from: that.date.from
-        date_to: that.date.to
+        date_from: @date.from
+        date_to: @date.to
+      #WHAT IS IT?
+      changes: ''
 
   renderControls: ->
     @showChildView 'dropdown', new FamilyBudget.Views.Dropdown

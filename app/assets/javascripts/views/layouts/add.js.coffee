@@ -9,21 +9,22 @@ FamilyBudget.Views.Layout.Add = Marionette.View.extend
   childViewEvents:
     'model:saved': 'render'
 
-  onBeforeRender: ->
+  initialize: ->
     @collection = new FamilyBudget.Collections.Transactions()
+    @listenTo @collection, 'update', @renderTable 
 
   onRender: ->
     @showChildView 'form', new FamilyBudget.Views.TransactionsFormAdd()
+    @renderTable()
 
-    that = @
+  renderTable: ->
     @collection.fetch
-      success: (collection) ->
-        console.log collection
+      success: (collection) =>
         if collection.length > 0
-          that.showChildView 'table', new FamilyBudget.Views.TransactionsTable
+          @showChildView 'table', new FamilyBudget.Views.TransactionsTable
             collection: collection
         else
-          that.showChildView 'table', new FamilyBudget.Views.TransactionsEmpty()
+          @showChildView 'table', new FamilyBudget.Views.TransactionsEmpty()
 
       error: (e) ->
         console.log e
