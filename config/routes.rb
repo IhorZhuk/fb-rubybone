@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
 
   scope "api" do 
-    resources :transactions do
-    collection do
-    get :custom_action
-    end
-  end
+    resources :transactions, :categories
   end
   
   root 'main#index'

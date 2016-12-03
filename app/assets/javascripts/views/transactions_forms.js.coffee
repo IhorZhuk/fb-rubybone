@@ -63,7 +63,7 @@ FamilyBudget.Views.TransactionsFormAdd = FamilyBudget.Views.TransactionsFormBase
     
   save: ->
     @collection.create(@model,
-      changes: 'ch'
+      changes: ''
     )
     @resetInputs()
     @triggerMethod 'model:saved'

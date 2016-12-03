@@ -22,5 +22,11 @@
         <span>Add Transaction</span>
       </a>
     </li>
+     <li>
+      <a href="#settings" data-name="settings">
+        <i class="fa fa-cogs"></i>
+        <span>Settings</span>
+      </a>
+    </li>
   </ul>
 </nav>

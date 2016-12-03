@@ -17,6 +17,28 @@
   th {
     text-transform: uppercase;
   }
+}
+
+.table-row-note {
+  div {
+    background-color: rgba($color-orange,.2);
+    font-style: italic;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  &.is-hidden {
+    display: none;
+  }
+}
+
+.table-row-delete {
+  td {
+    background-color: $color-red;
+  }
+}
+
+.table-transactions {
 
   .date {
     width: 15%;
@@ -41,21 +63,30 @@
   }
 }
 
-.table-row-note {
-  div {
-    background-color: rgba($color-orange,.2);
-    font-style: italic;
-    padding: 5px;
-    border-radius: 5px;
+.table-categories {
+
+  .title {
+    width: 60%;
+
+    .title-input {
+      display: none;
+    }
   }
 
-  &.is-hidden {
-    display: none;
-  }
-}
+  .title.has-edit-mode {
+    
+    .title-input {
+      display: block;
+    }
 
-.table-row-delete {
-  td {
-    background-color: $color-red;
+    .title-text {
+      display: none;
+    }
+    
+  }
+
+  .ops {
+    width: 40%;
+    text-align: right;
   }
 }

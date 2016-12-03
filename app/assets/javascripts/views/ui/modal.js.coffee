@@ -26,7 +26,7 @@ FamilyBudget.Views.Modal = Marionette.View.extend
     @$el.fadeOut().remove()
 
   submitModal: ->
-    console.log @data.content.submitModal()
+    @data.content.submitModal()
 
   render: ->
     @$el.html @template(@data)

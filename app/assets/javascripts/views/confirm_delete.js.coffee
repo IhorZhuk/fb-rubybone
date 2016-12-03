@@ -1,7 +1,8 @@
 FamilyBudget.Views.ConfirmDelete = Marionette.View.extend
   
-  template: JST['confirm_delete']
-
+  # NOTE
+  # Template must be specified when creating instance
+  
   ui:
     'error' : '.js-error'
 

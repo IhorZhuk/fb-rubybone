@@ -1,0 +1,8 @@
+<div class="alert-error">
+  Are you sure you want to delete this category?
+  <ul class="list-unstyled">
+    <li><strong><%= @title %></strong></li>
+  </ul>
+</div>
+
+<div class="alert-error js-error display-none"></div>

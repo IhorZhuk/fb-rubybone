@@ -28,6 +28,7 @@ FamilyBudget.Views.TransactionsTableRow = Marionette.View.extend
       title: 'Delete Confirmation'
       content: new FamilyBudget.Views.ConfirmDelete
         model: @model
+        template: JST['confirm_delete_transaction']
 
   openEditModal: ->
     modal = new FamilyBudget.Views.Modal

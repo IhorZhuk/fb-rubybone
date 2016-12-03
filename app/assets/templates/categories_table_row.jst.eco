@@ -1,0 +1,16 @@
+<td class="title js-title">
+  <span class="title-text"><%= @title  %></span>
+  <form class="js-title-form title-input">
+    <input type="text" name="title" class="form-control" value="<%= @title %>">
+  </form>
+</td>
+<td class="ops">
+  <ul class="list-inline btn-list">
+    <li class="js-delete">
+      <span class="btn-icon is-danger"><i class="fa fa-trash-o"></i></span>
+    </li>
+    <li class="js-edit">
+      <span class="btn-icon is-alert"><i class="fa fa-pencil"></i></span>
+    </li>
+  </ul>
+</td>

@@ -14,7 +14,7 @@
   
 </div><!-- //sorting-bar -->
 
-<table class="table-main">
+<table class="table-main table-transactions">
   <thead>
     <th class="date">Date</th>
     <th class="title">Title</th>

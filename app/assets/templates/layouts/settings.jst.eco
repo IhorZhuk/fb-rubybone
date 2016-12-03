@@ -1,0 +1,19 @@
+<div class="header">
+  <h1>Settings</h1>
+</div>
+
+<div class="row row-no-gutters border-bottom">
+  <div class="col-xs-4 border-right">
+
+    <div class="header-small">
+      <h2>Add new category:</h2>
+    </div>
+    <div id="js-region-add-category"></div>
+
+    <div class="header-small">
+      <h2>Current categories:</h2>
+    </div>
+    <div id="js-region-categories"></div>
+
+  </div>
+</div>
