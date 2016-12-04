@@ -17,8 +17,8 @@ FamilyBudget.Views.TransactionsTableRow = Marionette.View.extend
 
   initialize: ->
     @listenTo @model, 'remove', @removeView
+    # WHY this don't work
     @listenTo @model, 'change', @render
-
 
   toggleNote: ->
     @ui.note.toggleClass 'is-hidden'
@@ -39,3 +39,4 @@ FamilyBudget.Views.TransactionsTableRow = Marionette.View.extend
   removeView: ->
     @$el.addClass 'table-row-delete'
     @$el.fadeOut()
+    @remove()

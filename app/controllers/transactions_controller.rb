@@ -15,7 +15,7 @@ class TransactionsController < ApplicationController
       filter = {:created_at => date.beginning_of_day..date.end_of_day}
     end
 
-    respond_with Transaction.where(filter)
+    respond_with Transaction.where(filter).includes(:category).to_json(include: {category: {only: [:id, :title]}} )
   end
 
   def show
@@ -23,7 +23,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
-     respond_with Transaction.create(transaction_params)
+    respond_with Transaction.create(transaction_params)
   end
 
   def update
@@ -38,7 +38,7 @@ class TransactionsController < ApplicationController
 private
 
   def transaction_params
-    allow = [:title, :amount, :date, :note, :kind, :currency]
+    allow = [:title, :amount, :date, :note, :kind, :currency, :category_id]
     params.permit(allow)
   end
 

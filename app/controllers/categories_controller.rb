@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
 
   def index
     respond_with Category.all
+    # respond_with Category.includes(:transactions).to_json(include: :transactions )
   end
 
   def show

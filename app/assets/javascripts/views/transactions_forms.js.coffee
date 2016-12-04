@@ -3,7 +3,7 @@
 # - add form
 # - edit form
 
-FamilyBudget.Views.TransactionsFormBase = Marionette.View.extend
+class FamilyBudget.Views.TransactionsFormBase extends Marionette.View
 
   template: JST['transactions_form']
 
@@ -13,9 +13,13 @@ FamilyBudget.Views.TransactionsFormBase = Marionette.View.extend
     'amount': 'input[name="amount"]'
     'note': 'textarea[name="note"]'
     'error': '.js-error'
+    'categories': '.js-categories'
 
   events: 
     'submit': 'submit'
+
+  onRender: ->
+    @renderCategories()
 
   startListen: ->
     @listenTo @model, 'invalid:title', @showErrorTitle
@@ -46,9 +50,21 @@ FamilyBudget.Views.TransactionsFormBase = Marionette.View.extend
     @ui.amount.removeClass 'is-invalid'
     @ui.error.hide()
 
+  renderCategories: ->
+    collection = new FamilyBudget.Collections.Categories()
+    collection.fetch
+      success: ( collection) =>
+       collection.each ((model) ->
+        model = model.toJSON()
+        @ui.categories.prepend "<option value=\"#{model.id}\">#{model.title}</option>"
+        if @model?
+          category =  @model.get('category_id')
+          @ui.categories.find('option[value="' + category + '"]').attr('selected','selected')
+      ), this
+
 
 # Add form
-FamilyBudget.Views.TransactionsFormAdd = FamilyBudget.Views.TransactionsFormBase.extend
+class FamilyBudget.Views.TransactionsFormAdd extends FamilyBudget.Views.TransactionsFormBase
 
   initialize: ->
     @collection = FamilyBudget.app.transactions
@@ -60,6 +76,7 @@ FamilyBudget.Views.TransactionsFormAdd = FamilyBudget.Views.TransactionsFormBase
       amount: @ui.amount.val()
       note: @ui.note.val()
       kind: @$el.find('input[name="kind"]:checked').val()
+      category_id: @ui.categories.val()
     
   save: ->
     @collection.create(@model,
@@ -77,11 +94,12 @@ FamilyBudget.Views.TransactionsFormAdd = FamilyBudget.Views.TransactionsFormBase
 
 
 # Edit form
-FamilyBudget.Views.TransactionsEdit = FamilyBudget.Views.TransactionsFormBase.extend
+class FamilyBudget.Views.TransactionsEdit extends FamilyBudget.Views.TransactionsFormBase
 
   className: 'form-modal'
 
   onRender: ->
+    super()
     @fillInputs()
     @startListen()
 
@@ -101,6 +119,7 @@ FamilyBudget.Views.TransactionsEdit = FamilyBudget.Views.TransactionsFormBase.ex
       amount: @ui.amount.val()
       note: @ui.note.val()
       kind: @$el.find('input[name="kind"]:checked').val()
+      category_id: @ui.categories.val()
 
   save: ->
     @model.save(
