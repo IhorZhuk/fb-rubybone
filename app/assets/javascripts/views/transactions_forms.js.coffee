@@ -22,9 +22,8 @@ class FamilyBudget.Views.TransactionsFormBase extends Marionette.View
     @renderCategories()
 
   startListen: ->
-    @listenTo @model, 'invalid:title', @showErrorTitle
-    @listenTo @model, 'invalid:amount', @showErrorAmount
-    @listenTo @model, 'invalid:amount:title', @showErrorBoth
+    @listenTo @model, 'invalid', @renderErrors
+    @listenTo @model, 'error', @parseErrorResponse
 
   resetInputs: ->
     @hideErrors()
@@ -32,23 +31,23 @@ class FamilyBudget.Views.TransactionsFormBase extends Marionette.View
     @ui.amount.val ''
     @ui.note.val ''
 
-  showError: ->
-    @ui.error.text(@model.validationError).show()
+  renderErrors: (model, errors) ->
+    _.each errors, @renderError, @
 
-  showErrorTitle: ->
-    @ui.title.addClass 'is-invalid'
+  renderError:(errors, attribute) ->
+    error = errors.join '; '
+    @$el.find('input[name=' + attribute + ']').addClass 'is-invalid'
+    @ui.error.prepend('<span>' + attribute + ' ' + error + ';</span>').show()
 
-  showErrorAmount: ->
-    @ui.amount.addClass 'is-invalid'
-
-  showErrorBoth: ->
-    @showErrorTitle()
-    @showErrorAmount()
+  parseErrorResponse: (model, resp) ->
+    if resp and resp.responseText
+      errors = JSON.parse resp.responseText
+      @renderErrors(model, errors.errors)
 
   hideErrors: ->
     @ui.title.removeClass 'is-invalid'
     @ui.amount.removeClass 'is-invalid'
-    @ui.error.hide()
+    @ui.error.html('').hide()
 
   renderCategories: ->
     collection = new FamilyBudget.Collections.Categories()
@@ -62,7 +61,7 @@ class FamilyBudget.Views.TransactionsFormBase extends Marionette.View
           @ui.categories.find('option[value="' + category + '"]').attr('selected','selected')
       ), this
 
-
+# ===================
 # Add form
 class FamilyBudget.Views.TransactionsFormAdd extends FamilyBudget.Views.TransactionsFormBase
 
@@ -90,9 +89,11 @@ class FamilyBudget.Views.TransactionsFormAdd extends FamilyBudget.Views.Transact
     @createModel()
     @startListen()
     @hideErrors()
-    if @model.isValid() then @save() else @showError()
+    if @model.isValid() then @save() else @renderErrors()
 
 
+
+# ===================
 # Edit form
 class FamilyBudget.Views.TransactionsEdit extends FamilyBudget.Views.TransactionsFormBase
 
@@ -136,7 +137,7 @@ class FamilyBudget.Views.TransactionsEdit extends FamilyBudget.Views.Transaction
 
   submitForm: ->
     @setNewValues()
-    if @model.isValid() then @save() else @showError()
+    if @model.isValid() then @save() else @renderErrors()
 
   submitModal: ->
     @submitForm()
