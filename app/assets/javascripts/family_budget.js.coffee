@@ -5,6 +5,7 @@ window.FamilyBudget =
     Layout: {}
   Routers: {}
   Channels: {}
+  Utilities: {}
     
 
 
@@ -14,9 +15,6 @@ App =  Marionette.Application.extend
   initialize: ->
     FamilyBudget.Channels.transactionsTable = Backbone.Radio.channel 'transctions_table'
     FamilyBudget.Channels.transactionsLayout = Backbone.Radio.channel 'transctions_layout'
-    FamilyBudget.Channels.transactionsPeriods = Backbone.Radio.channel 'date_periods'
-
-    FamilyBudget.Channels.transactionsPeriodHandler = new FamilyBudget.Channels.Transiactions()
 
     router = new FamilyBudget.Routers.Main()
     rootLayout = new FamilyBudget.Views.Layout.Root({router: router})

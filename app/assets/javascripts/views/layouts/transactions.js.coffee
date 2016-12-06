@@ -8,7 +8,7 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
 
   initialize: ->
     @collection = new FamilyBudget.Collections.Transactions()
-    @date = FamilyBudget.Channels.transactionsPeriods.request 'thisMonth'
+    @date = FamilyBudget.Utilities.Dates.getThisMonth()
     @listenTo FamilyBudget.Channels.transactionsLayout, 'dropdown:period', @updateTable
     @listenTo @collection, 'update', @renderTable    
 
@@ -43,12 +43,12 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
 
     switch period
       when 'this week'
-        @date = FamilyBudget.Channels.transactionsPeriods.request('thisWeek')
+        @date = FamilyBudget.Utilities.Dates.getThisWeek()
       when 'this month'
-        @date = FamilyBudget.Channels.transactionsPeriods.request('thisMonth')
+        @date = FamilyBudget.Utilities.Dates.getThisMonth()
       when 'last month'
-        @date = FamilyBudget.Channels.transactionsPeriods.request('lastMonth')
+        @date = FamilyBudget.Utilities.Dates.getLastMonth()
       when 'last week'
-        @date = FamilyBudget.Channels.transactionsPeriods.request('lastWeek')
+        @date = FamilyBudget.Utilities.Dates.getLastWeek()
 
     @renderTable()
