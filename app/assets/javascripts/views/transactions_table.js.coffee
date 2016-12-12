@@ -55,9 +55,7 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
 
   hideByType: (type) ->
     if type == 'all'
-      @ui.table.find('> tbody > tr td').removeClass 'is-hidden'
+      @ui.table.find('.table-wrapper-cell').removeClass 'is-hidden'
     else 
-      @ui.table.find('> tbody > tr td').addClass 'is-hidden'
-      @ui.table.find('> tbody > tr td[data-type="' + type +  '"]').removeClass 'is-hidden'
-
-    console.log @ui.table.find('> tbody > tr td[data-type="' + type +  '"]')
+      @ui.table.find('.table-wrapper-cell').addClass 'is-hidden'
+      @ui.table.find('table-wrapper-cell [data-type="' + type +  '"]').removeClass 'is-hidden'
