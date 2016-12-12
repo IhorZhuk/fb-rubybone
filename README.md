@@ -1,1 +1,1 @@
-Run `rake db: seed`
+Run `rake db:seed`

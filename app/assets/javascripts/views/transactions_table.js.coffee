@@ -3,7 +3,8 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
   template: JST['transactions_table']
 
   regions:
-    'dropdown': '#js-region-sort'
+    'dropdownSort': '#js-region-sort'
+    'dropdownType': '#js-region-type'
     body: 
       el: 'tbody'
       replaceElement: true
@@ -11,6 +12,7 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
   ui:
     'btnReverse': '.js-reverse-btn'
     'selectSort': 'select[name="sortby"]'
+    'table': '.table-transactions'
 
   events:
     'click @ui.btnReverse': 'reverseCollection'
@@ -18,28 +20,44 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
 
   initialize: (ops) ->
     @collection = ops.collection
-    @listenTo FamilyBudget.Channels.transactionsTable, 'dropdown:selected', @sortCollection
+    @listenTo FamilyBudget.Channels.transactionsTable, 'dropdown:sort:selected', @sortCollection
+    @listenTo FamilyBudget.Channels.transactionsTable, 'dropdown:type:selected', @hideByType
 
-  showTable: ->
+  showTable: (collection )->
     @showChildView 'body', new FamilyBudget.Views.TransactionsTableBody
-      collection: @collection
+      collection: collection
 
   showControls: ->
-    @showChildView 'dropdown', new FamilyBudget.Views.Dropdown
+    @showChildView 'dropdownSort', new FamilyBudget.Views.Dropdown
       placeholder: 'date'
-      items: ['date', 'amount', 'title', 'kind']
+      items: ['date', 'amount', 'title']
       channel: FamilyBudget.Channels.transactionsTable
-      channelEvent: 'dropdown:selected'
+      channelEvent: 'dropdown:sort:selected'
+
+    @showChildView 'dropdownType', new FamilyBudget.Views.Dropdown
+      placeholder: 'all'
+      items: ['all', 'credit', 'debit']
+      channel: FamilyBudget.Channels.transactionsTable
+      channelEvent: 'dropdown:type:selected'
 
   onRender: ->
-    @showTable()
+    @showTable @collection
     @showControls()
 
   reverseCollection: ->
     @collection.models = @collection.models.reverse()
-    @showTable()
+    @showTable @collection
 
   sortCollection: (key) ->
     @collection.sortKey = key
     @collection.sort()
-    @showTable()
+    @showTable @collection
+
+  hideByType: (type) ->
+    if type == 'all'
+      @ui.table.find('> tbody > tr td').removeClass 'is-hidden'
+    else 
+      @ui.table.find('> tbody > tr td').addClass 'is-hidden'
+      @ui.table.find('> tbody > tr td[data-type="' + type +  '"]').removeClass 'is-hidden'
+
+    console.log @ui.table.find('> tbody > tr td[data-type="' + type +  '"]')

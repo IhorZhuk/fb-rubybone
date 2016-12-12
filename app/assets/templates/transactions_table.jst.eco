@@ -1,5 +1,5 @@
-<div class="sorting-bar">
-  <ul class="sorting-bar-list list-inline">
+<div class="sorting-bar clearfix">
+  <ul class="sorting-bar-list list-inline pull-left">
 
     <li>
       <label>Sort by:</label>
@@ -7,11 +7,12 @@
     </li>
 
     <li>
-      <div class="btn-link is-big js-reverse-btn">Reverse order</div>
+      <label>Type:</label>
+       <div id="js-region-type" class="display-inline-block"></div>
     </li>
 
   </ul>
-  
+  <div class="btn-link is-big js-reverse-btn pull-right">Reverse order</div>
 </div><!-- //sorting-bar -->
 
 <table class="table-main table-transactions">
