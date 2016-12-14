@@ -10,10 +10,10 @@ FamilyBudget.Views.ConfirmDelete = Marionette.View.extend
     'click .js-delete': 'deleteModel'
 
   submitModal: ->
-    collection = @model.collection
     @model.destroy
       success: =>
         @triggerMethod 'modal:close'
       error: (model, res) =>
+        console.log 'error'
         @ui.error.text('Error in deleting').fadeIn()
       changes: ''

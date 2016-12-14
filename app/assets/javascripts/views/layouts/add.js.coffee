@@ -29,4 +29,4 @@ FamilyBudget.Views.Layout.Add = Marionette.View.extend
       error: (e) ->
         console.log e
       data: 
-        date_from: new Date()
+        created_at: new Date()

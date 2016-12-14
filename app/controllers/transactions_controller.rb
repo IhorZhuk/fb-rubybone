@@ -3,19 +3,25 @@ class TransactionsController < ApplicationController
   respond_to :json
 
   def index
-    filter = nil
+    transactions = Transaction.all
 
     if filter_params[:date_from] && filter_params[:date_to]
-      start_date = filter_params[:date_from].to_date.beginning_of_day
-      end_date = filter_params[:date_to].to_date.end_of_day
-      filter = {:date => start_date..end_date}
-      
-    elsif filter_params[:date_from]
-      date = filter_params[:date_from].to_date
-      filter = {:created_at => date.beginning_of_day..date.end_of_day}
+      start_date = filter_params[:date_from].to_date
+      end_date = filter_params[:date_to].to_date
+      transactions = transactions.from_to(start_date, end_date)
     end
 
-    respond_with Transaction.where(filter).includes(:category).to_json(include: {category: {only: [:id, :title]}} )
+    if filter_params[:created_at]
+      date = filter_params[:created_at].to_date
+      transactions = transactions.today(date)
+    end
+    
+    transactions = transactions.category(filter_params[:category_id]) if filter_params[:category_id]
+    transactions = transactions.title(filter_params[:title]) if filter_params[:title]
+    transactions = transactions.note(filter_params[:note]) if filter_params[:note]
+    transactions = transactions.amount(filter_params[:amount]) if filter_params[:amount]
+
+    respond_with transactions.includes(:category).to_json(include: {category: {only: [:id, :title]}} )
   end
 
   def show
@@ -43,7 +49,7 @@ private
   end
 
   def filter_params
-    allow = [:date_from, :date_to]
+    allow = [:created_at, :date_from, :date_to, :title, :amount, :note, :kind, :category_id]
     params.permit(allow)
   end
 
