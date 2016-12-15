@@ -17,6 +17,7 @@ FamilyBudget.Views.Layout.Root = Marionette.View.extend
     @listenTo @router, 'navigated:transactions', @renderTransactions
     @listenTo @router, 'navigated:add', @renderAdd
     @listenTo @router, 'navigated:settings', @renderSettings
+    @listenTo @router, 'navigated:search', @renderSearch
 
   onRender: ->
     @showChildView 'navbar', new FamilyBudget.Views.Navbar({router: @router})
@@ -31,4 +32,7 @@ FamilyBudget.Views.Layout.Root = Marionette.View.extend
     @showChildView 'page', new FamilyBudget.Views.Layout.Add()
 
   renderSettings: ->
-    @showChildView 'page', new FamilyBudget.Views.Layout.Settings()    
+    @showChildView 'page', new FamilyBudget.Views.Layout.Settings()   
+
+  renderSearch: ->
+    @showChildView 'page', new FamilyBudget.Views.Layout.Search()
