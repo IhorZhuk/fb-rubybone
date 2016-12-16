@@ -2,6 +2,8 @@
   <div class="row">
     <h1>Transactions</h1><span id="js-region-dropdown"></span>
   </div>
-  
 </div>
-<div id="js-region-page-content" class="border-bottom"></div>
+
+<div class="page-wrapper">
+  <div id="js-region-page-content"></div>
+</div>

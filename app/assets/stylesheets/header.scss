@@ -2,11 +2,12 @@
   z-index: 10;
   position: fixed;
   top: 0;
-  left: 250px;
+  left: $navbar-width;
   right: 0;
-  border-bottom: 2px solid $color-border;
   padding: 18px 25px;
-  background-color: $color-navbar-bg;
+  background-color: #fff;
+  border-bottom: 1px solid $color-border;
+
 
   h1 {
     text-transform: uppercase;
@@ -18,8 +19,6 @@
 }
 
 .header-small {
-  border-bottom: 1px solid $color-border;
-  padding: 15px;
 
   h2 {
     text-transform: uppercase;

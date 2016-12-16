@@ -1,12 +1,22 @@
-$color-blue: #279AF1;
+$color-blue: #999AC6;
 $color-green: #7DC95E;
-$color-red: #F15946;
+$color-red: #FE5F55;
 $color-orange: #EC8C65;
 
-$color-font: #373a3c;
-$color-border: #d5dadf; 
-$color-navbar-bg: #fbfbfc;
+$color-notice: #E2F89C;
+$color-font: #5a5a5a;
+$color-border: #d0d4d9; 
+$color-navbar-bg: #fff;
+$color-bg: #FBFBFB;
 
+$border-radius-sm: 3px;
+$border-radius-md: 5px;
+$border-radius-lg: 10px;
+
+$navbar-width: 210px;
+
+$shadow-l1: 0 2px 3px 0 rgba(0,0,0,0.1);
+$shadow-l2: 0 3px 10px 0 rgba(0,0,0,0.06);
 
 //mixins
 @mixin transition($prop:all, $time:.3s, $easing:ease-in-out) {

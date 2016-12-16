@@ -5,15 +5,14 @@ label {
 }
 
 .form-wrapper {
-  padding: 15px;
-  margin-bottom: 30px;
+  padding: 15px 0;
 }
 
 .form-control {
   box-shadow: none;
   border-color: $color-border;
-  border-radius: 0;
-  height: 30px;
+  border-radius: $border-radius-md;
+  padding: 5px 10px;
 
   &.is-invalid {
     border-color: $color-red;
@@ -22,6 +21,11 @@ label {
   &.is-inline {
     display: inline-block;
     width: auto;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
   }
 }
 

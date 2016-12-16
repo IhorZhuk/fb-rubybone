@@ -1,6 +1,6 @@
 .dropdown-wrapper {
   display: inline-block;
-  margin: 0 10px;
+  margin-left: 5px;
 }
 
 .dropdown {
@@ -27,14 +27,14 @@
 }
 
 .dropdown-placeholder {
-  border-bottom: 1px solid $color-blue;
 }
 
 .dropdown-icon {
   @include transition($time: .2s);
+  display: inline-block;
   font-size: 10px;
-  margin-left: 5px;
-  vertical-align: text-top;
+  margin-left: 2px;
+  margin-top: -1px;
 }
 
 .dropdown-list {

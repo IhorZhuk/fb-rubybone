@@ -14,11 +14,13 @@
   cursor: pointer;
   font-size: 10px;
   color: $color-blue;
-  text-decoration: underline;
   text-transform: uppercase;
+  text-decoration: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: darken($color-blue, 10%);
+    text-decoration: none;
   }
 
   &.is-big {
@@ -26,28 +28,28 @@
   }
 }
 
+.btn-list {
+  li {
+    margin-left: 10px;
+  }
+}
+
 .btn-icon {
   @include transition;
   cursor: pointer;
-  display: table;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  border: 1px solid $color-border;
+  font-size: 16px;
+  color: lighten($color-font, 25%);
 
-  i {
-    display: table-cell;
-    vertical-align: middle;
+  &.is-alert {
+    font-size: 14px;
   }
 
   &.is-danger:hover {
-    background-color: $color-red;
-    color: #fff;
+    color: $color-red;
   }
 
   &.is-alert:hover {
-    background-color: $color-orange;
-    color: #fff;
+    color: $color-orange;
   }
 }
 
@@ -55,6 +57,7 @@
   @extend %btn-inline-block;
   border: 0;
   color: #fff;
+  border-radius: $border-radius-md;
   
   &.is-green {
     background-color: $color-green;
@@ -94,6 +97,7 @@
   border: 1px solid $color-font;
   background: transparent;
   color: $color-font;
+  border-radius: $border-radius-md;
 
   &:hover {
     border-color: lighten($color-font, 10%);

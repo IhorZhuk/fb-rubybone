@@ -1,6 +1,7 @@
 body {
   font: 14px/1.5 'Ubuntu', sans-serif;
   color: $color-font;
+  background-color: $color-bg;
 }
 
 table {
@@ -12,6 +13,6 @@ table {
 }
 
 .base-content {
-  padding-left: 250px;
+  padding-left: $navbar-width;
   padding-top: 62px;
 }

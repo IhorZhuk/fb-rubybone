@@ -3,9 +3,9 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 250px;
+  width: $navbar-width;
   background-color: $color-navbar-bg;
-  border-right: 2px solid $color-border;
+  border-right: 1px solid $color-border;
 }
 
 .navbar-header {
@@ -13,7 +13,6 @@
   font-size: 20px;
   padding: 15px 5px;
   font-weight: bold;
-  border-bottom: 2px solid $color-border;
 
   span {
     font-weight: lighter;
@@ -48,7 +47,7 @@
     }
 
     &.is-active {
-      background: $color-orange;
+      background: $color-blue;
       color: #fff;
     }
   }

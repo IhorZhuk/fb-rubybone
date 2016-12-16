@@ -2,18 +2,20 @@
   <h1>Search transactions</h1>
 </div>
 
-<div class="row row-no-gutters border-bottom">
-  <div class="col-xs-3 border-right">
-    <div class="header-small">
-      <h2>Filters:</h2>
+<div class="page-wrapper">
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="header-small">
+        <h2>Filters:</h2>
+      </div>
+      <div id="js-region-form"></div>
     </div>
-    <div id="js-region-form"></div>
-  </div>
 
-  <div class="col-xs-9">
-    <div class="header-small">
-      <h2>Search results:</h2>
+    <div class="col-xs-9">
+      <div class="header-small">
+        <h2>Search results:</h2>
+      </div>
+      <div id="js-region-results"></div>
     </div>
-    <div id="js-region-results"></div>
   </div>
-</div>
+</div><!-- //page-wrapper -->

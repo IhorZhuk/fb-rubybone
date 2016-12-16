@@ -1,15 +1,11 @@
 .table-main {
 
-  thead {
-    border-bottom: 1px solid $color-border;
-  }
-
   tbody tr:hover {
     background-color: darken(#fff, 3%);
   }
 
   th, td {
-    padding: 5px 10px;
+    padding: 10px;
     text-align: left;
     font-size: 12px;
   }
@@ -21,10 +17,10 @@
 
 .table-row-note {
   div {
-    background-color: rgba($color-orange,.2);
+    background-color: $color-notice;
     font-style: italic;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: $border-radius-sm;
   }
 
   &.is-hidden {
@@ -59,7 +55,7 @@
 
   .ops {
     width: 10%;
-    text-align: center;
+    text-align: right;
   }
 }
 
