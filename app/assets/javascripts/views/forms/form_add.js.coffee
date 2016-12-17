@@ -1,7 +1,7 @@
 class FamilyBudget.Views.TransactionsFormAdd extends FamilyBudget.Views.TransactionsFormBase
 
-  initialize: ->
-    @collection = FamilyBudget.app.transactions
+  initialize: (ops) ->
+    @collection = ops.collection
 
   createModel: ->
     @model = new FamilyBudget.Models.Transaction
@@ -17,7 +17,6 @@ class FamilyBudget.Views.TransactionsFormAdd extends FamilyBudget.Views.Transact
       changes: ''
     )
     @resetInputs()
-    @triggerMethod 'model:saved'
   
   submit: (e) ->
     e.preventDefault()

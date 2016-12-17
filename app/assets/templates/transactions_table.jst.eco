@@ -24,7 +24,7 @@
       <th class="amount">Amount</th>
       <th class="ops"></th>
     </thead>
-    <tbody>
+    <tbody class="js-tbody">
       <td colspan="5">Loading transactions...</td>
     </tbody>
   </table>

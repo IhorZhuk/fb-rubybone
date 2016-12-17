@@ -6,7 +6,7 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
     'dropdownSort': '#js-region-sort'
     'dropdownType': '#js-region-type'
     body: 
-      el: 'tbody'
+      el: '.js-tbody'
       replaceElement: true
 
   ui:
@@ -23,7 +23,7 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
     @listenTo FamilyBudget.Channels.transactionsTable, 'dropdown:sort:selected', @sortCollection
     @listenTo FamilyBudget.Channels.transactionsTable, 'dropdown:type:selected', @hideByType
 
-  showTable: (collection )->
+  showTable: (collection) ->
     @showChildView 'body', new FamilyBudget.Views.TransactionsTableBody
       collection: collection
 
