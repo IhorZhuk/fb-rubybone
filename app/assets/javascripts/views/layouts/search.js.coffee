@@ -13,7 +13,8 @@ FamilyBudget.Views.Layout.Search = Marionette.View.extend
   onRender: ->
     @showChildView 'form', new FamilyBudget.Views.TransactionsFormSearch
       collection: @collection
-    @renderResults()
 
   renderResults: ->
-    console.log 'reulsts'
+    console.log @collection.length
+    @showChildView 'results', new FamilyBudget.Views.TransactionsTable
+      collection: @collection

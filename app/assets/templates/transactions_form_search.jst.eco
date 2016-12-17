@@ -43,7 +43,7 @@
       <input name="note" type="text" class="form-control">
     </div>
 
-    <button type="submit" class="btn-main is-blue">Submit</button>
+    <button type="submit" class="btn-main is-blue">Search</button>
 
   </form>
 

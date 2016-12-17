@@ -54,8 +54,12 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
     @showTable @collection
 
   hideByType: (type) ->
+    # if type == 'all'
+    #   @ui.table.find('.table-wrapper-cell').removeClass 'is-hidden'
+    # else 
+    #   @ui.table.find('.table-wrapper-cell').addClass 'is-hidden'
+    #   @ui.table.find('.table-wrapper-cell[data-type="' + type +  '"]').removeClass 'is-hidden'
     if type == 'all'
-      @ui.table.find('.table-wrapper-cell').removeClass 'is-hidden'
-    else 
-      @ui.table.find('.table-wrapper-cell').addClass 'is-hidden'
-      @ui.table.find('.table-wrapper-cell[data-type="' + type +  '"]').removeClass 'is-hidden'
+      @ui.table.removeClass 'show-credit show-debit'
+    else
+      @ui.table.addClass('show-' + type)

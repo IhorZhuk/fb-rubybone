@@ -90,3 +90,21 @@
 .table-wrapper-cell.is-hidden {
   display: none;
 }
+
+.show-credit {
+  .table-wrapper-cell[data-type="debit"] {
+    display: none;
+  }
+  .table-wrapper-cell[data-type="credit"] {
+    display: table-cell;
+  }
+}
+
+.show-debit {
+  .table-wrapper-cell[data-type="credit"] {
+    display: none;
+  }
+  .table-wrapper-cell[data-type="debit"] {
+    display: table-cell;
+  }
+}

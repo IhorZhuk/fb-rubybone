@@ -12,9 +12,6 @@
     </div>
 
     <div class="col-xs-9">
-      <div class="header-small">
-        <h2>Search results:</h2>
-      </div>
       <div id="js-region-results"></div>
     </div>
   </div>
