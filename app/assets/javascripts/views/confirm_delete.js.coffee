@@ -14,6 +14,5 @@ FamilyBudget.Views.ConfirmDelete = Marionette.View.extend
       success: =>
         @triggerMethod 'modal:close'
       error: (model, res) =>
-        console.log 'error'
-        @ui.error.text('Error in deleting').fadeIn()
+        @ui.error.text(JSON.parse(res.responseText).errors.base[0]).fadeIn()
       changes: ''

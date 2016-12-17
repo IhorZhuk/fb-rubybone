@@ -3,23 +3,23 @@ class TransactionsController < ApplicationController
   respond_to :json
 
   def index
+
     transactions = Transaction.all
 
-    if filter_params[:date_from] && filter_params[:date_to] && filter_params[:date_from] != '' && filter_params[:date_to] != ''
-      start_date = filter_params[:date_from].to_date
-      end_date = filter_params[:date_to].to_date
-      transactions = transactions.from_to(start_date, end_date)
-    end
+    d_f = filter_params[:date_from].try(:to_date) || '01-01-1900'.to_date
+    d_t = filter_params[:date_to].try(:to_date) || Date.today
+    
+    transactions = transactions.from_to(d_f, d_t)
 
     if filter_params[:created_at]
       date = filter_params[:created_at].to_date
       transactions = transactions.today(date)
     end
     
-    transactions = transactions.category(filter_params[:category_id]) if filter_params[:category_id] && filter_params[:category_id] != ''
-    transactions = transactions.title(filter_params[:title]) if filter_params[:title] && filter_params[:title] != ''
-    transactions = transactions.note(filter_params[:note]) if filter_params[:note] && filter_params[:note] != ''
-    transactions = transactions.amount(filter_params[:amount]) if filter_params[:amount] && filter_params[:amount] !=''
+    transactions = transactions.category(filter_params[:category_id]) if filter_params[:category_id].present?
+    transactions = transactions.title(filter_params[:title]) if filter_params[:title].present?
+    transactions = transactions.note(filter_params[:note]) if filter_params[:note].present?
+    transactions = transactions.amount(filter_params[:amount]) if filter_params[:amount].present?
 
     respond_with transactions.includes(:category).to_json(include: {category: {only: [:id, :title]}} )
   end

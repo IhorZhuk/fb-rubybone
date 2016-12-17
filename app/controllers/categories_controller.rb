@@ -21,7 +21,14 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    respond_with Category.destroy(params[:id])
+    category = Category.find(params[:id])
+    result = category.destroy
+
+    if result
+      respond_with result
+    else
+      respond_with category
+    end
   end
 
 private
