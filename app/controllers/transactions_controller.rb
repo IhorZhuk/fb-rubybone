@@ -5,6 +5,7 @@ class TransactionsController < ApplicationController
   def index
 
     transactions = Transaction.all
+    per_page = 2
 
     d_f = filter_params[:date_from].try(:to_date) || '01-01-1900'.to_date
     d_t = filter_params[:date_to].try(:to_date) || Date.today
@@ -21,7 +22,20 @@ class TransactionsController < ApplicationController
     transactions = transactions.note(filter_params[:note]) if filter_params[:note].present?
     transactions = transactions.amount(filter_params[:amount]) if filter_params[:amount].present?
 
-    respond_with transactions.includes(:category).to_json(include: {category: {only: [:id, :title]}} )
+    transactions = transactions.page(params[:page]).per(per_page)
+    transactions_with_categories = transactions.includes(:category).to_json(
+      include: { category: {only: [:id, :title]}}
+    )
+    render json: { 
+      transactions: eval(transactions_with_categories),
+      pagination: {
+        per_page: per_page,
+        current_page: transactions.current_page,
+        total_pages: transactions.total_pages,
+        total_transactions: transactions.total_count
+      } 
+    }
+
   end
 
   def show
