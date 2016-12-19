@@ -30,4 +30,5 @@
   </table>
 </div><!-- //card -->
 
+<div id="js-region-pagination" class="pagination-wrapper"></div>
 

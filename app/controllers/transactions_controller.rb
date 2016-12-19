@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
   def index
 
     transactions = Transaction.all
-    per_page = 2
+    per_page = 5
 
     d_f = filter_params[:date_from].try(:to_date) || '01-01-1900'.to_date
     d_t = filter_params[:date_to].try(:to_date) || Date.today

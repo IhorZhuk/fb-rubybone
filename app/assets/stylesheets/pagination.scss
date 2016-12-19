@@ -1,0 +1,34 @@
+.pagination-wrapper {
+  margin: 10px 0;
+}
+
+.pagination {
+
+  span {
+    @include transition;
+    display: inline-block;
+    padding: 0 5px;
+    cursor: pointer;
+
+    &:first-of-type {
+      padding-left: 0;
+    }
+
+    &:hover {
+      color: $color-blue;
+    }
+  }
+
+  i.fa {
+    font-size: 12px;
+  }
+
+  span[data-page="disabled"] {
+    cursor: initial;
+
+    &:hover {
+      color: inherit;
+    }
+  }
+
+}

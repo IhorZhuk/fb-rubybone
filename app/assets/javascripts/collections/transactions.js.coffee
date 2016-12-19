@@ -6,5 +6,9 @@ FamilyBudget.Collections.Transactions = Backbone.Collection.extend
 
   sortKey: 'date'
 
+  parse: (res) ->
+    @pagination = res.pagination
+    res.transactions
+
   comparator: (model) ->
     model.get @sortKey

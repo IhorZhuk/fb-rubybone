@@ -5,6 +5,7 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
   regions:
     'dropdownSort': '#js-region-sort'
     'dropdownType': '#js-region-type'
+    'pagination': '#js-region-pagination'
     body: 
       el: '.js-tbody'
       replaceElement: true
@@ -18,10 +19,29 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
     'click @ui.btnReverse': 'reverseCollection'
     'change @ui.selectSort': 'sortCollection'
 
+  childViewEvents: 
+    'pagination:clicked': 'nextPage'
+
   initialize: (ops) ->
     @collection = ops.collection
     @listenTo FamilyBudget.Channels.transactionsTable, 'dropdown:sort:selected', @sortCollection
     @listenTo FamilyBudget.Channels.transactionsTable, 'dropdown:type:selected', @hideByType
+    
+
+  nextPage: (page) ->
+    @collection = new FamilyBudget.Collections.Transactions()
+    @listenTo @collection, 'reset', @renderTable
+    @collection.fetch
+      error: (e) ->
+        console.log e
+      reset: true
+      data: 
+        page: page
+
+  renderTable: ->
+    @showTable @collection
+    @showControls()
+    @showPagination()
 
   showTable: (collection) ->
     @showChildView 'body', new FamilyBudget.Views.TransactionsTableBody
@@ -40,9 +60,12 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
       channel: FamilyBudget.Channels.transactionsTable
       channelEvent: 'dropdown:type:selected'
 
+  showPagination: ->
+    @showChildView 'pagination', new FamilyBudget.Views.TransactionsPagination
+      collection: @collection
+
   onRender: ->
-    @showTable @collection
-    @showControls()
+    @renderTable()
 
   reverseCollection: ->
     @collection.models = @collection.models.reverse()
@@ -54,11 +77,6 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
     @showTable @collection
 
   hideByType: (type) ->
-    # if type == 'all'
-    #   @ui.table.find('.table-wrapper-cell').removeClass 'is-hidden'
-    # else 
-    #   @ui.table.find('.table-wrapper-cell').addClass 'is-hidden'
-    #   @ui.table.find('.table-wrapper-cell[data-type="' + type +  '"]').removeClass 'is-hidden'
     if type == 'all'
       @ui.table.removeClass 'show-credit show-debit'
     else

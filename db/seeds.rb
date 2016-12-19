@@ -1,7 +1,20 @@
 now = Time.new
 
-Category.create!(title: 'Uncategorized')
+Category.create!(title: Faker::Lorem.word)
+Category.create!(title: Faker::Lorem.word)
+Category.create!(title: Faker::Lorem.word)
+Category.create!(title: Faker::Lorem.word)
 
-Transaction.create!(date: now, title: 'Dummy transaction title', amount: 10.5, kind: 'debit', currency: 'EUR', note: 'Dummy transaction note lorem ipsum dolor sit ammet', category_id: 1)
-Transaction.create!(date: now, title: 'Dummy transaction title', amount: 1200, kind: 'credit', currency: 'EUR', note: 'Dummy transaction note lorem ipsum dolor sit ammet', category_id: 1)
-Transaction.create!(date: now, title: 'Dummy transaction title', amount: 70.5, kind: 'debit', currency: 'EUR', note: 'Dummy transaction note lorem ipsum dolor sit ammet',  category_id: 1)
+for i in (1..30)
+  kind = ['credit', 'debit']
+
+  Transaction.create!(
+    date: now, 
+    title: Faker::Lorem.sentence(2), 
+    amount: rand(10..1000), 
+    kind: kind.sample, 
+    currency: 'EUR', 
+    note: Faker::Lorem.sentences.join(" "), 
+    category_id: rand(1..4)
+  )
+end 
