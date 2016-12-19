@@ -17,6 +17,11 @@
     &:hover {
       color: $color-blue;
     }
+
+    &.is-active {
+      color: $color-blue;
+      font-weight: bold;
+    }
   }
 
   i.fa {
