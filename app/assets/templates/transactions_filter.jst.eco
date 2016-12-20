@@ -1,0 +1,19 @@
+<form>
+  <div class="sorting-bar clearfix">
+    <ul class="sorting-bar-list list-inline pull-left">
+      <li>
+        <label>Sort by:</label>
+        <div id="js-region-sort" class="display-inline-block"></div>
+      </li>
+      <li>
+        <label>Sort by:</label>
+        <div id="js-region-sort" class="display-inline-block"></div>
+      </li>
+      <li>
+        <label>Type:</label>
+        <div id="js-region-type" class="display-inline-block"></div>
+      </li>
+    </ul>
+    <div class="btn-link pull-right">More filters</div>
+  </div><!-- //sorting-bar -->
+</form>

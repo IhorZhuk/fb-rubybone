@@ -1,6 +1,6 @@
 <% if @note != '' and @note != null then @hasNote = true %>
 
-<td colspan="5" class="no-padding table-wrapper-cell" data-type="<%= @kind %>">
+<td colspan="5" class="no-padding">
   <table>
     <tr>
       <td class="date"><%= @date %></td>

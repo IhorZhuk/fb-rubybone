@@ -1,20 +1,3 @@
-<div class="sorting-bar clearfix">
-  <ul class="sorting-bar-list list-inline pull-left">
-
-    <li>
-      <label>Sort by:</label>
-      <div id="js-region-sort" class="display-inline-block"></div>
-    </li>
-
-    <li>
-      <label>Type:</label>
-       <div id="js-region-type" class="display-inline-block"></div>
-    </li>
-
-  </ul>
-  <div class="btn-link is-big js-reverse-btn pull-right">Reverse order</div>
-</div><!-- //sorting-bar -->
-
 <div class="card has-table">
   <table class="table-main table-transactions">
     <thead>

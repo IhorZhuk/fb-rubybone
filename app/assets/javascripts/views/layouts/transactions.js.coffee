@@ -11,6 +11,7 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
 
   onRender: ->
     @renderTable()
+    @renderFilter()
     
   renderTable: ->
     @collection.fetch
@@ -21,3 +22,6 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
         else
           @showChildView 'content', new FamilyBudget.Views.TransactionsEmpty()
       changes: ''
+
+  renderFilter: ->
+    @showChildView 'filter', new FamilyBudget.Views.TransactionsFilter()
