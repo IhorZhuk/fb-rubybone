@@ -21,15 +21,18 @@ class TransactionsController < ApplicationController
     transactions = transactions.title(filter_params[:title]) if filter_params[:title].present?
     transactions = transactions.note(filter_params[:note]) if filter_params[:note].present?
     transactions = transactions.amount(filter_params[:amount]) if filter_params[:amount].present?
+    transactions = transactions.kind(filter_params[:kind]) if filter_params[:kind].present?
 
     if filter_params[:order].present? and filter_params[:direction].present?
-      transactions = transactions.reorder("#{filter_params[:order]} #{filter_params[:direction]}")  
+      transactions = transactions.order("#{filter_params[:order]} #{filter_params[:direction]}")  
     end
 
     transactions = transactions.page(params[:page]).per(per_page)
+
     transactions_with_categories = transactions.includes(:category).to_json(
       include: { category: {only: [:id, :title]}}
     )
+
     render json: { 
       pagination: {
         per_page: per_page,

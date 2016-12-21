@@ -14,7 +14,6 @@ App =  Marionette.Application.extend
 
   initialize: ->
     FamilyBudget.Channels.transactionsTable = Backbone.Radio.channel 'transctions_table'
-    FamilyBudget.Channels.transactionsLayout = Backbone.Radio.channel 'transctions_layout'
 
     router = new FamilyBudget.Routers.Main()
     rootLayout = new FamilyBudget.Views.Layout.Root({router: router})

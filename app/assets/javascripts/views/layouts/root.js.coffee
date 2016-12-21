@@ -32,7 +32,4 @@ FamilyBudget.Views.Layout.Root = Marionette.View.extend
     @showChildView 'page', new FamilyBudget.Views.Layout.Add()
 
   renderSettings: ->
-    @showChildView 'page', new FamilyBudget.Views.Layout.Settings()   
-
-  renderSearch: ->
-    @showChildView 'page', new FamilyBudget.Views.Layout.Search()
+    @showChildView 'page', new FamilyBudget.Views.Layout.Settings()

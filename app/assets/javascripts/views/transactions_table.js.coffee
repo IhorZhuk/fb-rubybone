@@ -11,21 +11,8 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
   ui:
     'table': '.table-transactions'
 
-  childViewEvents: 
-    'pagination:clicked': 'nextPage'
-
   initialize: (ops) ->
     @collection = ops.collection
-    
-  nextPage: (page) ->
-    @collection = new FamilyBudget.Collections.Transactions()
-    @listenTo @collection, 'reset', @renderTable
-    @collection.fetch
-      error: (e) ->
-        console.log e
-      reset: true
-      data: 
-        page: page
 
   renderTable: ->
     @showTable @collection

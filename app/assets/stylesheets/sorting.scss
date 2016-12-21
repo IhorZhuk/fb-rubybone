@@ -1,9 +1,14 @@
 .sorting-bar {
-  padding: 10px;
+  padding: 10px 0;
 }
 
 .sorting-bar-list {
+  padding-top: 10px;
   li {
     margin-right: 15px;
   }
+}
+
+.sorting-bar-toggle {
+  padding-top: 5px;
 }

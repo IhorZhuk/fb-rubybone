@@ -18,5 +18,5 @@ FamilyBudget.Views.TransactionsPagination = Marionette.View.extend
   onButtonClicked: (e) ->
     btn = $(e.target).closest('li').find('span')
     unless btn.data('page') == 'disabled'
-      @triggerMethod 'pagination:clicked', btn.data('page')
+      FamilyBudget.Channels.transactionsTable.trigger 'pagination:clicked', btn.data('page')
 

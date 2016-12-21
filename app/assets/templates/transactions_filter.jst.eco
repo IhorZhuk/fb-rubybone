@@ -1,19 +1,30 @@
-<form>
-  <div class="sorting-bar clearfix">
-    <ul class="sorting-bar-list list-inline pull-left">
-      <li>
-        <label>Sort by:</label>
-        <div id="js-region-sort" class="display-inline-block"></div>
-      </li>
-      <li>
-        <label>Sort by:</label>
-        <div id="js-region-sort" class="display-inline-block"></div>
-      </li>
-      <li>
-        <label>Type:</label>
-        <div id="js-region-type" class="display-inline-block"></div>
-      </li>
-    </ul>
-    <div class="btn-link pull-right">More filters</div>
-  </div><!-- //sorting-bar -->
-</form>
+<div class="sorting-bar">
+  <div class="row">
+
+    <div class="col-sm-8 col-lg-9">
+      <ul class="sorting-bar-list list-inline">
+        <li>
+          <label>Period:</label>
+          <div id="js-region-period" class="display-inline-block"></div>
+        </li>
+        <li>
+          <label>Type:</label>
+          <div id="js-region-type" class="display-inline-block"></div>
+        </li>
+        <li>
+          <label>Sort by:</label>
+          <div id="js-region-order" class="display-inline-block"></div>
+        </li>
+        <li>
+          <label>Direction:</label>
+          <div id="js-region-direction" class="display-inline-block"></div>
+        </li>
+      </ul>
+    </div><!-- //col -->
+
+    <div class="col-sm-4 col-lg-3">
+      <input type="text" name="title" class="form-control" placeholder="Search by title">
+    </div><!-- //col -->
+
+  </div>
+</div><!-- //sorting-bar -->
