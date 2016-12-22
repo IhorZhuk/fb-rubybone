@@ -57,7 +57,7 @@ class TransactionsController < ApplicationController
       )
       render json: res_transaction
     else
-      respond_with Transaction.create(transaction_params)
+      respond_with new_transaction
     end
   end
 
