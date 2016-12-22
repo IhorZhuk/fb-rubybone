@@ -14,9 +14,18 @@ class FamilyBudget.Views.TransactionsFormAdd extends FamilyBudget.Views.Transact
     
   save: ->
     @collection.create(@model,
+      success: =>
+        @resetInputs()
+        @triggerMethod 'form:submited'
+      error: =>
+        @collection.trigger 'error'
+        @collection.remove(@model,
+          changes: ''
+        )
+      silent: true
       changes: ''
     )
-    @resetInputs()
+    
   
   submit: (e) ->
     e.preventDefault()

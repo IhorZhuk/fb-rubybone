@@ -11,10 +11,8 @@
         <% end %>
       </td>
       <td class="category">
-        <%  if @category? : %>
-          <%= @category.title %>
-        <% else : %>
-          Has no category
+        <% if @category? : %>
+            <%= @category.title %>
         <% end %>
       </td>
       <td class="amount <%= if @kind == 'credit' then 'color-positive' else 'color-negative' %>"><%= @amount %> <%= @currency %></td>

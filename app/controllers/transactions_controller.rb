@@ -50,7 +50,15 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    respond_with Transaction.create(transaction_params)
+    new_transaction = Transaction.create(transaction_params)
+    if new_transaction.save
+      res_transaction = Transaction.all.includes(:category).find(new_transaction.id).to_json(
+        include: { category: {only: [:id, :title]}}
+      )
+      render json: res_transaction
+    else
+      respond_with Transaction.create(transaction_params)
+    end
   end
 
   def update
