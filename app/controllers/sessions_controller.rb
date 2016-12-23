@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
     else
     render json: { 
-      errros: {
+      errors: {
         user: ["User with such email doesn't exist"]
       }
     }, status: :not_found

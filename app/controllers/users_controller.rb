@@ -5,7 +5,10 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
-      redirect_to '/'
+      Category.create(
+       user: current_user,
+       title: 'Uncategorized'
+      )
     else
       respond_with user
     end

@@ -7,7 +7,6 @@ FamilyBudget.Utilities.ValidationHandler =
     @ui.error.html('').hide()
 
   renderErrors: (model, errors) ->
-    console.log model
     _.each errors, @renderError, @
 
   renderError:(errors, attribute) ->

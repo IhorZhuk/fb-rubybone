@@ -19,7 +19,11 @@ UserAuth.Views.LoginForm = Marionette.View.extend
     e.preventDefault()
     @createSession()
     @resetInvalidInputs()
-    if @session.isValid() then @session.save() else @renderErrors()
+    if @session.isValid()
+      @session.save null, success: =>
+        window.location.href = '../'
+    else
+      @renderErrors()
 
   createSession: ->
     @session = new UserAuth.Models.Session

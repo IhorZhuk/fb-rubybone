@@ -9,19 +9,23 @@ UserAuth.Views.RegisterForm = Marionette.View.extend
     'email': 'input[name="email"]'
     'password': 'input[name="password"]'
     'passwordConfirm': 'input[name="password_confirm"]'
+    'error': '.js-error'
 
   events:
     'submit': 'submit'
 
+  initialize: ->
+    Cocktail.mixin @, FamilyBudget.Utilities.ValidationHandler
 
   submit: (e) ->
     e.preventDefault()
     @createUser()
-    @saveUser()
-    # if @user.isValid() then @saveUser() else @renderError()
-    
-  renderError: ->
-    console.log 'Error'
+    @resetInvalidInputs()
+    if @user.isValid()
+      @user.save null, success: =>
+        window.location.href = '../'
+    else
+      @renderErrors()
 
   createUser: ->
     @user = new UserAuth.Models.User
@@ -30,6 +34,5 @@ UserAuth.Views.RegisterForm = Marionette.View.extend
       password: @ui.password.val()
       password_confirmation: @ui.passwordConfirm.val()
 
-  saveUser: ->
-    console.log @user.toJSON()
-    @user.save()
+    @listenTo @user, 'invalid', @renderErrors
+    @listenTo @user, 'error', @parseErrorResponse
