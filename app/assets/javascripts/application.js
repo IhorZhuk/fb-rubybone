@@ -17,6 +17,7 @@
 //= require backbone
 //= require_tree ./libs
 //= require family_budget
+//= require user_auth
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
@@ -29,4 +30,5 @@
 
 //= require_tree ./routers
 //= require_tree ./utilities
+//= require_tree ./user_auth
 //= require_tree .

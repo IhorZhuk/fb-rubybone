@@ -28,5 +28,11 @@
         <span>Settings</span>
       </a>
     </li>
+    <li>
+      <a href="/logout" class="js-logout">
+        <i class="fa fa-sign-out"></i>
+        <span>Logout</span>
+      </a>
+    </li>
   </ul>
 </nav>

@@ -10,7 +10,7 @@ window.FamilyBudget =
 
 
 
-App =  Marionette.Application.extend
+FamilyBudget.App =  Marionette.Application.extend
 
   initialize: ->
     FamilyBudget.Channels.transactionsTable = Backbone.Radio.channel 'transctions_table'
@@ -22,12 +22,8 @@ App =  Marionette.Application.extend
     
 
   onStart: ->
-    Backbone.history.start()
+    Backbone.history.start() unless Backbone.History.started
     $(document).on 'click', 'a[href^="#"]', (event) ->
       event.preventDefault()
       url =  @getAttribute('href').replace('#','')
       Backbone.history.navigate(url, { trigger: true})
-  
-$(document).ready ->
-  FamilyBudget.app = new App()
-  FamilyBudget.app.start()

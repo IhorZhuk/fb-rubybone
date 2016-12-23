@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'responders'
 gem 'backbone-on-rails'
 gem 'kaminari'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'byebug', platform: :mri

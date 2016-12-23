@@ -1,10 +1,10 @@
 class TransactionsController < ApplicationController
-
+  before_filter :authorize
   respond_to :json
 
   def index
 
-    transactions = Transaction.all
+    transactions = current_user.transactions.all
     per_page = 20
 
     d_f = filter_params[:date_from].try(:to_date) || '01-01-1900'.to_date
@@ -46,13 +46,23 @@ class TransactionsController < ApplicationController
   end
 
   def show
-    respond_with Transaction.find(params[:id])
+    respond_with current_user.transactions.find(params[:id])
   end
 
   def create
-    new_transaction = Transaction.create(transaction_params)
+    new_transaction = Transaction.create(
+      user: current_user,
+      title: params[:title],
+      amount: params[:amount],
+      date: params[:date],
+      note: params[:note],
+      currency: params[:currency],
+      category_id: params[:category_id],
+      kind: params[:kind]
+    )
+
     if new_transaction.save
-      res_transaction = Transaction.all.includes(:category).find(new_transaction.id).to_json(
+      res_transaction = current_user.transactions.all.includes(:category).find(new_transaction.id).to_json(
         include: { category: {only: [:id, :title]}}
       )
       render json: res_transaction
@@ -62,12 +72,14 @@ class TransactionsController < ApplicationController
   end
 
   def update
-    transaction = Transaction.find(params[:id])
+    transaction = current_user.transactions.find(params[:id])
     respond_with transaction.update(transaction_params)
   end
 
   def destroy
-    respond_with Transaction.destroy(params[:id])
+    transaction = current_user.transactions.find(params[:id])
+    transaction.destroy
+    respond_with transaction
   end
 
 private
