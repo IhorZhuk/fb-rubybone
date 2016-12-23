@@ -7,16 +7,24 @@ UserAuth.Views.LoginForm = Marionette.View.extend
   ui:
     'email': 'input[name="email"]'
     'password': 'input[name="password"]'
+    'error': '.js-error'
 
   events:
     'submit': 'submit'
 
+  initialize: ->
+    Cocktail.mixin @, FamilyBudget.Utilities.ValidationHandler
+
   submit: (e) ->
     e.preventDefault()
     @createSession()
-    @session.save()
+    @resetInvalidInputs()
+    if @session.isValid() then @session.save() else @renderErrors()
 
   createSession: ->
     @session = new UserAuth.Models.Session
       email: @ui.email.val()
       password: @ui.password.val()
+    
+    @listenTo @session, 'invalid', @renderErrors
+    @listenTo @session, 'error', @parseErrorResponse
