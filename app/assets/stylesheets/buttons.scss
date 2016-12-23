@@ -26,11 +26,6 @@
   &.is-big {
     font-size: 12px;
   }
-
-  &.is-active {
-    color: darken($color-blue, 10%);
-    text-decoration: underline;
-  }
 }
 
 .btn-list {
@@ -116,6 +111,25 @@
     &:hover {
       border-color: lighten($color-blue, 10%);
       color: lighten($color-blue, 10%);
+    }
+  }
+}
+
+.button-tabs {
+  margin-bottom: 20px;
+
+  li {
+    margin-right: 10px;
+  }
+
+  a {
+    @extend .btn-link;
+
+    &.is-active {
+      padding: 5px 10px;
+      border-radius: $border-radius-lg;
+      color: #fff;
+      background-color: $color-blue;
     }
   }
 }

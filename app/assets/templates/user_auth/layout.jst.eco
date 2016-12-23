@@ -4,17 +4,15 @@
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
 
-        <div class="card">
-          <ul class="list-inline tabs-nav js-tabs">
-            <li>
-              <a href="#login" class="btn-link is-big is-active">Login</a>
-            </li>
-            <li>
-              <a href="#register" class="btn-link is-big">Create account</a>
-            </li>
-          </ul>
-          <div id="js-region-body"></div>
-        </div><!-- //card -->
+        <ul class="list-inline button-tabs js-tabs">
+          <li>
+            <a href="#login" class="btn-link is-big is-active">Login</a>
+          </li>
+          <li>
+            <a href="#register" class="btn-link is-big">Create account</a>
+          </li>
+        </ul>
+        <div id="js-region-body"></div>
 
       </div><!-- //col -->
     </div>

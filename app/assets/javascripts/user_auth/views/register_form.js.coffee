@@ -2,8 +2,6 @@ UserAuth.Views.RegisterForm = Marionette.View.extend
 
   tagName: 'form'
   
-  className: 'form-wrapper'
-
   template: JST['user_auth/register_form']
 
   ui:
