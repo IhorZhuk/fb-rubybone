@@ -1,7 +1,12 @@
 class FamilyBudget.Views.TransactionsFormAdd extends FamilyBudget.Views.TransactionsFormBase
 
   initialize: (ops) ->
+    super
     @collection = ops.collection
+    
+  onRender: ->
+    super
+    @ui.date.val FamilyBudget.Utilities.Dates.getToday()
 
   createModel: ->
     @model = new FamilyBudget.Models.Transaction
@@ -26,10 +31,9 @@ class FamilyBudget.Views.TransactionsFormAdd extends FamilyBudget.Views.Transact
       changes: ''
     )
     
-  
   submit: (e) ->
     e.preventDefault()
     @createModel()
     @startListen()
-    @hideErrors()
+    @resetInvalidInputs()
     if @model.isValid() then @save() else @renderErrors()

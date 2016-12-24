@@ -24,4 +24,7 @@ FamilyBudget.Utilities.Dates =
     date = 
       from: new Date(now.setDate(now.getDate() - now.getDay() - 7))
       to: new Date(now.setDate(now.getDate() - now.getDay() - 1));
+
+  getToday: ->
+    date = new Date().toISOString().slice(0,10);
     

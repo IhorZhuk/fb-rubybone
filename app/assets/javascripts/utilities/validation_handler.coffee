@@ -2,7 +2,6 @@ FamilyBudget.Utilities.ValidationHandler =
 
   resetInvalidInputs: ->
     inputs = @$el.find('.is-invalid')
-    inputs.val ''
     inputs.removeClass 'is-invalid'
     @ui.error.html('').hide()
 

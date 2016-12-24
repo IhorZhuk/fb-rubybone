@@ -13,36 +13,15 @@ class FamilyBudget.Views.TransactionsFormBase extends Marionette.View
   events: 
     'submit': 'submit'
 
+  initialize: ->
+    Cocktail.mixin @, FamilyBudget.Utilities.ValidationHandler
+
   onRender: ->
     @renderCategories()
 
   startListen: ->
     @listenTo @model, 'invalid', @renderErrors
     @listenTo @model, 'error', @parseErrorResponse
-
-  resetInputs: ->
-    @hideErrors()
-    @ui.title.val ''
-    @ui.amount.val ''
-    @ui.note.val ''
-
-  renderErrors: (model, errors) ->
-    _.each errors, @renderError, @
-
-  renderError:(errors, attribute) ->
-    error = errors.join '; '
-    @$el.find('input[name=' + attribute + ']').addClass 'is-invalid'
-    @ui.error.prepend('<span>' + attribute + ' ' + error + ';</span>').show()
-
-  parseErrorResponse: (model, resp) ->
-    if resp and resp.responseText
-      errors = JSON.parse resp.responseText
-      @renderErrors(model, errors.errors)
-
-  hideErrors: ->
-    @ui.title.removeClass 'is-invalid'
-    @ui.amount.removeClass 'is-invalid'
-    @ui.error.html('').hide()
 
   renderCategories: ->
     collection = new FamilyBudget.Collections.Categories()
