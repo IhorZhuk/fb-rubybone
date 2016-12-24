@@ -4,22 +4,22 @@
 
 <nav>
   <ul class="list-unstyled navbar-list">
-    <li>
+    <!--<li>
       <a href="#" data-name="home">
         <i class="fa fa-home"></i>
         <span>Overview</span>
+      </a>
+    </li>-->
+    <li>
+      <a href="#add" data-name="add">
+        <i class="fa fa-plus"></i>
+        <span>Add Transaction</span>
       </a>
     </li>
     <li>
       <a href="#transactions" data-name="transactions">
         <i class="fa fa-list"></i>
         <span>Transactions</span>
-      </a>
-    </li>
-    <li>
-      <a href="#add" data-name="add">
-        <i class="fa fa-plus"></i>
-        <span>Add Transaction</span>
       </a>
     </li>
      <li>

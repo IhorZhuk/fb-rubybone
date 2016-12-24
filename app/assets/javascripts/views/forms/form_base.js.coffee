@@ -22,6 +22,14 @@ class FamilyBudget.Views.TransactionsFormBase extends Marionette.View
   startListen: ->
     @listenTo @model, 'invalid', @renderErrors
     @listenTo @model, 'error', @parseErrorResponse
+  
+  resetInputs: ->
+    @ui.title.val ''
+    @ui.amount.val ''
+    @ui.note.val ''
+    @ui.error.html('').hide()
+
+  
 
   renderCategories: ->
     collection = new FamilyBudget.Collections.Categories()
