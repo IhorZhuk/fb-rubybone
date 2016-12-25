@@ -50,22 +50,12 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    new_transaction = Transaction.create(
-      user: current_user,
-      title: params[:title],
-      amount: params[:amount],
-      date: params[:date],
-      note: params[:note],
-      currency: params[:currency],
-      category_id: params[:category_id],
-      kind: params[:kind]
-    )
+    new_transaction = Transaction.create({user: current_user}.merge(transaction_params))
 
     if new_transaction.save
-      res_transaction = current_user.transactions.all.includes(:category).find(new_transaction.id).to_json(
-        include: { category: {only: [:id, :title]}}
-      )
-      render json: res_transaction
+      category = new_transaction.category
+
+      render json: new_transaction.attributes.merge(category: category.attributes.slice('id', 'title'))
     else
       respond_with new_transaction
     end

@@ -3326,5 +3326,3 @@
 	return Marionette;
 
 }));
-
-//# sourceMappingURL=backbone.marionette.js.map
