@@ -5,16 +5,27 @@
 <div class="page-wrapper">
 
   <div class="row">
-    <div class="col-xs-4">
-
-      <div class="header-small">
-        <h2>Add new category:</h2>
-      </div>
-      <div id="js-region-add-category"></div>
-
-      <div id="js-region-categories" class="card"></div>
-
-    </div>
+    <div class="col-sm-2">
+      <ul class="list-unstyled menu-list js-menu">
+        <li>
+          <button data-target="categories" class="is-active">
+            <i class="fa fa-chevron-circle-right"></i>
+            Manage categories
+          </button>
+        </li>
+        <li>
+          <button data-target="user">
+            <i class="fa fa-chevron-circle-right"></i>
+            Edit account details
+          </button>
+        </li>
+      </ul>
+    </div><!-- //col -->
+    <div class="col-sm-4">
+      <div class="card">
+        <div id="js-region-content"></div>
+      </div><!-- //card -->
+    </div><!-- //col -->
   </div>
 
 </div><!-- //page-wrapper -->

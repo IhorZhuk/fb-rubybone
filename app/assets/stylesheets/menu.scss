@@ -1,0 +1,27 @@
+.menu-list {
+
+  button{
+    display: block;
+    color: $color-blue;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    border: none;
+    background:none;
+
+    i {
+      margin-right: 10px;
+      display: none;
+    }
+
+    &:hover,
+    &:focus  {
+      color: darken($color-blue, 10%);
+      text-decoration: none;
+      outline: none;
+    }
+
+    &.is-active i {
+      display: inline-block;
+    }
+  }
+}

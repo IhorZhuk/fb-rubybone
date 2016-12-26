@@ -9,8 +9,10 @@
     <div class="js-error alert-error display-none"></div>
 
     <div class="form-group">
-      <button class="btn-main is-blue">Submit</button>
+      <button class="btn-main is-blue">Add category</button>
     </div>
 
   </form>
 </div>
+
+<div id="js-region-table"></div>

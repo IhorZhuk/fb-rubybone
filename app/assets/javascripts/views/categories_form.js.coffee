@@ -9,8 +9,15 @@ FamilyBudget.Views.CategoryForm = Marionette.View.extend
   events:
     'submit': 'submit'
 
+  regions: 
+    'table': '#js-region-table'
+
   initialize: (ops) ->
     @collection = ops.collection
+
+  onRender: ->
+    @showChildView 'table', new FamilyBudget.Views.CategoriesTable
+      collection: @collection
 
   createModel: ->
     @model = new FamilyBudget.Models.Category

@@ -54,7 +54,6 @@ class TransactionsController < ApplicationController
 
     if new_transaction.save
       category = new_transaction.category
-
       render json: new_transaction.attributes.merge(category: category.attributes.slice('id', 'title'))
     else
       respond_with new_transaction

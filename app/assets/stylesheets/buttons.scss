@@ -26,6 +26,11 @@
   &.is-big {
     font-size: 12px;
   }
+
+  &.is-active {
+    color: darken($color-blue, 10%);
+    text-decoration: underline;
+  }
 }
 
 .btn-list {
