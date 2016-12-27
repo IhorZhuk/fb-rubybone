@@ -24,10 +24,9 @@ FamilyBudget.Views.UserSettings = Marionette.View.extend
     @listenTo @user, 'destroy', @showLoginScreen
     @listenTo @user, 'invalid', @renderErrors
     @listenTo @user, 'error', @parseErrorResponse
-    @listenTo @user, 'sync', @renderMessage
+    @listenTo @user, 'sync', @setValues
+    @user.fetch()
 
-  onRender: ->
-    @setValues()
 
   setValues: ->
     user = @user.toJSON()
@@ -55,5 +54,6 @@ FamilyBudget.Views.UserSettings = Marionette.View.extend
       email: @ui.email.val()
       password: @ui.password.val()
       password_confirmation: @ui.passwordConfirm.val()
-    @user.save()
+    @user.save null, success: (model, res) =>
+        @renderMessage()
     

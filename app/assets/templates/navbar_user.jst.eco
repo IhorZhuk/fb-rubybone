@@ -1,0 +1,5 @@
+<p>
+  <b><%= @name %></b>
+  <a href="/logout" class="pull-right btn-link">Log Out</a>
+</p>
+<p><i><%= @email %></i></p>

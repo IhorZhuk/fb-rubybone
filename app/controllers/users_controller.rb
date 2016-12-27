@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     respond_with current_user.to_json(only: [:email, :name, :id])
   end
 
+  def show
+    respond_with current_user.to_json(only: [:email, :name, :id])
+  end
+
   def update
     # TODO
     #proper response

@@ -53,4 +53,19 @@
   }
 }
 
+.navbar-user {
+  padding: 10px 15px;
+  background-color: lighten($color-notice, 15%);
+
+  p {
+    margin: 0;
+    font-size: 12px;
+  }
+
+  li {
+    margin-right: 10px;
+    font-size: 15px;
+  }
+}
+
 

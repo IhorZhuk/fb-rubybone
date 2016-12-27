@@ -8,9 +8,21 @@ FamilyBudget.Views.Navbar = Marionette.View.extend
     'navbar': '.navbar-list'
     'links': '.navbar-list a'
 
+  regions:
+    user: 
+      el: '#js-region-user'
+      replaceElement: true
+
   initialize: (opts) ->
     @router = opts.router
+    @listenTo FamilyBudget.user, 'sync', @renderUserBar
     @listenTo @router, 'route', @setActiveLink
+
+    FamilyBudget.user.fetch()
+
+  renderUserBar: ->
+    @showChildView 'user', new FamilyBudget.Views.NavbarUser
+      model: FamilyBudget.user
 
   setActiveLink: (name, path, args) ->
     @ui.links.removeClass 'is-active'
