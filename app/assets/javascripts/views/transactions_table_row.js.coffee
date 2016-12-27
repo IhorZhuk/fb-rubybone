@@ -17,6 +17,7 @@ FamilyBudget.Views.TransactionsTableRow = Marionette.View.extend
 
   initialize: ->
     @listenTo @model, 'remove', @removeView
+    @listenTo @model, 'change', @render
 
   toggleNote: ->
     @ui.note.toggleClass 'is-hidden'

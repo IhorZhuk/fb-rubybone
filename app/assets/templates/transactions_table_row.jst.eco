@@ -15,7 +15,7 @@
             <%= @category.title %>
         <% end %>
       </td>
-      <td class="amount <%= if @kind == 'credit' then 'color-positive' else 'color-negative' %>"><%= @amount.toFixed(2) %> <%= @currency %></td>
+      <td class="amount <%= if @kind == 'credit' then 'color-positive' else 'color-negative' %>"><%= Number(@amount).toFixed(2) %> <%= @currency %></td>
       <td class="ops">
         <ul class="list-inline btn-list">
           <li class="js-edit">
