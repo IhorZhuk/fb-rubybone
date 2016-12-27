@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   respond_to :json
 
   def new
-    # renders login screen with signup and loign forms
+    # renders login screen
   end
 
   def create
@@ -13,12 +13,14 @@ class SessionsController < ApplicationController
       # logged in when they navigate around our website.
       session[:user_id] = user.id
     else
-    render json: { 
-      errors: {
-        user: ["User with such email doesn't exist"]
-      }
-    }, status: :not_found
+      render json: { 
+        errors: {
+          user: ["User with such email doesn't exist"]
+        }
+      }, status: :not_found
     end
+    # TODO
+    # prevent unlogged user from accesing inner pages.add redirect
   end
 
   def destroy

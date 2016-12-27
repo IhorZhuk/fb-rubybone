@@ -20,7 +20,7 @@ UserAuth.Views.LoginForm = Marionette.View.extend
     @createSession()
     @resetInvalidInputs()
     if @session.isValid()
-      @session.save null, success: =>
+      @session.save null, success: (model, res) =>
         window.location.href = '../'
     else
       @renderErrors()

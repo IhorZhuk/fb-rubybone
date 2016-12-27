@@ -22,6 +22,9 @@ FamilyBudget.Views.Layout.Settings = Marionette.View.extend
         @showChildView 'content', new FamilyBudget.Views.CategoryForm
           collection: collection
 
+  showUserSettings: ->
+    @showChildView 'content', new FamilyBudget.Views.UserSettings()
+
   navigate: (e) ->
     e.preventDefault()
     target = $(e.target).closest 'button'
@@ -30,4 +33,4 @@ FamilyBudget.Views.Layout.Settings = Marionette.View.extend
 
     switch target.data('target')
       when 'categories' then @showCategories()
-      when 'user' then console.log('user')
+      when 'user' then @showUserSettings()

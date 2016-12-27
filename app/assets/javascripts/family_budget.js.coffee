@@ -12,9 +12,10 @@ window.FamilyBudget =
 
 FamilyBudget.App =  Marionette.Application.extend
 
-  initialize: ->
+  onBeforeStart: ->
     FamilyBudget.Channels.transactionsTable = Backbone.Radio.channel 'transctions_table'
-
+    FamilyBudget.user = new UserAuth.Models.User()
+    FamilyBudget.user.fetch()
     router = new FamilyBudget.Routers.Main()
     rootLayout = new FamilyBudget.Views.Layout.Root({router: router})
     @transactions = new FamilyBudget.Collections.Transactions()

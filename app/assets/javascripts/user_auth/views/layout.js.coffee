@@ -29,4 +29,3 @@ UserAuth.Views.Layout = Marionette.View.extend
 
   onRender: ->
     @renderLoginForm()
-    

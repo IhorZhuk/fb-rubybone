@@ -1,6 +1,6 @@
 UserAuth.Models.User = Backbone.Model.extend
 
-  urlRoot: 'users'
+  urlRoot: 'api/users'
 
   validate: (attrs, ops) ->
     errors = {}
@@ -8,6 +8,4 @@ UserAuth.Models.User = Backbone.Model.extend
       errors.name = ["can't be blank"]
     unless attrs.email
       errors.email = ["can't be blank"]
-    unless attrs.password
-      errors.password = ["can't be blank"]
     errors unless _.isEmpty errors
