@@ -23,14 +23,21 @@ class UsersController < ApplicationController
   end
 
   def update
-    # TODO
-    #proper response
-    if params[:password].present?
-      respond_with current_user.update(user_params)
-    else
-    #TODO
-    # how to update params
-      respond_with current_user.update_attributes(:name => params[:name], :email => params[:email] )
+    user = User.find(params[:id])
+    if user.id == current_user.id
+
+      if params[:password].present?
+        user.update(user_params)
+      else
+        user.update_attributes(:name => params[:name], :email => params[:email] )
+      end
+
+      unless user.valid?
+        render json: {
+          errors: user.errors
+        }, status: :unprocessable_entity
+      end
+
     end
   end
 

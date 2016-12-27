@@ -8,18 +8,6 @@
   border-right: 1px solid $color-border;
 }
 
-.navbar-header {
-  text-transform: uppercase;
-  font-size: 20px;
-  padding: 15px 5px;
-  font-weight: bold;
-
-  span {
-    font-weight: lighter;
-    font-size: 14px;
-  }
-}
-
 .navbar-list {
   a {
     display: block;
@@ -54,17 +42,14 @@
 }
 
 .navbar-user {
-  padding: 10px 15px;
+  padding: 12px 15px;
   background-color: lighten($color-notice, 15%);
 
   p {
     margin: 0;
     font-size: 12px;
-  }
-
-  li {
-    margin-right: 10px;
-    font-size: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
