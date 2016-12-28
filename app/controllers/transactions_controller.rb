@@ -27,6 +27,9 @@ class TransactionsController < ApplicationController
       transactions = transactions.order("#{filter_params[:order]} #{filter_params[:direction]}")  
     end
 
+    debit_sum = transactions.kind('debit').sum(:amount)
+    credit_sum = transactions.kind('credit').sum(:amount)
+    difference_sum = credit_sum - debit_sum
     transactions = transactions.page(params[:page]).per(per_page)
 
     transactions_with_categories = transactions.includes(:category).to_json(
@@ -38,8 +41,13 @@ class TransactionsController < ApplicationController
         per_page: per_page,
         current_page: transactions.current_page,
         total_pages: transactions.total_pages,
-        total_transactions: transactions.total_count
-      }, 
+      },
+      totals: {
+        count: transactions.total_count,
+        debit: debit_sum,
+        credit: credit_sum,
+        difference: difference_sum
+      },
       transactions: eval(transactions_with_categories)
     }
 

@@ -86,3 +86,15 @@
     text-align: right;
   }
 }
+
+.table-totals {
+
+  td:last-child {
+    text-align: right;
+  }
+
+  .difference td {
+    padding-top: 10px;
+    border-top: 1px solid $color-border;
+  }
+}

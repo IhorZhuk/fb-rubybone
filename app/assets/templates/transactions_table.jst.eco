@@ -13,5 +13,11 @@
   </table>
 </div><!-- //card -->
 
-<div id="js-region-pagination" class="pagination-wrapper"></div>
+<div class="row">
+  <div class="col-sm-7">
+    <div id="js-region-pagination" class="pagination-wrapper"></div>
+  </div>
+  <div class="col-sm-5" id="js-region-totals">
+  </div>
+</div><!-- //row -->
 

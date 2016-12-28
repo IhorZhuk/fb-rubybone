@@ -6,4 +6,5 @@ FamilyBudget.Collections.Transactions = Backbone.Collection.extend
 
   parse: (res) ->
     @pagination = res.pagination
+    @totals = res.totals
     res.transactions

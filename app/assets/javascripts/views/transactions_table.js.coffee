@@ -4,6 +4,7 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
 
   regions:
     'pagination': '#js-region-pagination'
+    'totals': '#js-region-totals'
     body: 
       el: '.js-tbody'
       replaceElement: true
@@ -17,6 +18,7 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
   renderTable: ->
     @showTable @collection
     @showPagination()
+    @showTotals()
 
   showTable: (collection) ->
     @showChildView 'body', new FamilyBudget.Views.TransactionsTableBody
@@ -26,6 +28,10 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
     if @collection.pagination.total_pages > 1
       @showChildView 'pagination', new FamilyBudget.Views.TransactionsPagination
         collection: @collection
+  
+  showTotals: ->
+    @showChildView 'totals', new FamilyBudget.Views.TransactionsTotals
+      collection: @collection
 
   onRender: ->
     @renderTable()

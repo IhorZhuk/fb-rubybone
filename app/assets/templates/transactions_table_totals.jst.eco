@@ -1,0 +1,20 @@
+<div class="card card-totals">
+  <table class="table-totals">
+    <tr>
+      <td>Quantity</td>
+      <td><%= @count %></td>
+    </tr>
+    <tr>
+      <td class="color-positive">Credit</td>
+      <td class="color-positive"><%= @credit.toFixed(2) %> EUR</td>
+    </tr>
+    <tr>
+      <td class="color-negative">Debit</td>
+      <td class="color-negative"><%= @debit.toFixed(2) %> EUR</td>
+    </tr>
+    <tr class="difference">
+      <td><strong>Difference</strong></td>
+      <td><strong><%= @difference.toFixed(2) %> EUR</strong></td>
+    </tr>
+  </table>
+</div>
