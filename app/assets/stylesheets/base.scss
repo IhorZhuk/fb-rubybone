@@ -2,6 +2,7 @@ body {
   font: 14px/1.5 'Ubuntu', sans-serif;
   color: $color-font;
   background-color: $color-bg;
+  min-width: 900px;
 }
 
 table {
@@ -12,6 +13,10 @@ table {
   }
 }
 
+h3 {
+  text-transform: uppercase;
+  font-size: 14px;
+}
 .base-content {
   padding-left: $navbar-width;
   padding-top: 62px;

@@ -1,0 +1,5 @@
+<div class="header">
+  <h1>Manage categories</h1>
+</div>
+
+<div id="js-region-content" class="page-wrapper"></div>

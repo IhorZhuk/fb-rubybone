@@ -1,0 +1,15 @@
+<div class="header">
+  <h1>Account details</h1>
+</div>
+
+<div class="page-wrapper">
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div id="js-region-content"></div>
+      </div><!-- //card -->
+    </div><!-- //col -->
+  </div>
+
+</div><!-- //page-wrapper -->

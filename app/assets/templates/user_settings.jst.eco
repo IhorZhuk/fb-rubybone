@@ -31,7 +31,7 @@
 </form>
 
 <div class="text-right">
-  <button class="js-delete-toggle btn-link">Delete account</button>
+  <button class="js-delete-toggle btn-link is-red">Delete account</button>
 </div>
 
 <div class="js-delete-alert alert-error display-none">

@@ -39,6 +39,27 @@
       color: #fff;
     }
   }
+
+  li.has-sub-nav {
+    > span {
+      display: block;
+      padding: 10px 15px;
+      padding-bottom: 5px;
+      border-top: 1px solid $color-border;
+    }
+  }
+
+}//navbar-list
+
+.navbar-sub {
+  a {
+    line-height: 1;
+    font-size: 13px;
+
+    i {
+      font-size: 14px;
+    }
+  }
 }
 
 .navbar-user {

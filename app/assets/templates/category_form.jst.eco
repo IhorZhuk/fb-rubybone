@@ -1,18 +1,22 @@
-<div class="form-wrapper">
-  <form>
+<div class="row">
+  <div class="col-sm-4">
+    <form>
+      <h3>Add new category:</h3>
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" name="title" class="form-control">
+      </div>
 
-    <div class="form-group">
-      <label for="title">Title:</label>
-      <input type="text" name="title" class="form-control">
+      <div class="js-error alert-error display-none"></div>
+
+      <div class="form-group">
+        <button class="btn-main is-blue">Submit</button>
+      </div>
+    </form>
+  </div><!-- //col -->
+  <div class="col-sm-8">
+    <h3>Current categories:</h3>
+    <div id="js-region-table" class="card">
     </div>
-
-    <div class="js-error alert-error display-none"></div>
-
-    <div class="form-group">
-      <button class="btn-main is-blue">Add category</button>
-    </div>
-
-  </form>
-</div>
-
-<div id="js-region-table"></div>
+  </div><!-- //col -->
+</div><!-- //row -->

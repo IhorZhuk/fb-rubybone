@@ -38,6 +38,6 @@ FamilyBudget.Views.Layout.Add = Marionette.View.extend
   onPaginationClick: (page) ->
     @filters.page = page
     # TODO
-    # if don't use destroy there is an error'
+    # if don't use destroy there is an error
     @getChildView('table').destroy()
     @fetchCollection @filters
