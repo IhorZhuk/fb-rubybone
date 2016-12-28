@@ -23,8 +23,9 @@ FamilyBudget.Views.TransactionsTable = Marionette.View.extend
       collection: collection
 
   showPagination: ->
-    @showChildView 'pagination', new FamilyBudget.Views.TransactionsPagination
-      collection: @collection
+    if @collection.pagination.total_pages > 1
+      @showChildView 'pagination', new FamilyBudget.Views.TransactionsPagination
+        collection: @collection
 
   onRender: ->
     @renderTable()

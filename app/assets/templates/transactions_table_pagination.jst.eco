@@ -1,37 +1,33 @@
-<% unless @total_pages == 1 : %>
+<ul class="list-inline">
+  <% unless @current_page == 1 : %>
+    <li>
+      <span data-page="<%= (@current_page - 1) %>"><i class="fa fa-chevron-left"></i></span>
+    </li>
+  <% end %>
 
-  <ul class="list-inline">
-    <% unless @current_page == 1 : %>
-      <li>
-        <span data-page="<%= (@current_page - 1) %>"><i class="fa fa-chevron-left"></i></span>
-      </li>
+  <li><span data-page="1">1</span></li>
+
+  <% if @current_page != @total_pages and @current_page != 1 : %>
+    <% unless (@current_page - 1) == 1 : %>
+      <li><span data-page="disabled">...</span></li>
     <% end %>
+    <li>
+      <span data-page="<%= @current_page %>"><%= @current_page %></span>
+    </li>
+  <%= end %>
 
-    <li><span data-page="1">1</span></li>
+  <% unless (@current_page + 1) == @total_pages : %>
+    <li>
+      <span data-page="disabled">...</span>
+    </li>
+  <% end %>
 
-    <% if @current_page != @total_pages and @current_page != 1 : %>
-      <% unless (@current_page - 1) == 1 : %>
-        <li><span data-page="disabled">...</span></li>
-      <% end %>
-      <li>
-        <span data-page="<%= @current_page %>"><%= @current_page %></span>
-      </li>
-    <%= end %>
+  <li><span data-page="<%= @total_pages %>"><%= @total_pages %></span></li>
 
-    <% unless (@current_page + 1) == @total_pages : %>
-      <li>
-        <span data-page="disabled">...</span>
-      </li>
-    <% end %>
-
-    <li><span data-page="<%= @total_pages %>"><%= @total_pages %></span></li>
-
-    <% unless @current_page == @total_pages : %>
-      <li>
-        <span data-page="<%= (@current_page + 1) %>"><i class="fa fa-chevron-right"></i></span>
-      </li>
-    <% end %>
-    
-  </ul>
-
-<% end %>
+  <% unless @current_page == @total_pages : %>
+    <li>
+      <span data-page="<%= (@current_page + 1) %>"><i class="fa fa-chevron-right"></i></span>
+    </li>
+  <% end %>
+  
+</ul>

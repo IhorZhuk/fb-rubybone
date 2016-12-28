@@ -11,14 +11,18 @@ FamilyBudget.Views.Layout.Add = Marionette.View.extend
 
   initialize: ->
     @collection = new FamilyBudget.Collections.Transactions()
+    @filters = 
+      created_at: new Date()
+    @listenTo FamilyBudget.Channels.transactionsTable, 'pagination:clicked', @onPaginationClick
+    @listenTo @collection, 'reset', @renderTable
+    @fetchCollection @filters
+
+  fetchCollection: (data) ->
     @collection.fetch
       error: (e) ->
         console.log e
-      data: 
-        created_at: new Date()
+      data: data
       reset: true
-    @listenTo @collection, 'update', @renderTable
-    @listenTo @collection, 'reset', @renderTable
 
   onRender: ->
     @showChildView 'form', new FamilyBudget.Views.TransactionsFormAdd
@@ -30,3 +34,10 @@ FamilyBudget.Views.Layout.Add = Marionette.View.extend
         collection: @collection
     else
       @showChildView 'table', new FamilyBudget.Views.TransactionsEmpty()
+
+  onPaginationClick: (page) ->
+    @filters.page = page
+    # TODO
+    # if don't use destroy there is an error'
+    @getChildView('table').destroy()
+    @fetchCollection @filters

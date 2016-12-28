@@ -1,7 +1,7 @@
-user_id = 5
-category_id = 8
+user_id = 15
+category_id = 16
 
-for i in (1..75)
+for i in (1..55)
   kind = ['credit', 'debit']
 
   Transaction.create!(

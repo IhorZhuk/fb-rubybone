@@ -43,6 +43,5 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
   onPaginationClick: (page) ->
     filters = @filterView.getCurrentState()
     filters.page = page
-    console.log filters
     @renderTable filters
 
