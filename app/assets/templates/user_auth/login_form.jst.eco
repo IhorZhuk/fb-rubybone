@@ -13,6 +13,11 @@
   </div><!-- //col -->
 </div><!-- //row -->
 
+<div class="form-group">
+  <input type="checkbox" id="check-1" name="remember_me">
+  <label for="check-1">Remember me</label>
+</div>
+
 <button type="submit" class="btn-main is-blue">Submit</button>
 
 <div class="js-error alert-error display-none"></div>

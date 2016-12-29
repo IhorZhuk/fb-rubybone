@@ -7,6 +7,7 @@ UserAuth.Views.LoginForm = Marionette.View.extend
   ui:
     'email': 'input[name="email"]'
     'password': 'input[name="password"]'
+    'remember': 'input[name="remember_me"]'
     'error': '.js-error'
 
   events:
@@ -26,9 +27,14 @@ UserAuth.Views.LoginForm = Marionette.View.extend
       @renderErrors()
 
   createSession: ->
+    if @ui.remember.is(':checked')
+      remember = 'on'
+    else
+      remember = 'off'
     @session = new UserAuth.Models.Session
       email: @ui.email.val()
       password: @ui.password.val()
+      remeber_me: remember
     
     @listenTo @session, 'invalid', @renderErrors
     @listenTo @session, 'error', @parseErrorResponse
