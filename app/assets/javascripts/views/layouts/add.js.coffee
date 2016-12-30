@@ -33,7 +33,8 @@ FamilyBudget.Views.Layout.Add = Marionette.View.extend
       @showChildView 'table', new FamilyBudget.Views.TransactionsTable
         collection: @collection
     else
-      @showChildView 'table', new FamilyBudget.Views.TransactionsEmpty()
+      @showChildView 'table', new FamilyBudget.Views.TransactionsEmpty
+        message: 'You haven\'t added any transactions today'
 
   onPaginationClick: (page) ->
     @filters.page = page

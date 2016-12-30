@@ -29,7 +29,8 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
           @showChildView 'content', new FamilyBudget.Views.TransactionsTable
             collection: collection
         else
-          @showChildView 'content', new FamilyBudget.Views.TransactionsEmpty()
+          @showChildView 'content', new FamilyBudget.Views.TransactionsEmpty
+            message: 'There no transactions according to your search criteria'
       data: data
       changes: ''
       reset: true
