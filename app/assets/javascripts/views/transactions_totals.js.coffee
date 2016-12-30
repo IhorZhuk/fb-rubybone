@@ -3,7 +3,7 @@ FamilyBudget.Views.TransactionsTotals = Marionette.View.extend
   template: JST['transactions_table_totals']
 
   initialize: (ops) ->
-    @totals = ops.collection.totals
-  
+    @collection = ops.collection
+
   render: ->
-    @$el.html( @template(@totals) )
+    @$el.html( @template(@collection.totals) )

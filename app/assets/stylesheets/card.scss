@@ -7,8 +7,29 @@
     padding-top: 0;
   }
 
-  &.card-totals {
-    margin-top: 10px;
+  &.card-total {
+    margin-bottom: 10px;
     padding-bottom: 15px;
+  }
+}
+
+.card-total-title {
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: normal;
+  font-size: 11px;
+}
+
+.card-total-number {
+  margin: 0;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.card-row.row {
+  margin: 0 -5px;
+
+  > div {
+    padding: 0 5px;
   }
 }

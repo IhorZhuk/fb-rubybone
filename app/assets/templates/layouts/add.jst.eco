@@ -12,6 +12,7 @@
     </div>
 
     <div class="col-sm-12 col-lg-9">
+      <div id="js-region-totals"></div>
       <div id="js-region-table"></div>
     </div>
   </div>

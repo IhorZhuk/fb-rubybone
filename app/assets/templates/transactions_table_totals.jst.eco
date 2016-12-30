@@ -1,20 +1,31 @@
-<div class="card card-totals">
-  <table class="table-totals">
-    <tr>
-      <td>Quantity</td>
-      <td><%= @count %></td>
-    </tr>
-    <tr>
-      <td class="color-positive">Credit</td>
-      <td class="color-positive"><%= @credit.toFixed(2) %> EUR</td>
-    </tr>
-    <tr>
-      <td class="color-negative">Debit</td>
-      <td class="color-negative"><%= @debit.toFixed(2) %> EUR</td>
-    </tr>
-    <tr class="difference">
-      <td><strong>Difference</strong></td>
-      <td><strong><%= @difference.toFixed(2) %> EUR</strong></td>
-    </tr>
-  </table>
-</div>
+<div class="row card-row">
+
+  <div class="col-xs-6 col-sm-3">
+    <div class="card card-total">
+      <h3 class="card-total-title">Quantity</h3>
+      <p class="card-total-number"><%= @count %></p>
+    </div>
+  </div><!-- //col -->
+
+  <div class="col-xs-6 col-sm-3">
+    <div class="card card-total">
+      <h3 class="card-total-title">Credit</h3>
+      <p class="card-total-number color-positive"><%= @credit.toFixed(2) %> EUR</p>
+    </div>
+  </div><!-- //col -->
+
+  <div class="col-xs-6 col-sm-3">
+    <div class="card card-total">
+      <h3 class="card-total-title">Debit</h3>
+      <p class="card-total-number color-negative"><%= @debit.toFixed(2) %> EUR</p>
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-sm-3">
+    <div class="card card-total">
+      <h3 class="card-total-title">Difference</h3>
+      <p class="card-total-number"><%= @difference.toFixed(2) %> EUR</p>
+    </div>
+  </div><!-- //col -->
+
+</div><!-- //row -->

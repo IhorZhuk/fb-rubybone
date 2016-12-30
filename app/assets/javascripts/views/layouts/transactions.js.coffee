@@ -5,6 +5,7 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
   regions:
     'filter': '#js-region-filter'
     'content': '#js-region-page-content'
+    'totals': '#js-region-totals'
 
   initialize: ->
     @collection = new FamilyBudget.Collections.Transactions()
@@ -19,14 +20,16 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
       order: 'date'
       direction: 'DESC'
 
-    @renderTable date
+    @renderContent date
     @renderFilter()
     
-  renderTable: (data) ->
+  renderContent: (data) ->
     @collection.fetch
       success: (collection) =>
         if collection.length > 0
           @showChildView 'content', new FamilyBudget.Views.TransactionsTable
+            collection: collection
+          @showChildView 'totals', new FamilyBudget.Views.TransactionsTotals
             collection: collection
         else
           @showChildView 'content', new FamilyBudget.Views.TransactionsEmpty
@@ -39,10 +42,10 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
     @showChildView 'filter', @filterView
 
   onFilterClick: (filters) ->
-    @renderTable filters
+    @renderContent filters
 
   onPaginationClick: (page) ->
     filters = @filterView.getCurrentState()
     filters.page = page
-    @renderTable filters
+    @renderContent filters
 

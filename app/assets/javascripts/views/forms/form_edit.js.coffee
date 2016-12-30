@@ -30,6 +30,7 @@ class FamilyBudget.Views.TransactionsEdit extends FamilyBudget.Views.Transaction
       null,
       success: (e) =>
         @triggerMethod 'modal:close'
+        FamilyBudget.Channels.transactionsTable.trigger 'transaction:edited'
       error: =>
         alert 'Error in updating'
     )
