@@ -13,10 +13,18 @@
   </div><!-- //col -->
 </div><!-- //row -->
 
-<div class="form-group">
-  <input type="checkbox" id="check-1" name="remember_me">
-  <label for="check-1">Remember me</label>
-</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <input type="checkbox" id="check-1" name="remember_me">
+      <label for="check-1">Remember me</label>
+    </div>
+  </div><!-- //col -->
+  <div class="col-sm-6">
+   <a href="#password_restore_email" class="btn-link">Forgot password?</a>
+  </div>
+</div><!-- //row -->
+
 
 <button type="submit" class="btn-main is-blue">Submit</button>
 

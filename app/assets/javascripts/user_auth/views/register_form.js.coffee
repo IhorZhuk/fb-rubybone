@@ -23,7 +23,7 @@ UserAuth.Views.RegisterForm = Marionette.View.extend
     @resetInvalidInputs()
     if @user.isValid()
       @user.save null, success: (model, res) =>
-        window.location.href = '../'
+        @triggerMethod 'user:created', @user
     else
       @renderErrors()
 

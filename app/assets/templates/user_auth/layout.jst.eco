@@ -13,7 +13,7 @@
           </li>
         </ul>
         <div id="js-region-body"></div>
-
+        <div class="js-alert alert-success display-none"></div>
       </div><!-- //col -->
     </div>
   </div><!-- //contaner -->

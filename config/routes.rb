@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   scope "api" do 
-    resources :transactions, :categories, :users
+    resources :transactions, :categories, :users, :password_resets
   end
 
   root 'main#index'
