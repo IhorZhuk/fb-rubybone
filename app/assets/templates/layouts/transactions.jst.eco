@@ -1,7 +1,5 @@
 <div class="header">
-  <div class="row">
-    <h1>Transactions</h1>
-  </div>
+  <h1>Transactions</h1>
 </div>
 
 <div class="page-wrapper">
