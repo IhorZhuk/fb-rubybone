@@ -1,39 +1,47 @@
-<div id="js-region-user"></div>
+<div class="navbar">
 
-<nav>
-  <ul class="list-unstyled navbar-list">
-    <!--<li>
-      <a href="#" data-name="home">
-        <i class="fa fa-home"></i>
-        <span>Overview</span>
-      </a>
-    </li>-->
-    <li>
-      <a href="#add" data-name="add">
-        <i class="fa fa-plus"></i>
-        <span>Add Transaction</span>
-      </a>
-    </li>
-    <li>
-      <a href="#transactions" data-name="transactions">
-        <i class="fa fa-list"></i>
-        <span>Transactions</span>
-      </a>
-    </li>
-     <li class="has-sub-nav">
-      <span>Settings:</span>
-      <ul class="list-unstyled navbar-sub">
-        <li>
-          <a href="#categories" data-name="categories">
-            <i class="fa fa-pencil-square-o"></i><span>Manage Categories</span>
-          </a>
-        </li>
-        <li>
-          <a href="#user_settings" data-name="user_settings">
-            <i class="fa fa-user-o"></i><span>Account Details</span>
-          </a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+  <div id="js-region-user"></div>
+  <div class="navbar-toggle js-navbar-toggle">
+    <i class="fa fa-bars"></i>
+  </div>
+  <nav>
+    <ul class="list-unstyled navbar-list">
+      <!--<li>
+        <a href="#" data-name="home">
+          <i class="fa fa-home"></i>
+          <span>Overview</span>
+        </a>
+      </li>-->
+      <li>
+        <a href="#add" data-name="add">
+          <i class="fa fa-plus"></i>
+          <span>Add Transaction</span>
+        </a>
+      </li>
+      <li>
+        <a href="#transactions" data-name="transactions">
+          <i class="fa fa-list"></i>
+          <span>Transactions</span>
+        </a>
+      </li>
+      <li class="has-sub-nav">
+        <span>Settings:</span>
+        <ul class="list-unstyled navbar-sub">
+          <li>
+            <a href="#categories" data-name="categories">
+              <i class="fa fa-pencil-square-o"></i><span>Manage Categories</span>
+            </a>
+          </li>
+          <li>
+            <a href="#user_settings" data-name="user_settings">
+              <i class="fa fa-user-o"></i><span>Account Details</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+</div><!-- //navbar -->
+
+<div class="navbar-overlay js-navbar-overlay"></div>

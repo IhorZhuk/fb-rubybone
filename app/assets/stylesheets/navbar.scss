@@ -6,7 +6,51 @@
   width: $navbar-width;
   background-color: $color-navbar-bg;
   border-right: 1px solid $color-border;
+  z-index: 12;
+
+  .page.has-navbar & {
+    left: -$navbar-width;
+    border-right: none;
+
+    &.is-active {
+      @include transition;
+      left: 0;
+    }
+  }
 }
+
+.navbar-toggle {
+  @include transition;
+  display: none;
+  cursor: pointer;
+
+  .page.has-navbar & {
+    display: block;
+    position: fixed;
+    top:12px;
+    left: -5px;
+    width: auto;
+    color: #fff;
+    z-index: 13;
+    font-size: 1.75em;
+  }
+}
+
+.navbar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.65);
+  z-index: 11;
+
+  &.is-active {
+    display: block;
+  }
+}
+
 
 .navbar-list {
   a {

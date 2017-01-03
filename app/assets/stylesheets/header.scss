@@ -11,6 +11,15 @@
     display: inline-block;
     vertical-align: middle;
   }
+
+  .page.has-navbar & {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    box-shadow: $shadow-l1;
+  }
 }
 
 .header-small {

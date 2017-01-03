@@ -21,6 +21,12 @@ FamilyBudget.Views.Layout.Root = Marionette.View.extend
 
   onRender: ->
     @showChildView 'navbar', new FamilyBudget.Views.Navbar({router: @router})
+    @checkForMobile()
+
+  checkForMobile: ->
+    page =  @$el.find '.page'
+    if $(window).width() < 850
+     page.addClass('has-navbar')
 
   renderHome: ->
     @showChildView 'page', new FamilyBudget.Views.Layout.Home()

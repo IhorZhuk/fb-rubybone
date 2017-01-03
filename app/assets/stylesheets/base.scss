@@ -2,21 +2,21 @@ body {
   font: 14px/1.5 'Ubuntu', sans-serif;
   color: $color-font;
   background-color: $color-bg;
-  min-width: 900px;
 }
 
 table {
   width: 100%;
-
-  td, th {
-    //vertical-align: top;
-  }
 }
 
 h3 {
   text-transform: uppercase;
   font-size: 14px;
 }
+
 .base-content {
   padding-left: $navbar-width;
+
+  .page.has-navbar & {
+    padding-left: 0;
+  }
 }

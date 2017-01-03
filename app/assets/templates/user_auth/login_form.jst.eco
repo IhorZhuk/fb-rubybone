@@ -21,7 +21,9 @@
     </div>
   </div><!-- //col -->
   <div class="col-sm-6">
-   <a href="#password_restore_email" class="btn-link">Forgot password?</a>
+    <div class="form-group">
+      <a href="#password_restore_email" class="btn-link">Forgot password?</a>
+    </div>
   </div>
 </div><!-- //row -->
 
