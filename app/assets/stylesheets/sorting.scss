@@ -4,11 +4,37 @@
 
 .sorting-bar-list {
   padding-top: 10px;
+
   li {
     margin-right: 15px;
   }
+
 }
 
 .sorting-bar-toggle {
   padding-top: 5px;
 }
+
+@media (max-width: $sm) {
+
+  .sorting-bar-list li {
+    display: inline-block;
+    width: 50%;
+    margin-right: -5px;
+    padding: 5px 0;
+    border-bottom: 1px solid $color-border;
+
+    &:last-child {
+      border:none;
+    }
+  }
+  
+}// media
+
+@media (max-width: $sx) {
+  .sorting-bar-list li {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+  }
+}//media
