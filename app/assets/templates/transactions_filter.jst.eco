@@ -13,6 +13,10 @@
             <div id="js-region-period" class="display-inline-block"></div>
           </li>
           <li>
+            <label>Category:</label>
+            <div id="js-region-category" class="display-inline-block"></div>
+          </li>
+          <li>
             <label>Type:</label>
             <div id="js-region-type" class="display-inline-block"></div>
           </li>

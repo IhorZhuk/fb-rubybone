@@ -8,8 +8,14 @@
   </span>
   
   <ul class="dropdown-list list-unstyled js-dropdown-list">
-    <% for item in @items: %>
-      <li data-value="<%= item %>"><%= item %></li>
+    <% if @customVals? : %>
+      <% for item in @items: %>
+        <li data-value="<%= item.value %>"><%= item.title %></li>
+      <% end %>
+    <% else : %>
+      <% for item in @items: %>
+        <li data-value="<%= item %>"><%= item %></li>
+      <% end %>
     <% end %>
   </ul>
 

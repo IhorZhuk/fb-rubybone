@@ -22,6 +22,7 @@ class FamilyBudget.Views.Dropdown extends Marionette.View
       inputName: ops.inputName
       placeholder: ops.placeholder
       items: ops.items
+      customVals: ops.customVals
 
     @channel = 
       obj: ops.channel

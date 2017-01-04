@@ -29,8 +29,6 @@ class FamilyBudget.Views.TransactionsFormBase extends Marionette.View
     @ui.note.val ''
     @ui.error.html('').hide()
 
-  
-
   renderCategories: ->
     collection = new FamilyBudget.Collections.Categories()
     collection.fetch
