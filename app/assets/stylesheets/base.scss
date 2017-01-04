@@ -16,7 +16,7 @@ h3 {
 .base-content {
   padding-left: $navbar-width;
 
-  .page.has-navbar & {
+  @media (max-width: $sm) {
     padding-left: 0;
   }
 }

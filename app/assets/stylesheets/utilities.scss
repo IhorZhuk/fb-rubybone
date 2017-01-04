@@ -18,6 +18,8 @@ $navbar-width: 210px;
 $shadow-l1: 0 2px 3px 0 rgba(0,0,0,0.1);
 $shadow-l2: 0 3px 10px 0 rgba(0,0,0,0.06);
 
+$sm: 850px;
+
 //mixins
 @mixin transition($prop:all, $time:.3s, $easing:ease-in-out) {
   -webkit-transition: $prop $time $easing;

@@ -1,4 +1,2 @@
-<div class="page">
-  <div id="js-region-navbar"></div>
-  <div id="js-region-page" class="base-content"></div>
-</div>
+<div id="js-region-navbar"></div>
+<div id="js-region-page" class="base-content"></div>
