@@ -22,7 +22,3 @@
 
 #RubyMine files
 .idea/
-
-#RVM files
-.ruby-gemset
-.ruby-version
