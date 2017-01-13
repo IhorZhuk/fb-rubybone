@@ -2,7 +2,7 @@ FamilyBudget.Views.CategoriesTableRow = Marionette.View.extend
 
   tagName: 'tr'
 
-  template: JST['categories_table_row']
+  template: JST['categories/categories_table_row']
 
   ui:
     'btnDelete': '.js-delete'

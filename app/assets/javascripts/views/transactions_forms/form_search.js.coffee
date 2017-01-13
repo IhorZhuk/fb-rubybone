@@ -1,6 +1,6 @@
 FamilyBudget.Views.TransactionsFormSearch = Marionette.View.extend
   
-  template: JST['transactions_form_search']
+  template: JST['transactions/transactions_form_search']
 
   ui:
     'title' : 'input[name="title"]'

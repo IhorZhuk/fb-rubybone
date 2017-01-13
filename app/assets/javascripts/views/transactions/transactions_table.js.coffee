@@ -1,6 +1,6 @@
 FamilyBudget.Views.TransactionsTable = Marionette.View.extend
 
-  template: JST['transactions_table']
+  template: JST['transactions/transactions_table']
 
   regions:
     'pagination': '#js-region-pagination'
