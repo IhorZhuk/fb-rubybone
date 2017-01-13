@@ -19,7 +19,7 @@ class CurrenciesController < ApplicationController
 
 private
 
-  def carrency_params
+  def currency_params
     params.permit([:title])
   end
 

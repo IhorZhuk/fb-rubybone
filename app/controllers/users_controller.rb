@@ -8,6 +8,10 @@ class UsersController < ApplicationController
        user: user,
        title: 'Uncategorized'
       )
+      Currency.create(
+        user: user,
+        title: 'EUR'
+      )
     else
       respond_with user
     end

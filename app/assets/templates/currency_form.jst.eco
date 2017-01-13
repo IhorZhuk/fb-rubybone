@@ -1,0 +1,10 @@
+<form action="" class="form-wrapper">
+  <div class="form-group">
+    <label>Currency</label>
+    <input type="text" name="title" class="form-control">
+  </div>
+  <button type="submit" class="btn-main is-blue">Edit</button>
+
+  <div class="js-error alert-error display-none"></div>
+  <div class="js-success alert-success display-none"></div>
+</form>

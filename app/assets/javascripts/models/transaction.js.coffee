@@ -2,7 +2,6 @@ FamilyBudget.Models.Transaction =  Backbone.Model.extend
 
   defaults: 
     title: ''
-    currency: 'EUR'
     note: ''
     kind: ''
 
