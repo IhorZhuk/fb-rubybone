@@ -3,7 +3,9 @@ FamilyBudget.Views.Layout.UserSettings = Marionette.View.extend
   template: JST['layouts/user_settings']
 
   regions:
-     'content': '#js-region-content'
+     'userSettings': '#js-region-user-settings'
+     'currency': '#js-region-currency'
 
   onRender: ->
-    @showChildView 'content', new FamilyBudget.Views.UserSettings()
+    @showChildView 'userSettings', new FamilyBudget.Views.UserSettings()
+    @showChildView 'currency', new FamilyBudget.Views.CurrencyForm()

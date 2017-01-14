@@ -33,7 +33,8 @@ class TransactionsController < ApplicationController
     transactions = transactions.page(params[:page]).per(per_page)
 
     transactions_with_categories = transactions.includes(:category).to_json(
-      include: { category: {only: [:id, :title]}}
+      include: { category: {only: [:id, :title]} },
+      methods: :currency
     )
 
     render json: { 

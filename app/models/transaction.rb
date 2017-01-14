@@ -13,4 +13,8 @@ class Transaction < ApplicationRecord
   scope :today, -> (date) { where created_at: date.beginning_of_day..date.end_of_day}
   scope :from_to, -> (from, to) { where date: from.beginning_of_day..to.end_of_day}
 
+  def currency
+    user.currencies.first.title
+  end
+
 end

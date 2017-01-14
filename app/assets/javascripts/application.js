@@ -22,9 +22,9 @@
 //= require_tree ./models
 //= require_tree ./collections
 
-//= require ./views/forms/form_base.js.coffee
-//= require ./views/forms/form_add.js.coffee
-//= require ./views/forms/form_edit.js.coffee
+//= require ./views/transactions_forms/form_base.js.coffee
+//= require ./views/transactions_forms/form_add.js.coffee
+//= require ./views/transactions_forms/form_edit.js.coffee
 
 //= require_tree ./views
 

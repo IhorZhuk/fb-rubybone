@@ -1,6 +1,6 @@
 FamilyBudget.Views.Navbar = Marionette.View.extend
   
-  template: JST['navbar']
+  template: JST['navbar/navbar']
 
   ui:
     'wrapper': '.navbar'

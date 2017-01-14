@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :transactions, dependent: :destroy
   has_many :categories, dependent: :destroy
+  has_many :currencies, dependent: :destroy
 
   before_create { generate_token(:auth_token) }
   

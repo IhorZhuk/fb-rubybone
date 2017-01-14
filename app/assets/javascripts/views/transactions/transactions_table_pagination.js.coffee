@@ -1,6 +1,6 @@
 FamilyBudget.Views.TransactionsPagination = Marionette.View.extend
 
-  template: JST['transactions_table_pagination']
+  template: JST['transactions/transactions_table_pagination']
 
   className: 'pagination'
 

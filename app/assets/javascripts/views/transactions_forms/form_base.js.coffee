@@ -1,6 +1,6 @@
 class FamilyBudget.Views.TransactionsFormBase extends Marionette.View
 
-  template: JST['transactions_form']
+  template: JST['transactions/transactions_form']
 
   ui:
     'date': 'input[name="date"]'

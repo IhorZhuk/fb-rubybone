@@ -1,6 +1,6 @@
 FamilyBudget.Views.CategoryForm = Marionette.View.extend
 
-  template: JST['category_form']
+  template: JST['categories/category_form']
 
   ui:
     'title': 'input[name="title"]'
