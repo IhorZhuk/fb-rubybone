@@ -75,4 +75,3 @@ FamilyBudget.Views.TransactionsFilter = Marionette.View.extend
           placeholder: 'Any'
           items: @categories
           customVals: true
-        

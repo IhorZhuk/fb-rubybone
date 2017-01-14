@@ -29,7 +29,10 @@ class FamilyBudget.Views.Dropdown extends Marionette.View
       event: ops.channelEvent
 
   onRender: ->
-    @ui.input.val(@model.attributes.items[0])
+    if @model.toJSON().customVals
+      @ui.input.val(@model.attributes.items[0].value)
+    else
+      @ui.input.val(@model.attributes.items[0])
 
   toggleDropdown: ->
     @ui.dropdown.toggleClass 'is-active'
