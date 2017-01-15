@@ -83,7 +83,7 @@ class TransactionsController < ApplicationController
 private
 
   def transaction_params
-    allow = [:title, :amount, :date, :note, :kind, :currency, :category_id]
+    allow = [:title, :amount, :date, :note, :kind, :category_id]
     params.permit(allow)
   end
 
