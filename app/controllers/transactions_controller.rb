@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-  before_filter :authorize
+  before_action :authorize
   respond_to :json
 
   def index
@@ -9,14 +9,14 @@ class TransactionsController < ApplicationController
 
     d_f = filter_params[:date_from].try(:to_date) || '01-01-1900'.to_date
     d_t = filter_params[:date_to].try(:to_date) || Date.today
-    
+
     transactions = transactions.from_to(d_f, d_t)
 
     if filter_params[:created_at]
       date = filter_params[:created_at].to_date
       transactions = transactions.today(date)
     end
-    
+
     transactions = transactions.category(filter_params[:category_id]) if filter_params[:category_id].present?
     transactions = transactions.title(filter_params[:title]) if filter_params[:title].present?
     transactions = transactions.note(filter_params[:note]) if filter_params[:note].present?
@@ -24,7 +24,7 @@ class TransactionsController < ApplicationController
     transactions = transactions.kind(filter_params[:kind]) if filter_params[:kind].present?
 
     if filter_params[:order].present? and filter_params[:direction].present?
-      transactions = transactions.order("#{filter_params[:order]} #{filter_params[:direction]}")  
+      transactions = transactions.order("#{filter_params[:order]} #{filter_params[:direction]}")
     end
 
     debit_sum = transactions.kind('debit').sum(:amount)
@@ -33,23 +33,23 @@ class TransactionsController < ApplicationController
     transactions = transactions.page(params[:page]).per(per_page)
 
     transactions_with_categories = transactions.includes(:category).to_json(
-      include: { category: {only: [:id, :title]} },
-      methods: :currency
+        include: {category: {only: [:id, :title]}},
+        methods: :currency
     )
 
-    render json: { 
-      pagination: {
-        per_page: per_page,
-        current_page: transactions.current_page,
-        total_pages: transactions.total_pages,
-      },
-      totals: {
-        count: transactions.total_count,
-        debit: debit_sum,
-        credit: credit_sum,
-        difference: difference_sum
-      },
-      transactions: eval(transactions_with_categories)
+    render json: {
+        pagination: {
+            per_page: per_page,
+            current_page: transactions.current_page,
+            total_pages: transactions.total_pages,
+        },
+        totals: {
+            count: transactions.total_count,
+            debit: debit_sum,
+            credit: credit_sum,
+            difference: difference_sum
+        },
+        transactions: eval(transactions_with_categories)
     }
 
   end
@@ -80,7 +80,7 @@ class TransactionsController < ApplicationController
     respond_with transaction
   end
 
-private
+  private
 
   def transaction_params
     allow = [:title, :amount, :date, :note, :kind, :currency, :category_id]
