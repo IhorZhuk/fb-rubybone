@@ -13,7 +13,7 @@ FamilyBudget.Views.Layout.Root = Marionette.View.extend
 
   initialize: (opts) ->
     @router = opts.router
-    @listenTo @router, 'navigated:home', @renderHome
+    @listenTo @router, 'navigated:overview', @renderOverview
     @listenTo @router, 'navigated:transactions', @renderTransactions
     @listenTo @router, 'navigated:add', @renderAdd
     @listenTo @router, 'navigated:categories', @renderCategories
@@ -22,8 +22,8 @@ FamilyBudget.Views.Layout.Root = Marionette.View.extend
   onRender: ->
     @showChildView 'navbar', new FamilyBudget.Views.Navbar({router: @router})
 
-  renderHome: ->
-    @showChildView 'page', new FamilyBudget.Views.Layout.Home()
+  renderOverview: ->
+    @showChildView 'page', new FamilyBudget.Views.Layout.Overview()
 
   renderTransactions: ->
     @showChildView 'page', new FamilyBudget.Views.Layout.Transactions()

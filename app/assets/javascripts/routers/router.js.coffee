@@ -1,8 +1,7 @@
 FamilyBudget.Routers.Main = Marionette.AppRouter.extend
   
   routes:
-    # '': 'home'
-    '': 'add'
+    '': 'overview'
     'transactions': 'transactions'
     'add': 'add'
     'settings': 'settings'
