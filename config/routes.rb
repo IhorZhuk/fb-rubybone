@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
 
   root 'main#index'
+
+  get '/api/totals' => 'totals#index'
   
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

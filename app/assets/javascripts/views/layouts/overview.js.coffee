@@ -3,4 +3,8 @@ FamilyBudget.Views.Layout.Overview = Marionette.View.extend
   template: JST['layouts/overview']
 
   regions:
-    'header' : '#js-region-page-content'
+    'totals': '#js-region-totals'
+    'categories': '#js-region-categories'
+
+  onRender: ->
+    @showChildView 'totals', new FamilyBudget.Views.ChartsTotals()

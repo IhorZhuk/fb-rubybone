@@ -14,6 +14,7 @@ gem 'responders'
 gem 'backbone-on-rails'
 gem 'kaminari'
 gem 'bcrypt'
+gem 'highcharts-rails', '~> 4.2'
 
 group :development, :test do
   gem 'byebug', platform: :mri
