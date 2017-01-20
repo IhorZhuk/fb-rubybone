@@ -6,5 +6,12 @@ FamilyBudget.Views.Layout.Overview = Marionette.View.extend
     'totals': '#js-region-totals'
     'categories': '#js-region-categories'
 
+  initialize: ->
+    @totals = new FamilyBudget.Models.ChartsTotals()
+    @listenTo @totals, 'sync', @showTotals
+
   onRender: ->
-    @showChildView 'totals', new FamilyBudget.Views.ChartsTotals()
+    @totals.fetch()
+
+  showTotals: ->
+    @showChildView 'totals', new FamilyBudget.Views.ChartsTotals({ model: @totals})
