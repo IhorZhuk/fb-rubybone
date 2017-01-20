@@ -1,6 +1,9 @@
 <div class="header">
   <h1>Overview</h1>
 </div>
+<div class="header-options">
+  Choose period: <span id="js-region-period"></span>
+</div>
 <div class="page-wrapper">
   <div id="js-region-totals"></div>
   <div id="js-region-categories"></div>
