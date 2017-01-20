@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root 'main#index'
 
   get '/api/totals' => 'totals#index'
+  get '/api/total-categories' => 'total_categories#index'
   
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

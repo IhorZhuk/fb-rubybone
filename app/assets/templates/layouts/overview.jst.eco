@@ -6,5 +6,6 @@
 </div>
 <div class="page-wrapper">
   <div id="js-region-totals"></div>
+  <div class="page-divider"></div>
   <div id="js-region-categories"></div>
 </div>

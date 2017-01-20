@@ -10,8 +10,10 @@ FamilyBudget.Views.Layout.Overview = Marionette.View.extend
 
   initialize: ->
     @totals = new FamilyBudget.Models.ChartsTotals()
+    @categories = new FamilyBudget.Models.ChartsCategories()
     @periods =  new FamilyBudget.Views.DropdownDates()
     @listenTo @totals, 'sync', @showTotals
+    @listenTo @categories, 'sync', @showCategories
     @listenTo @periods, 'dropdown:updated', @fetchData
 
   onRender: ->
@@ -21,12 +23,19 @@ FamilyBudget.Views.Layout.Overview = Marionette.View.extend
 
     @totals.fetch
       data: dates
+    @categories.fetch
+      data: dates
       
     @showChildView 'period', @periods
 
   fetchData: (periods)->
     @totals.fetch
       data: periods.dates
+    @categories.fetch
+      data: periods.dates
 
   showTotals: ->
     @showChildView 'totals', new FamilyBudget.Views.ChartsTotals({ model: @totals})
+
+  showCategories: ->
+    @showChildView 'categories', new FamilyBudget.Views.ChartsCategories({ model: @categories})

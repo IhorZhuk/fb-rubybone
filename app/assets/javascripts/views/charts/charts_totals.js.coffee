@@ -49,5 +49,3 @@ FamilyBudget.Views.ChartsTotals = Marionette.View.extend
           }
         ] 
       } ])
-
-    chart.reflow()
