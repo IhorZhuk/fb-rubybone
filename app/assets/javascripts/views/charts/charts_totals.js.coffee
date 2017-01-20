@@ -8,7 +8,7 @@ FamilyBudget.Views.ChartsTotals = Marionette.View.extend
   initialize: ->
     @render()
 
-  onRender: ->
+  onAttach: ->
     @renderChart()
 
   renderChart: ->
@@ -49,3 +49,5 @@ FamilyBudget.Views.ChartsTotals = Marionette.View.extend
           }
         ] 
       } ])
+
+    chart.reflow()
