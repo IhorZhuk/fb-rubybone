@@ -16,6 +16,7 @@
 //= require underscore
 //= require backbone
 //= require_tree ./libs
+//= require highcharts
 //= require family_budget
 //= require user_auth
 //= require_tree ../templates

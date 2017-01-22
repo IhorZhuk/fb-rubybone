@@ -1,0 +1,18 @@
+<div class="header">
+  <h1>Overview</h1>
+</div>
+<div class="header-options sorting-bar">
+  <div class="form-group">
+    <ul class="sorting-bar-list list-inline">
+      <li>
+        <label>Period:</label>
+        <div id="js-region-period" class="display-inline-block"></div
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="page-wrapper">
+  <div id="js-region-totals"></div>
+  <div class="page-divider"></div>
+  <div id="js-region-categories"></div>
+</div>

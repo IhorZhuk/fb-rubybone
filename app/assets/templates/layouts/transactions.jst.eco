@@ -2,8 +2,9 @@
   <h1>Transactions</h1>
 </div>
 
+<div id="js-region-filter"></div>
+
 <div class="page-wrapper">
-  <div id="js-region-filter"></div>
   <div id="js-region-totals"></div>
   <div id="js-region-page-content"></div>
 </div>
