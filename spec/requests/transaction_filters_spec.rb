@@ -153,5 +153,12 @@ RSpec.describe 'Transaction filtering', :type => :request do
     expect(JSON.parse(response.body)['transactions'][0]['title']).to eq 'title2'
   end
 
+  it 'pagination' do
+    get '/api/transactions'
+    body = JSON.parse(response.body)
+    expect(body['pagination']['per_page']).to be 20
+    expect(body['pagination']['current_page']).to be 1
+    expect(body['pagination']['total_pages']).to be 1
+  end
 
 end
