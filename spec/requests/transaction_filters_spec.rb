@@ -9,14 +9,45 @@ RSpec.describe 'Transaction filtering', :type => :request do
 
     @category1 = FactoryGirl.create(:category, user: user, title: 'cat1')
     @category2 = FactoryGirl.create(:category, user: user, title: 'cat2')
-    FactoryGirl.create_list(:transaction, 1, category: @category1, user: user, kind: 'debit', date: Date.parse('01-01-2016'))
-    FactoryGirl.create_list(:transaction, 2, category: @category1, user: user, kind: 'debit', date: Date.parse('20-12-2016'))
-    FactoryGirl.create_list(:transaction, 2, category: @category2, user: user, kind: 'credit', date: Date.parse('01-01-2016'))
-    FactoryGirl.create_list(:transaction, 2, category: @category2, user: user, kind: 'credit', date: Date.parse('20-05-2016'))
+    FactoryGirl.create_list(:transaction, 1, category: @category1, user: user, kind: 'debit', date: Date.parse('01-01-2016'), title: 'title1', note: 'note1', amount: 10)
+    FactoryGirl.create_list(:transaction, 2, category: @category1, user: user, kind: 'debit', date: Date.parse('20-12-2016'), title: 'title2', note: 'note2', amount: 20.5)
+    FactoryGirl.create_list(:transaction, 2, category: @category2, user: user, kind: 'credit', date: Date.parse('01-01-2016'), title: 'title foo', note: 'note bla', amount: 30)
+    FactoryGirl.create_list(:transaction, 2, category: @category2, user: user, kind: 'credit', date: Date.parse('20-05-2016'), title: 'foo bar', note: 'bla param', amount: 40)
   end
 
-  describe 'filter by type' do
+  describe 'totals' do
+    it 'all totals' do
+      get '/api/transactions?kind='
+      body = JSON.parse(response.body)
+      expect(body['transactions'].count).to be 7
+      expect(body['totals']['count']).to be 7
+      expect(body['totals']['debit']).to be 51.0
+      expect(body['totals']['credit']).to be 140.0
+      expect(body['totals']['difference']).to be 89.0
+    end
 
+    it 'debits' do
+      get '/api/transactions?kind=debit'
+      body = JSON.parse(response.body)
+      expect(body['transactions'].count).to be 3
+      expect(body['totals']['count']).to be 3
+      expect(body['totals']['debit']).to be 51.0
+      expect(body['totals']['credit']).to be 0.0
+      expect(body['totals']['difference']).to be -51.0
+    end
+
+    it 'credits' do
+      get '/api/transactions?kind=credit'
+      body = JSON.parse(response.body)
+      expect(body['transactions'].count).to be 4
+      expect(body['totals']['count']).to be 4
+      expect(body['totals']['debit']).to be 0.0
+      expect(body['totals']['credit']).to be 140.0
+      expect(body['totals']['difference']).to be 140.0
+    end
+  end
+
+  describe 'filter by kind' do
     it 'renders all transactions' do
       get '/api/transactions?kind='
       expect(JSON.parse(response.body)['transactions'].count).to be 7
@@ -52,7 +83,6 @@ RSpec.describe 'Transaction filtering', :type => :request do
   end
 
   describe 'filter by category' do
-
     it 'renders transactions' do
       get "/api/transactions?category_id=#{@category1.id}"
       expect(JSON.parse(response.body)['transactions'].count).to be 3
@@ -62,6 +92,65 @@ RSpec.describe 'Transaction filtering', :type => :request do
       get "/api/transactions?category_id=#{@category2.id}"
       expect(JSON.parse(response.body)['transactions'].count).to be 4
     end
+  end
+
+  it 'filter by title' do
+    get "/api/transactions?title=title"
+    expect(JSON.parse(response.body)['transactions'].count).to be 5
+
+    get "/api/transactions?title=title1"
+    expect(JSON.parse(response.body)['transactions'].count).to be 1
+
+    get "/api/transactions?title=bar"
+    expect(JSON.parse(response.body)['transactions'].count).to be 2
+
+    get "/api/transactions?title=foo"
+    expect(JSON.parse(response.body)['transactions'].count).to be 4
+  end
+
+  it 'filter by note' do
+    get "/api/transactions?note=note"
+    expect(JSON.parse(response.body)['transactions'].count).to be 5
+
+    get "/api/transactions?note=note1"
+    expect(JSON.parse(response.body)['transactions'].count).to be 1
+
+    get "/api/transactions?note=param"
+    expect(JSON.parse(response.body)['transactions'].count).to be 2
+
+    get "/api/transactions?note=bla"
+    expect(JSON.parse(response.body)['transactions'].count).to be 4
+  end
+
+  it 'filter by amount' do
+    get "/api/transactions?amount=10"
+    expect(JSON.parse(response.body)['transactions'].count).to be 1
+
+    get "/api/transactions?amount=20.5"
+    expect(JSON.parse(response.body)['transactions'].count).to be 2
+
+    get "/api/transactions?amount=30"
+    expect(JSON.parse(response.body)['transactions'].count).to be 2
+
+    get "/api/transactions?amount=40"
+    expect(JSON.parse(response.body)['transactions'].count).to be 2
+  end
+
+  it 'ordering' do
+    get "/api/transactions?order=amount&direction=ASC"
+    expect(JSON.parse(response.body)['transactions'][0]['amount']).to be 10.0
+
+    get "/api/transactions?order=amount&direction=DESC"
+    expect(JSON.parse(response.body)['transactions'][0]['amount']).to be 40.0
+
+    get "/api/transactions?direction=DESC"
+    expect(JSON.parse(response.body)['transactions'][0]['amount']).to be 10.0
+
+    get "/api/transactions?order=title&direction=ASC"
+    expect(JSON.parse(response.body)['transactions'][0]['title']).to eq 'foo bar'
+
+    get "/api/transactions?order=title&direction=DESC"
+    expect(JSON.parse(response.body)['transactions'][0]['title']).to eq 'title2'
   end
 
 
