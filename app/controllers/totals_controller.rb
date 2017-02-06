@@ -6,13 +6,14 @@ class TotalsController < ApplicationController
     # must accept params:
     # - date_from
     # - date_to
+    @totals = Transaction.get_totals(current_user, filter_params)
+    @main_currency = current_user.main_currency
+  end
 
-    render json: {
-      credit: 1200,
-      debit: 400,
-      difference: 800, #credit - totals
-      currency: 'EUR'
-    }
+  private
+
+  def filter_params
+    params.permit(:date_from, :date_to)
   end
 
 end

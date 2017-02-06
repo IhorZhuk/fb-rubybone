@@ -60,6 +60,18 @@ class Transaction < ApplicationRecord
 
       transactions
     end
+
+    def get_totals(user, filter_params)
+      totals = {'debit' => 0,
+                'credit' => 0}
+
+      transactions = Transaction
+                         .apply_filters(self.where(user: user), filter_params)
+                         .group(:kind)
+                         .select('kind, SUM(amount) as total')
+      transactions.each { |el| totals[el.kind]=el.total.to_f }
+      totals
+    end
   end
 
   # ============ Instance methods ========================
