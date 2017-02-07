@@ -72,6 +72,20 @@ class Transaction < ApplicationRecord
       transactions.each { |el| totals[el.kind]=el.total.to_f }
       totals
     end
+
+    def get_total_categories(user, filter_params)
+      totals = {'debit' => [],
+                'credit' => []}
+
+      transactions = Transaction
+                         .apply_filters(self.where(user: user), filter_params)
+                         .joins(:category)
+                         .group(:category_id)
+                         .select('kind, categories.title, SUM(amount) as total')
+
+      transactions.each { |el| totals[el.kind] << {'title' => el.title, 'amount' => el.total.to_f} }
+      totals
+    end
   end
 
   # ============ Instance methods ========================

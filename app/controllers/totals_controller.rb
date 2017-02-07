@@ -3,9 +3,6 @@ class TotalsController < ApplicationController
   respond_to :json
 
   def index
-    # must accept params:
-    # - date_from
-    # - date_to
     @totals = Transaction.get_totals(current_user, filter_params)
     @main_currency = current_user.main_currency
   end
