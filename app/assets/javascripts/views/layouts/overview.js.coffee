@@ -17,22 +17,21 @@ FamilyBudget.Views.Layout.Overview = Marionette.View.extend
     @listenTo @periods, 'dropdown:updated', @fetchData
 
   onRender: ->
-    dates = 
-      date_from: FamilyBudget.Utilities.Dates.getThisMonth().from
-      date_to: FamilyBudget.Utilities.Dates.getThisMonth().to
+    period = FamilyBudget.Utilities.Dates.getThisMonth()
 
-    @totals.fetch
-      data: dates
-    @categories.fetch
-      data: dates
-      
+    @fetchData period
     @showChildView 'period', @periods
 
+  prepareFormat: (period)->
+      date_from: period.from,
+      date_to: period.to
+
   fetchData: (periods)->
+    dates = @prepareFormat periods
     @totals.fetch
-      data: periods.dates
+      data: dates
     @categories.fetch
-      data: periods.dates
+      data: dates
 
   showTotals: ->
     @showChildView 'totals', new FamilyBudget.Views.ChartsTotals({ model: @totals})
