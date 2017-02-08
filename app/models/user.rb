@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :currencies, dependent: :destroy
 
   before_create { generate_token(:auth_token) }
-  
+
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64
@@ -23,6 +23,10 @@ class User < ApplicationRecord
     self.password_reset_sent_at = Time.zone.now
     save!
     UserMailer.password_reset(self).deliver
+  end
+
+  def main_currency
+    currencies.first.title
   end
 
 end

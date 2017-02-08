@@ -3,38 +3,15 @@ class TotalCategoriesController < ApplicationController
   respond_to :json
 
   def index
-    # must accept params:
-    # - date_from
-    # - date_to
+    @total_categories = Transaction.get_total_categories(current_user, filter_params)
+    @main_currency = current_user.main_currency
 
-
-    render json: {
-      currency: 'EUR',
-      credit: [
-        {
-          title: 'Salary',
-          amount: 2346
-        },
-        {
-          title: 'Bonus',
-          amount: 12
-        }
-      ],
-      debit: [
-        {
-          title: 'Food',
-          amount: 324
-        },
-        {
-          title: 'Household items',
-          amount: 133
-        },
-        {
-          title: 'Another cat',
-          amount: 567
-        }
-      ]
-    }
+    render json: @total_categories.merge(currency: @main_currency)
   end
 
+  private
+
+  def filter_params
+    params.permit(:date_from, :date_to)
+  end
 end

@@ -6,7 +6,7 @@
     <ul class="sorting-bar-list list-inline">
       <li>
         <label>Period:</label>
-        <div id="js-region-period" class="display-inline-block"></div
+        <div id="js-region-period" class="display-inline-block"></div>
       </li>
     </ul>
   </div>

@@ -24,9 +24,9 @@ class FamilyBudget.Views.Dropdown extends Marionette.View
       items: ops.items
       customVals: ops.customVals
 
-    @channel = 
-      obj: ops.channel
-      event: ops.channelEvent
+#    @channel =
+#      obj: ops.channel
+#      event: ops.channelEvent
 
   onRender: ->
     if @model.toJSON().customVals
@@ -48,8 +48,8 @@ class FamilyBudget.Views.Dropdown extends Marionette.View
     @ui.items.removeClass 'is-active'
     item.addClass 'is-active'
 
-    if @channel.obj? and @channel.event
-      @channel.obj.trigger @channel.event, data
+    #    if @channel.obj? and @channel.event
+    #      @channel.obj.trigger @channel.event, data
 
     @triggerMethod 'dropdown:updated', @
 
@@ -77,16 +77,17 @@ class FamilyBudget.Views.DropdownDates extends Marionette.View
       placeholder: 'this month'
       items: ['this month', 'last month', 'this week', 'last week']
 
-    @channel = 
-      obj: ops.channel
-      event: ops.channelEvent
+    #    @channel =
+    #      obj: ops.channel
+    #      event: ops.channelEvent
 
     @dates = FamilyBudget.Utilities.Dates.getThisMonth()
 
   onRender: ->
     @setDates(@dates)
-    
+
   setDates: (dates) ->
+    @dates = dates
     @ui.dateFrom.val dates.from
     @ui.dateTo.val dates.to
 
@@ -112,7 +113,7 @@ class FamilyBudget.Views.DropdownDates extends Marionette.View
       when 'last week'
         @setDates FamilyBudget.Utilities.Dates.getLastWeek()
 
-    if @channel.obj? and @channel.event
-      @channel.obj.trigger @channel.event, data
+    #    if @channel.obj? and @channel.event
+    #      @channel.obj.trigger @channel.event, data
 
-    @triggerMethod 'dropdown:updated', @
+    @triggerMethod 'dropdown:updated', @dates
