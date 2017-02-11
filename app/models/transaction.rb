@@ -80,7 +80,7 @@ class Transaction < ApplicationRecord
       transactions = Transaction
                          .apply_filters(self.where(user: user), filter_params)
                          .joins(:category)
-                         .group(:category_id)
+                         .group(:category_id, :kind)
                          .select('kind, categories.title, SUM(amount) as total')
 
       transactions.each { |el| totals[el.kind] << {'title' => el.title, 'amount' => el.total.to_f} }
