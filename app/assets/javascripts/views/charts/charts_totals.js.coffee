@@ -19,20 +19,20 @@ FamilyBudget.Views.ChartsTotals = Marionette.View.extend
       title:
         text: null
       tooltip:
-        pointFormat:'{series.name}: <b>{point.percentage:.1f}%</b>'
+        pointFormat:'{series.name}: <b>{point.percentage:.1f}%</b><br><b>{point.y}<b> ' +  @model.get('currency')
       plotOptions:
         pie:
           allowPointerSelect: true
           cursor: 'pointer'
           dataLabels:
-            enabled: true
+            enabled: false
           showInLegend: true
       legend:
         itemStyle:
           fontSize:'15px'
           fontWeight: 'normal'
           color: FamilyBudget.Colors.font
-        labelFormat:'<b>{name}</b> - {percentage}%'
+        labelFormat:'<b>{name}</b> - {y} ' + @model.get('currency') + ' ({percentage:.1f})%'
       series: [ { 
         name: 'Share'
         data: [
