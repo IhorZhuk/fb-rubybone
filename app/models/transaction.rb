@@ -70,6 +70,7 @@ class Transaction < ApplicationRecord
                          .group(:kind)
                          .select('kind, SUM(amount) as total')
       transactions.each { |el| totals[el.kind]=el.total.to_f }
+      totals['count'] = transactions.length
       totals
     end
 
