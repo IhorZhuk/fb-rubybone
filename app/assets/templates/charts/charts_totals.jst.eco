@@ -1,27 +1,6 @@
-<div class="row">
-
-  <div class="col-md-4">
-  <h3>Totals</h3>
-   <div class="card card-total">
-      <h3 class="card-total-title">Credit</h3>
-      <p class="card-total-number color-positive"><%= @credit.toFixed(2) %> <%= @currency %></p>
-    </div>
-    <div class="card card-total">
-      <h3 class="card-total-title">Debit</h3>
-      <p class="card-total-number color-negative"><%= @debit.toFixed(2) %> <%= @currency %></p>
-    </div>
-    <div class="card card-total">
-      <h3 class="card-total-title">Difference</h3>
-      <p class="card-total-number"><%= @difference.toFixed(2) %> <%= @currency %></p>
-    </div>
-    <br>
-  </div><!-- //col -->
-
-  <div class="col-md-8">
-    <h3>Transactions Share by type</h3>
-    <div class="card">
-        <div id="js-chart-totals" style="height:300px;"></div>
-    </div>
+<div>
+  <h3>Transactions Share by type</h3>
+  <div class="card">
+      <div id="js-chart-totals" style="height:300px;"></div>
   </div>
-
-</div><!-- //row -->
+</div>

@@ -2,8 +2,8 @@
 
   <div class="col-sm-6 col-md-3">
     <div class="card card-total">
-      <h3 class="card-total-title">Quantity</h3>
-      <p class="card-total-number"><%= @count %></p>
+      <h3 class="card-total-title">Difference</h3>
+      <p class="card-total-number"><%= @difference.toFixed(2) %> EUR</p>
     </div>
   </div><!-- //col -->
 
@@ -23,8 +23,8 @@
 
   <div class="col-sm-6 col-md-3">
     <div class="card card-total">
-      <h3 class="card-total-title">Difference</h3>
-      <p class="card-total-number"><%= @difference.toFixed(2) %> EUR</p>
+      <h3 class="card-total-title">Quantity</h3>
+      <p class="card-total-number"><%= @count %></p>
     </div>
   </div><!-- //col -->
 
