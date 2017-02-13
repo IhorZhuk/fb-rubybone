@@ -36,9 +36,7 @@ FamilyBudget.Views.Layout.Overview = Marionette.View.extend
 
   showTotals: ->
     @showChildView 'totalsChart', new FamilyBudget.Views.ChartsTotals({ model: @totals})
-    numbers =
-      totals: @totals.toJSON()
-    @showChildView 'totals', new FamilyBudget.Views.TransactionsTotals({ collection: numbers })
+    @showChildView 'totals', new FamilyBudget.Views.TransactionsTotals({ totals: @totals.toJSON() })
 
   showCategories: ->
     @showChildView 'categories', new FamilyBudget.Views.ChartsCategories({ model: @categories})
