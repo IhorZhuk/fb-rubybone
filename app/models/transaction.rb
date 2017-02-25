@@ -81,9 +81,9 @@ class Transaction < ApplicationRecord
                          .apply_filters(self.where(user: user), filter_params)
                          .joins(:category)
                          .group(:category_id)
-                         .select('kind, categories.title, SUM(amount) as total')
+                         .select('kind, categories.title, categories.id, SUM(amount) as total')
 
-      transactions.each { |el| totals[el.kind] << {'title' => el.title, 'amount' => el.total.to_f} }
+      transactions.each { |el| totals[el.kind] << {'title' => el.title, 'amount' => el.total.to_f, 'id' => el.id} }
       totals
     end
   end

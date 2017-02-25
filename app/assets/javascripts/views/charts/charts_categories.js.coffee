@@ -12,12 +12,18 @@ FamilyBudget.Views.ChartsCategories = Marionette.View.extend
   onAttach: ->
     @renderChart()
 
+  navigate: (e) ->
+    id = e.point.id
+    url = "transactions/category_id=#{id}"
+    Backbone.history.navigate(url, { trigger: true})
+
   renderChart: ->
     debit = @model.get 'debit'
     data = _.map debit, (cat) ->
       {
         name: cat.title
         y: cat.amount
+        id: cat.id
       }
 
     chart = new (Highcharts.Chart)(
@@ -34,6 +40,9 @@ FamilyBudget.Views.ChartsCategories = Marionette.View.extend
           cursor: 'pointer'
           dataLabels:
             enabled: true
+        series:
+          events:
+            click: @navigate
       series: [ { 
         name: 'Share'
         data: data

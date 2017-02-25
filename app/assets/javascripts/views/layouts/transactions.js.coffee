@@ -8,7 +8,10 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
     'totals': '#js-region-totals'
 
   initialize: (ops) ->
-    @query = $.deparam ops.query
+    if ops.query 
+      @query = $.deparam ops.query
+    else 
+      @query = {}
     @collection = new FamilyBudget.Collections.Transactions()
     @listenTo FamilyBudget.Channels.transactionsTable, 'pagination:clicked', @onPaginationClick
     @listenTo FamilyBudget.Channels.transactionsTable, 'filter:clicked', @onFilterClick
@@ -19,8 +22,9 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
       date_to: FamilyBudget.Utilities.Dates.getThisMonth().to
       order: 'date'
       direction: 'DESC'
-      
+
     data.kind = @query.kind if @query.kind
+    data.category_id = @query.category_id if @query.category_id
 
     @filterView = new FamilyBudget.Views.TransactionsFilter({query: data})
 
