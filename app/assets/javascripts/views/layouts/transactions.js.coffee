@@ -7,21 +7,25 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
     'content': '#js-region-page-content'
     'totals': '#js-region-totals'
 
-  initialize: ->
+  initialize: (ops) ->
+    @query = $.deparam ops.query
     @collection = new FamilyBudget.Collections.Transactions()
-    @filterView = new FamilyBudget.Views.TransactionsFilter()
     @listenTo FamilyBudget.Channels.transactionsTable, 'pagination:clicked', @onPaginationClick
     @listenTo FamilyBudget.Channels.transactionsTable, 'filter:clicked', @onFilterClick
 
   onRender: ->
-    date = 
+    data = 
       date_from: FamilyBudget.Utilities.Dates.getThisMonth().from
       date_to: FamilyBudget.Utilities.Dates.getThisMonth().to
       order: 'date'
       direction: 'DESC'
+      
+    data.kind = @query.kind if @query.kind
 
-    @renderContent date
-    @renderFilter()
+    @filterView = new FamilyBudget.Views.TransactionsFilter({query: data})
+
+    @renderContent data
+    @renderFilter data
     
   renderContent: (data) ->
     @collection.fetch
@@ -38,7 +42,7 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
       changes: ''
       reset: true
 
-  renderFilter: ->
+  renderFilter: (data) ->
     @showChildView 'filter', @filterView
 
   onFilterClick: (filters) ->

@@ -18,7 +18,8 @@ FamilyBudget.Views.TransactionsFilter = Marionette.View.extend
   events:
     'change input': 'updateFilters'
 
-  initialize: ->
+  initialize: (ops) ->
+    @query = ops.query
     @categories = []
 
   onRender: ->
@@ -27,7 +28,7 @@ FamilyBudget.Views.TransactionsFilter = Marionette.View.extend
 
     @showChildView 'type', new FamilyBudget.Views.Dropdown
       inputName: 'kind'
-      placeholder: 'any'
+      placeholder: @query.kind || 'any'
       items: ['any', 'credit', 'debit']
 
     @showChildView 'order', new FamilyBudget.Views.Dropdown

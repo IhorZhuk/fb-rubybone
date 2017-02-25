@@ -11,6 +11,11 @@ FamilyBudget.Views.ChartsTotals = Marionette.View.extend
   onAttach: ->
     @renderChart()
 
+  navigate: (e) ->
+    kind = e.point.name.toLowerCase()
+    url = "transactions/kind=#{kind}"
+    Backbone.history.navigate(url, { trigger: true})
+
   renderChart: ->
     chart = new (Highcharts.Chart)(
       chart:
@@ -27,6 +32,9 @@ FamilyBudget.Views.ChartsTotals = Marionette.View.extend
           dataLabels:
             enabled: false
           showInLegend: true
+        series:
+          events:
+            click: @navigate
       legend:
         itemStyle:
           fontSize:'15px'
