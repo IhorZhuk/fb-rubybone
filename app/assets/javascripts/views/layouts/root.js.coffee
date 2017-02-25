@@ -25,8 +25,9 @@ FamilyBudget.Views.Layout.Root = Marionette.View.extend
   renderOverview: ->
     @showChildView 'page', new FamilyBudget.Views.Layout.Overview()
 
-  renderTransactions: ->
-    @showChildView 'page', new FamilyBudget.Views.Layout.Transactions()
+  renderTransactions: (args)->
+    query = args[0]
+    @showChildView 'page', new FamilyBudget.Views.Layout.Transactions({query:query})
 
   renderAdd: ->
     @showChildView 'page', new FamilyBudget.Views.Layout.Add()

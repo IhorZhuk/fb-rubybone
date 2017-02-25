@@ -3,6 +3,7 @@ FamilyBudget.Routers.Main = Marionette.AppRouter.extend
   routes:
     '': 'overview'
     'transactions': 'transactions'
+    'transactions/:query': 'transactions'
     'add': 'add'
     'settings': 'settings'
     'search': 'search'
@@ -10,4 +11,4 @@ FamilyBudget.Routers.Main = Marionette.AppRouter.extend
     'user_settings': 'user_settings'
 
   onRoute: (name, path, args)->
-    @trigger "navigated:#{name}"
+    @trigger "navigated:#{name}", args

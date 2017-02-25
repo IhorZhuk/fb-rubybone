@@ -18,7 +18,8 @@ FamilyBudget.Views.TransactionsFilter = Marionette.View.extend
   events:
     'change input': 'updateFilters'
 
-  initialize: ->
+  initialize: (ops) ->
+    @query = ops.query
     @categories = []
 
   onRender: ->
@@ -27,7 +28,7 @@ FamilyBudget.Views.TransactionsFilter = Marionette.View.extend
 
     @showChildView 'type', new FamilyBudget.Views.Dropdown
       inputName: 'kind'
-      placeholder: 'any'
+      placeholder: @query.kind || 'any'
       items: ['any', 'credit', 'debit']
 
     @showChildView 'order', new FamilyBudget.Views.Dropdown
@@ -62,6 +63,7 @@ FamilyBudget.Views.TransactionsFilter = Marionette.View.extend
 
   renderCategories: ->
     collection = new FamilyBudget.Collections.Categories()
+    placeholder = 'Any'
     collection.fetch
       success: ( collection) =>
         collection.each ((model) ->
@@ -70,8 +72,11 @@ FamilyBudget.Views.TransactionsFilter = Marionette.View.extend
         ), this
         @categories.unshift { value:'', title: 'Any'}
 
+        if @query.category_id
+          placeholder = @categories[@query.category_id].title
+
         @showChildView 'category', new FamilyBudget.Views.Dropdown
           inputName: 'category_id'
-          placeholder: 'Any'
+          placeholder: placeholder
           items: @categories
           customVals: true

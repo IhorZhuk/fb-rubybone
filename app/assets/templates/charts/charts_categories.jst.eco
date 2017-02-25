@@ -1,38 +1,4 @@
-<div class="row">
-
-  <div class="col-md-4">
-    <h3>Revenue by Categories</h3>
-    <div class="card">
-      <table class="table-main">
-          <% for item in @credit : %>
-            <tr>
-              <td><%= item.title %></td>
-              <td class="text-right color-positive"><%= item.amount.toFixed(2) %> <%= @currency %></td>
-            </tr>
-          <% end %>
-      </table>
-    </div>
-    <br>
-
-    <h3>Expenditures by Categories</h3>
-    <div class="card">
-      <table class="table-main">
-          <% for item in @debit : %>
-            <tr>
-              <td><%= item.title %></td>
-              <td class="text-right color-negative"><%= item.amount.toFixed(2) %> <%= @currency %></td>
-            </tr>
-          <% end %>
-      </table>
-    </div>
-    <br>
-  </div><!-- //col -->
-
-  <div class="col-md-8">
-    <h3>Categories Share in Expenditures</h3>
-    <div class="card">
-        <div id="js-chart-categories" style="height:300px;"></div>
-    </div>
-  </div>
-
-</div><!-- //row -->
+<h3>Categories Share in Expenditures</h3>
+<div class="card">
+    <div id="js-chart-categories" style="height:300px;"></div>
+</div>

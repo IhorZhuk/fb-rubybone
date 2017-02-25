@@ -65,10 +65,10 @@ class Transaction < ApplicationRecord
       totals = {'debit' => 0,
                 'credit' => 0}
 
-      transactions = Transaction
-                         .apply_filters(self.where(user: user), filter_params)
-                         .group(:kind)
-                         .select('kind, SUM(amount) as total')
+      transactions = Transaction.apply_filters(self.where(user: user), filter_params)
+      totals['count'] = transactions.length
+      transactions = transactions.group(:kind)
+                                 .select('kind, SUM(amount) as total')
       transactions.each { |el| totals[el.kind]=el.total.to_f }
       totals
     end
@@ -80,10 +80,10 @@ class Transaction < ApplicationRecord
       transactions = Transaction
                          .apply_filters(self.where(user: user), filter_params)
                          .joins(:category)
-                         .group(:category_id, :kind, 'categories.title')
-                         .select('kind, categories.title, SUM(amount) as total')
+                         .group(:category_id, :kind, 'categories.title', 'categories.id' )
+                         .select('kind, categories.title, categories.id, SUM(amount) as total')
 
-      transactions.each { |el| totals[el.kind] << {'title' => el.title, 'amount' => el.total.to_f} }
+      transactions.each { |el| totals[el.kind] << {'title' => el.title, 'amount' => el.total.to_f, 'id' => el.id} }
       totals
     end
   end

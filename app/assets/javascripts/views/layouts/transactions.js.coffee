@@ -7,21 +7,29 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
     'content': '#js-region-page-content'
     'totals': '#js-region-totals'
 
-  initialize: ->
+  initialize: (ops) ->
+    if ops.query 
+      @query = $.deparam ops.query
+    else 
+      @query = {}
     @collection = new FamilyBudget.Collections.Transactions()
-    @filterView = new FamilyBudget.Views.TransactionsFilter()
     @listenTo FamilyBudget.Channels.transactionsTable, 'pagination:clicked', @onPaginationClick
     @listenTo FamilyBudget.Channels.transactionsTable, 'filter:clicked', @onFilterClick
 
   onRender: ->
-    date = 
+    data = 
       date_from: FamilyBudget.Utilities.Dates.getThisMonth().from
       date_to: FamilyBudget.Utilities.Dates.getThisMonth().to
       order: 'date'
       direction: 'DESC'
 
-    @renderContent date
-    @renderFilter()
+    data.kind = @query.kind if @query.kind
+    data.category_id = @query.category_id if @query.category_id
+
+    @filterView = new FamilyBudget.Views.TransactionsFilter({query: data})
+
+    @renderContent data
+    @renderFilter data
     
   renderContent: (data) ->
     @collection.fetch
@@ -30,7 +38,7 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
           @showChildView 'content', new FamilyBudget.Views.TransactionsTable
             collection: collection
           @showChildView 'totals', new FamilyBudget.Views.TransactionsTotals
-            collection: collection
+            totals: collection.totals
         else
           @showChildView 'content', new FamilyBudget.Views.TransactionsEmpty
             message: 'There no transactions according to your search criteria'
@@ -38,7 +46,7 @@ FamilyBudget.Views.Layout.Transactions = Marionette.View.extend
       changes: ''
       reset: true
 
-  renderFilter: ->
+  renderFilter: (data) ->
     @showChildView 'filter', @filterView
 
   onFilterClick: (filters) ->
