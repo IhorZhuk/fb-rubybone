@@ -5,7 +5,9 @@
         <table class="table-main">
             <% for item in @credit : %>
               <tr>
-                <td><%= item.title %></td>
+                <td>
+                  <a class="btn-link" href="#transactions/category_id=<%= item.id %>"><%= item.title %></a>
+                </td>
                 <td class="text-right color-positive"><%= item.amount.toFixed(2) %> <%= @currency %></td>
               </tr>
             <% end %>
@@ -18,7 +20,9 @@
       <table class="table-main">
           <% for item in @debit : %>
             <tr>
-              <td><%= item.title %></td>
+             <td>
+                <a class="btn-link" href="#transactions/category_id=<%= item.id %>"><%= item.title %></a>
+              </td>
               <td class="text-right color-negative"><%= item.amount.toFixed(2) %> <%= @currency %></td>
             </tr>
           <% end %>
