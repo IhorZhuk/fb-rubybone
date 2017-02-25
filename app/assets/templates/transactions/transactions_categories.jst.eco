@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-6">
+     <h3>Revenue by Categories</h3>
+      <div class="card">
+        <table class="table-main">
+            <% for item in @credit : %>
+              <tr>
+                <td><%= item.title %></td>
+                <td class="text-right color-positive"><%= item.amount.toFixed(2) %> <%= @currency %></td>
+              </tr>
+            <% end %>
+        </table>
+      </div>
+  </div><!-- //col -->
+  <div class="col-sm-6">
+    <h3>Expenditures by Categories</h3>
+    <div class="card">
+      <table class="table-main">
+          <% for item in @debit : %>
+            <tr>
+              <td><%= item.title %></td>
+              <td class="text-right color-negative"><%= item.amount.toFixed(2) %> <%= @currency %></td>
+            </tr>
+          <% end %>
+      </table>
+    </div>
+  </div><!-- //col -->
+</div>
+   
+
+   

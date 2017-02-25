@@ -7,6 +7,7 @@ FamilyBudget.Views.Layout.Overview = Marionette.View.extend
     'totalsChart': '#js-region-totals-chart'
     'totals':'#js-region-total-numbers'
     'categories': '#js-region-categories'
+    'categoriesCharts': '#js-region-categories-charts'
 
 
   initialize: ->
@@ -39,4 +40,5 @@ FamilyBudget.Views.Layout.Overview = Marionette.View.extend
     @showChildView 'totals', new FamilyBudget.Views.TransactionsTotals({ totals: @totals.toJSON() })
 
   showCategories: ->
-    @showChildView 'categories', new FamilyBudget.Views.ChartsCategories({ model: @categories})
+    @showChildView 'categoriesCharts', new FamilyBudget.Views.ChartsCategories({ model: @categories})
+    @showChildView 'categories', new FamilyBudget.Views.TransactionCategories({ model: @categories})
