@@ -18,7 +18,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    respond_with current_user.to_json(only: [:email, :name, :id])
+    @user = current_user
+    @currency = current_user.main_currency
   end
 
   def show

@@ -6,6 +6,7 @@ window.FamilyBudget =
   Routers: {}
   Channels: {}
   Utilities: {}
+  Cached: {}
   Colors:
     red: '#FE5F55'
     green: '#7DC95E'
