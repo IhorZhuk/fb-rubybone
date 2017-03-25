@@ -4,7 +4,7 @@ FamilyBudget.Views.TransactionsTotals = Marionette.View.extend
 
   initialize: (ops) ->
     @totals = ops.totals
-    if ops.currency? then @totals.currency = ops.currency
+    @totals.currency = FamilyBudget.Cached.Currency
 
   render: ->
     @$el.html( @template(@totals) )

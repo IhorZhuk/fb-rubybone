@@ -4,7 +4,6 @@ class TotalsController < ApplicationController
 
   def index
     @totals = Transaction.get_totals(current_user, filter_params)
-    @main_currency = current_user.main_currency
   end
 
   private
