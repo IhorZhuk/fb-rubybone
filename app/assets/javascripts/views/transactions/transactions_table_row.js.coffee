@@ -18,6 +18,12 @@ FamilyBudget.Views.TransactionsTableRow = Marionette.View.extend
   initialize: ->
     @listenTo @model, 'remove', @removeView
     @listenTo @model, 'change', @render
+    @currency = FamilyBudget.Cached.Currency
+
+  serializeData: ->
+    data = @model.toJSON()
+    data.currency = @currency
+    data
 
   toggleNote: ->
     @ui.note.toggleClass 'is-hidden'
@@ -28,6 +34,8 @@ FamilyBudget.Views.TransactionsTableRow = Marionette.View.extend
       content: new FamilyBudget.Views.ConfirmDelete
         model: @model
         template: JST['confirm_delete_transaction']
+        additionalData: 
+          currency: @currency
 
   openEditModal: ->
     modal = new FamilyBudget.Views.Modal

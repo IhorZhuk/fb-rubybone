@@ -19,7 +19,6 @@ json.transactions do
     json.kind transaction.kind
     json.category_id transaction.category_id
     json.user_id transaction.user_id
-    json.currency transaction.currency
     json.category {
       json.id transaction.category.id
       json.title transaction.category.title

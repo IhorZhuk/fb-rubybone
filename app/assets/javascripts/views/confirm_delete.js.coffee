@@ -2,6 +2,16 @@ FamilyBudget.Views.ConfirmDelete = Marionette.View.extend
   
   # NOTE
   # Template must be specified when creating instance
+
+  initialize: (ops) ->
+    @additionalData = ops.additionalData
+    console.log 
+
+  serializeData: ->
+    data = @model.toJSON()
+    if @additionalData?
+      data = $.extend(data, @additionalData)
+    data
   
   ui:
     'error' : '.js-error'

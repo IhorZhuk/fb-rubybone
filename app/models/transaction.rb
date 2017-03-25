@@ -88,10 +88,4 @@ class Transaction < ApplicationRecord
     end
   end
 
-  # ============ Instance methods ========================
-
-  def currency
-    user.currencies.first.title
-  end
-
 end
